@@ -78,13 +78,16 @@ Location:
                 FlagReqs:
                     - Most Map Access
                     - Mon Locked Checks
+                    - Unown Puzzle
                 ItemReqs:
                 FlagsSet:
                 MonReq: Unown
                 ReachableReqs:
                 Text:
                 NormalItem: ENGINE_UNOWN_DEX
-                TrainerList: 
+                TrainerList:
+                WarpReqs:
+                    - Ruins Research Center
                 Code: |
                     .GetUnownDexScript:
                         applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x5926f
@@ -115,57 +118,78 @@ Location:
                         setscene SCENE_RUINSOFALPHRESEARCHCENTER_NOTHING
                         special RestartMapMusic
                         end
+
             -
-                Name: Ruins of Alph UnownDex
-                FileName: RuinsOfAlphResearchCenter.asm
-                Type: Item
+                Name: Ruins of Alph Clear Unown Puzzle
+                FileName:
+                Type: Map
                 HasPKMN: No
                 WildTableList:
                 LocationReqs: Ruins of Alph
                 FlagReqs:
-                    - Most Map Access
-                    - Mon Locked Checks
-                    - Unown Puzzle
                 ItemReqs:
                 FlagsSet:
-                MonReq: Unown
+                    - Unown Puzzle
                 ReachableReqs:
+                Code:
                 Text:
-                NormalItem: ENGINE_UNOWN_DEX
                 TrainerList:
-                WarpReqs:
-                    - Ruins Research Center
-                Code: |
-                .GetUnownDexScript:
-                  applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x5926f
-                  playsound SFX_BOOT_PC
-                  pause 60
-                  playsound SFX_SWITCH_POKEMON
-                  pause 30
-                  playsound SFX_TALLY
-                  pause 30
-                  playsound SFX_TRANSACTION
-                  pause 30
-                  turnobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
-                  opentext
-                  writetext RuinsOfAlphResearchCenterModifiedDexText
-                  waitbutton
-                  closetext
-                  applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59274
-                  opentext
-                  writetext RuinsOfAlphResearchCenterDexUpgradedText
-                  playsound SFX_ITEM
-                  waitsfx
-                  ITEMLINE
-                  writetext RuinsOfAlphResearchCenterScientist3Text
-                  waitbutton
-                  closetext
-                  applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59276
-                  setscene SCENE_RUINSOFALPHRESEARCHCENTER_NOTHING
-                  special RestartMapMusic
-                  end
+                WarpReqs: Escape Rope Chamber
+                Sublocations:
 
+            -
+                Name: Ruins of Alph Clear Unown Puzzle
+                FileName:
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Ruins of Alph Light Chamber Access
+                FlagReqs:
+                ItemReqs:
+                FlagsSet:
+                    - Unown Puzzle
+                ReachableReqs:
+                Code:
+                Text:
+                TrainerList:
+                WarpReqs: Flash Chamber
+                Sublocations:
 
+            -
+                Name: Ruins of Alph Clear Unown Puzzle
+                FileName:
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Ruins of Alph Ho Oh Chamber Access
+                FlagReqs:
+                ItemReqs:
+                FlagsSet:
+                    - Unown Puzzle
+                ReachableReqs:
+                Code:
+                Text:
+                TrainerList:
+                WarpReqs: Ho-Oh Chamber
+                Sublocations:
+
+-
+                Name: Ruins of Alph Clear Unown Puzzle
+                FileName:
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Ruins of Alph Water Chamber Access
+                FlagReqs:
+                ItemReqs:
+                FlagsSet:
+                    - Unown Puzzle
+                ReachableReqs:
+                Code:
+                Text:
+                TrainerList:
+                WarpReqs: Water Stone Chamber
+                Sublocations:
 
             -
                 Name: Ruins of Alph Rope Chamber Access
