@@ -28,12 +28,16 @@ Changes:
         Location: League Gate via Viridian
         NewItemReqs:
             - Cut
+
     -
         Location: Radio Card Quiz
-        NewFlagReqs: []
+        RemoveFlagReqs:
+            - Impossible
     -
         Location: Pokegear Gift
-        NewFlagReqs: []
+        RemoveFlagReqs: 
+            - Impossible
     -
         Location: Expansion Card Gift
-        NewFlagReqs: []
+        RemoveFlagReqs:
+            - Impossible
