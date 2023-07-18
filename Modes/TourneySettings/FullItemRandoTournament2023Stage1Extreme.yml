@@ -1,0 +1,38 @@
+AllowedLocations: null
+BadgeItemShuffle: null
+BannedLocations: null
+BasePatch: Patches/BaseModificationsSpeedchoice.json
+CoreProgress:
+- Surf
+- Fog Badge
+- Pass
+- S S Ticket
+- Squirtbottle
+DefaultModifiers:
+- Modifiers/Convenience/Strong Fights/DefinitelyNoEarlySabrina.yml
+- Modifiers/Convenience/Strong Fights/NoEarlyBasement.yml
+- Modifiers/Improved Flow/SkipReturningToNewBark.yml
+- Modifiers/Improved Flow/SkipE4AndFightRed.yml
+- Modifiers/Behavioural/ProgressiveRods.yml
+- Modifiers/Behavioural/RemoveCutTreeInIlex.yml
+- Modifiers/More Checks/VanillaClair.yml
+- Modifiers/More Checks/EnableTinTower.yml
+- Modifiers/More Checks/CardRandomization.yml
+- Modifiers/Convenience/Extra Fights/NoVanillaBasement.yml
+- Modifiers/Improved Flow/NerfHoOhChamber.yml
+- Modifiers/Vintage/DerandomizeLeftovers.yml
+- Modifiers/Improved Flow/StartWithBike.yml
+- Modifiers/Convenience/Fly/ForceEarlyFlyTournament2023.yml
+- Modifiers/Improved Flow/StartWithRepel.yml
+Description: Full Item Rando 2023 Stage 1 Settings. Items and badges are shuffled interchangably. Gyms may not be required
+  to beat the game. Fly logic has been modified from the default to reduce a few checks.
+  Vanilla basement is also removed from logic.
+FlagsSet:
+- Kanto Mode
+- Sane Extreme E4 Access
+Goal: Red
+ModeVariables: {}
+Name: Tournament Logic
+RegularWildLevelScalingDefault: false
+SpecialWildLevelScalingDefault: false
+TrainerLevelScalingDefault: false

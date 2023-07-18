@@ -1,3 +1,12 @@
+
+file_format=$(file -b "$0")
+
+# Check if the file format contains "CRLF" (Windows line endings)
+if [[ $file_format == *CRLF* ]]; then
+    echo "Error: Incorrect line endings detected. Please convert the file to Unix format (LF)." >&2
+    exit 1
+fi
+
 rm -r build
 rm -r dist
 

@@ -1,8 +1,7 @@
 import os
 import sys
 
-from RunGUI import ItemRandomiser
-
+from ItemRandomiser import ItemRandomiser
 
 def runCLI(arguments):
 	arg_error = False
