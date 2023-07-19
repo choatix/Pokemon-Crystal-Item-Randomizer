@@ -1,16 +1,15 @@
-import os
 import sys
 import argparse
 import traceback
-from typing import TextIO, BinaryIO, Optional
+from typing import Optional
 
 from RunGUI import ItemRandomiser
 
 
 class ArgumentParser(argparse.Namespace):
-    input: BinaryIO
-    output: BinaryIO
-    mode: TextIO
+    input: str
+    output: str
+    mode: str
     race: Optional[str] = None
     log: bool = False
     seed: Optional[str] = None
@@ -18,9 +17,9 @@ class ArgumentParser(argparse.Namespace):
     _parser = argparse.ArgumentParser()
     _subparser_factory = _parser.add_subparsers()
     _subparser = _subparser_factory.add_parser('cli')
-    _subparser.add_argument('-i', '--input', type=argparse.FileType('rb'), help='Input ROM file')
-    _subparser.add_argument('-o', '--output', type=argparse.FileType('wb'), help='Path to save randomized ROM')
-    _subparser.add_argument('-m', '--mode', type=argparse.FileType(), help='YAML file containing randomization settings')
+    _subparser.add_argument('-i', '--input', help='Input ROM file')
+    _subparser.add_argument('-o', '--output', help='Path to save randomized ROM')
+    _subparser.add_argument('-m', '--mode', help='YAML file containing randomization settings')
     _me_group = _subparser.add_mutually_exclusive_group()
     _me_group.add_argument('-r', '--race', nargs='?', help='Race mode string')
     _me_group.add_argument('-l', '--log', action='store_true', default=False, help='Should output spoiler log')
