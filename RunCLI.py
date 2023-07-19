@@ -1,140 +1,63 @@
 import os
 import sys
+import argparse
+import traceback
+from typing import TextIO, BinaryIO, Optional
 
 from RunGUI import ItemRandomiser
 
 
-def runCLI(arguments):
-	arg_error = False
+class ArgumentParser(argparse.Namespace):
+    input: BinaryIO
+    output: BinaryIO
+    mode: TextIO
+    race: Optional[str] = None
+    log: bool = False
+    seed: Optional[str] = None
 
-	if "input" not in arguments:
-		print("No --input or -i provided.", file=sys.stderr)
-		arg_error = True
+    _parser = argparse.ArgumentParser()
+    _subparser_factory = _parser.add_subparsers()
+    _subparser = _subparser_factory.add_parser('cli')
+    _subparser.add_argument('-i', '--input', type=argparse.FileType('rb'), help='Input ROM file')
+    _subparser.add_argument('-o', '--output', type=argparse.FileType('wb'), help='Path to save randomized ROM')
+    _subparser.add_argument('-m', '--mode', type=argparse.FileType(), help='YAML file containing randomization settings')
+    _me_group = _subparser.add_mutually_exclusive_group()
+    _me_group.add_argument('-r', '--race', nargs='?', help='Race mode string')
+    _me_group.add_argument('-l', '--log', action='store_true', default=False, help='Should output spoiler log')
+    _subparser.add_argument('-s', '--seed', help='RNG seed for reproducible randomization')
 
-	if "output" not in arguments:
-		print("No --output or -o provided.", file=sys.stderr)
-		arg_error = True
+    def __init__(self, args=None):
+        self.__class__._parser.parse_args(args, self)
 
-	if "mode" not in arguments:
-		print("No --mode or -m provided.", file=sys.stderr)
-		arg_error = True
-
-	if "race" in arguments and "log" in arguments:
-		print("Cannot use race mode and spoiler log.", file=sys.stderr)
-		arg_error = True
-
-	use_seed = None
-	if "seed" in arguments:
-		use_seed = arguments["seed"]
-
-	if "race" in arguments :
-		if type(arguments["race"]) is not bool:
-			race_mode = arguments["race"]
-		else:
-			race_mode = None
-	else:
-		race_mode = None
-
-	if arg_error:
-		return
-
-	#app = QApplication(sys.argv)
-	#form = RunWindow()
-
-	# Need to load settings, etc.
-
-	item_rando = ItemRandomiser(GUI=None)
-
-	if race_mode is None:
-		settingsFile = arguments["mode"]
-		item_rando.loadSettings(settingsFile)
-		rom_md5 = None
-	else:
-		data = item_rando.LoadRaceModeSettings(raceString=race_mode)
-		use_seed = data[2]
-		rom_md5 = data[3]
-
-
-	flags = {"Spoiler" : "log" in arguments, "RaceMode": "race" in arguments}
-	print(flags, arguments)
-
-	item_rando.runRandomizer(in_file=arguments["input"], out_file=arguments["output"],
-							 seed=use_seed, run_flags=flags, requiredMD5=rom_md5)
-
-
-	#form.romPath = arguments["input"]
-	#form.runRandomizer(cli=True, outputFile=arguments["output"])
-
-	if arg_error:
-		return
-
-def convertArgument(argument):
-	if argument == "i":
-		return "input"
-
-	if argument == "o":
-		return "output"
-
-	if argument == "m":
-		return "mode"
-
-	if argument == "s":
-		return "seed"
-
-	if argument == "l":
-		return "log"
-
-	if argument == "r":
-		return "race"
-
-	return argument
-
-def parseArguments():
-	parsed_args = {}
-	read_next_arg = 0
-	for argument in sys.argv:
-
-		if os.getcwd() in argument:
-			continue
-
-		if read_next_arg > 0 and argument.startswith("-"):
-			arg_name = convertArgument(arg_name)
-			parsed_args[arg_name] = True
-
-		if argument.startswith("--"):
-			arg_name = argument[2:]
-			read_next_arg = 2
-			pass
-		elif argument.startswith("-"):
-			arg_name = argument[1:]
-			read_next_arg = 1
-			pass
-		elif read_next_arg > 0:
-			if read_next_arg == 1:
-				arg_name = convertArgument(arg_name)
-
-			parsed_args[arg_name] = argument
-
-			read_next_arg = 0
-		else:
-			parsed_args[argument] = True
-
-	if read_next_arg == 2:
-		parsed_args[arg_name] = True
-	elif read_next_arg == 1:
-		parsed_args [convertArgument(arg_name)] = True
-
-	return parsed_args
+    def main(self):
+        item_rando = ItemRandomiser(GUI=None)
+    
+        if self.race is None:
+            settingsFile = self.mode
+            item_rando.loadSettings(settingsFile)
+            use_seed = self.seed
+            rom_md5 = None
+        else:
+            data = item_rando.LoadRaceModeSettings(raceString=race_mode)
+            use_seed = data[2]
+            rom_md5 = data[3]
+    
+    
+        flags = {"Spoiler" : self.log, "RaceMode": self.race is not None}
+        print(flags, self)
+    
+        item_rando.runRandomizer(in_file=self.input, out_file=self.output,
+                                 seed=use_seed, run_flags=flags, requiredMD5=rom_md5)
 
 
 def main():
-	arguments = parseArguments()
-	if "cli" in arguments:
-		runCLI(arguments)
-		return
-	else:
-		print("cli argument must be provided.")
+    try:
+        ArgumentParser().main()
+        return 0
+    except Exception as e:
+        traceback.print_exception(e, file=sys.stderr)
+        return 1
 
 
 if __name__ == '__main__':
-	main()
+    sys.exit(main())
