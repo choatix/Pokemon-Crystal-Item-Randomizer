@@ -1,0 +1,87 @@
+AllowedLocations:
+- Pokegear Gift
+- Mr. Pokemon's Egg
+- Sprout Tower Flash HM
+- Old Rod Guru
+- Ilex Cut HM
+- Bike Shop
+- Coin Case Underground
+- Buena Item
+- Flower Shop
+- Dance Theatre Surf HM
+- Itemfinder House
+- Good Rod Guru
+- Olivine Strength HM
+- Secret Potion Man
+- Cianwood Fly HM
+- Red Scale Dropped
+- Rocket Base Whirlpool HM
+- Radio Tower Rockets Part 1
+- Goldenrod Tunnel Rocket Attack
+- Radio Tower Rockets Part 2
+- Ice Path Waterfall HM
+- Elm SS Ticket
+- Vermilion City Lost Item
+- Copycat Rail Pass
+- Hidden Machine Part
+- Super Rod Guru
+- Silver Wing Old Man
+- Oak Pokedex
+- Radio Card Quiz
+- Expansion Card Gift
+BadgeItemShuffle: null
+BannedLocations: null
+BasePatch: Patches/BaseModificationsSpeedchoice.json
+DefaultModifiers:
+- Modifiers/Convenience/Strong Fights/DefinitelyNoEarlySabrina.yml
+- Modifiers/Improved Flow/SkipReturningToNewBark.yml
+- Modifiers/Behavioural/ProgressiveRods.yml
+- Modifiers/Behavioural/RemoveCutTreeInIlex.yml
+- Modifiers/More Checks/CardRandomization.yml
+- Modifiers/Improved Flow/SkipE4AndFightRed.yml
+- Modifiers/Vintage/DerandomizeLeftovers.yml
+- Modifiers/Convenience/Fly/ForceEarlyFlyTournament2022.yml
+- Modifiers/Convenience/Extra Fights/NoVanillaBasement.yml
+- Modifiers/Convenience/Strong Fights/NoEarlyBasement.yml
+- Modifiers/Improved Flow/StartWithBike.yml
+- Modifiers/Improved Flow/StartWithRepel.yml
+Description: Ajustes para el Torneo SGES de Key Item Randomizer 2023. HMs, objetos clave y medallas están mezclados. Rainbow Wing está excluida. 
+FlagsSet:
+- Kanto Mode
+Goal: Red
+ModeVariables: {}
+Name: Torneo Extreme KIR 2023
+ProgressItems:
+- Surf
+- Squirtbottle
+- Flash
+- Cut
+- Strength
+- Secret Potion
+- Card Key
+- Basement Key
+- Waterfall
+- Bicycle
+- Fly
+- S S Ticket
+- Machine Part
+- Lost Item
+- Pass
+- Pokegear
+- Radio Card
+- Expansion Card
+RegularWildLevelScalingDefault: false
+SpecialWildLevelScalingDefault: false
+TrainerLevelScalingDefault: false
+TrashItemList:
+- Mystery Egg
+- OLD_ROD
+- BLUE_CARD
+- COIN_CASE
+- ITEMFINDER
+- GOOD_ROD
+- Red Scale
+- Whirlpool
+- Clear Bell
+- SUPER_ROD
+- SILVER_WING

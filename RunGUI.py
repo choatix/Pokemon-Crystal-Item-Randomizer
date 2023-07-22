@@ -570,37 +570,15 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 		return
 
 
-
-
-
-
-def convertArgument(argument):
-	if argument == "i":
-		return "input"
-
-	if argument == "o":
-		return "output"
-
-	if argument == "m":
-		return "mode"
-
-	if argument == "s":
-		return "seed"
-
-	if argument == "l":
-		return "log"
-
-	if argument == "r":
-		return "race"
-
-	return argument
-
-
 def main():
-	arguments = RunCLI.parseArguments()
-	if "cli" in arguments:
-		RunCLI.runCLI(arguments)
-		return
+
+	try:
+		CLIArgs = RunCLI.ArgumentParser()
+		if CLIArgs.cli:
+			CLIArgs.main()
+			return
+	except SystemExit:
+		pass
 
 	os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "1"
 	app = QApplication(sys.argv)
