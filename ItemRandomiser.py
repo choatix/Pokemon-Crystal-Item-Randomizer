@@ -21,22 +21,24 @@ import RandomizeFunctions
 import Version
 
 
-def DisplayMessage(message, messageName, type="INFO", GUI=None):
-	if GUI is not None:
-		if type == "INFO":
-			QtWidgets.QMessageBox.about(GUI, messageName, message)
-		elif type == "ERROR":
-			error_dialog = QtWidgets.QErrorMessage()
-			error_dialog.showMessage(message)
-			error_dialog.exec_()
-	else:
-		file = sys.stdout
-		if type == "ERROR":
-			file = sys.stderr
 
-		print(message, file=file)
 
 class ItemRandomiser():
+    def DisplayMessage(self, message, messageName, type="INFO", GUI=None):
+        if GUI is not None:
+            if type == "INFO":
+                QtWidgets.QMessageBox.about(GUI, messageName, message)
+            elif type == "ERROR":
+                error_dialog = QtWidgets.QErrorMessage()
+                error_dialog.showMessage(message)
+                error_dialog.exec_()
+        else:
+            file = sys.stdout
+            if type == "ERROR":
+                file = sys.stderr
+
+            print(message, file=file)
+
     def __init__(self, GUI):
         self.GUI = GUI
         self.modeVariables = {}
@@ -125,7 +127,7 @@ class ItemRandomiser():
                 self.modList[-1]['fileName'] = self.makeFileNameSafe(fileToLoad)
             else:
                 message = 'Modifier not found:' + "\n" + i
-                DisplayMessage(message, None, "ERROR", self.GUI)
+                self.DisplayMessage(message, None, "ERROR", self.GUI)
 
     def checkForConflictingMods(self):
         conflicts = []
@@ -158,12 +160,12 @@ class ItemRandomiser():
 
         if len(conflicts) > 0:
             message = "Mod config error with: " + ','.join(conflicts)
-            DisplayMessage(message, None, "ERROR", self.GUI)
+            self.DisplayMessage(message, None, "ERROR", self.GUI)
             return True
 
         if len(repeatedMods) > 0:
             message = "Mod repeated error with: " + ','.join([x["Name"] for x in repeatedMods])
-            DisplayMessage(message, None, "ERROR", self.GUI)
+            self.DisplayMessage(message, None, "ERROR", self.GUI)
             return True
 
         return False
@@ -271,6 +273,11 @@ class ItemRandomiser():
         return hexstring
 
     def runRandomizer(self, seed=None, out_dir=None, in_file=None, out_file=None, requiredMD5=None, run_flags=None):
+
+        if 'Name' not in self.settings:
+            self.DisplayMessage("No mode has been loaded", "No Mode", type="ERROR", GUI=self.GUI)
+            return
+
         dataHash = LoadLocationData.GetDataHash()
 
         if run_flags is None:
@@ -279,7 +286,7 @@ class ItemRandomiser():
         if dataHash != Version.GetExpectedDataHash():
             print("dataHash = ", dataHash)
             message = "Map Data invalid. Try reinstalling. Continue at your own risk."
-            DisplayMessage(message, None, "ERROR", self.GUI)
+            self.DisplayMessage(message, None, "ERROR", self.GUI)
 
         conflict = self.checkForConflictingMods()
         if conflict:
@@ -330,7 +337,7 @@ class ItemRandomiser():
                 if file != '':
                     validFileName = True
                 else:
-                    DisplayMessage('Please name and save the generated rom...', "File",
+                    self.DisplayMessage('Please name and save the generated rom...', "File",
                                    "INFO", self.GUI)
                     exits += 1
                     if exits > stop_after:
@@ -338,7 +345,7 @@ class ItemRandomiser():
             randomizedFileName = file
 
             if not validFileName:
-                DisplayMessage('3 Failed filenames, cancelling', "Error",
+                self.DisplayMessage('3 Failed filenames, cancelling', "Error",
                                "INFO", self.GUI)
                 return
 
@@ -404,7 +411,7 @@ class ItemRandomiser():
                              preventAddingItems=preventAdd, bonusTrash=bonusTrash, modeVariables=self.modeVariables)
 
             if resultDict is None:
-                DisplayMessage("Incorrect rom version provided!", None, "ERROR", self.GUI)
+                self.DisplayMessage("Incorrect rom version provided!", None, "ERROR", self.GUI)
                 raise Exception("Invalid ROM")
 
             hasWarning = False
@@ -496,10 +503,11 @@ class ItemRandomiser():
                 successMessage = "Sucessfully generated rom with warnings"
                 successBoxName = "Success..."
 
-            DisplayMessage(successMessage, successBoxName,
+            self.DisplayMessage(successMessage, successBoxName,
                            "INFO", self.GUI)
 
             _translate = QtCore.QCoreApplication.translate
         except:
             message = ''.join(traceback.format_exc())
-            DisplayMessage(message, None, "ERROR", self.GUI)
+            #DisplayMessage(message, messageName, type="INFO", GUI=None):
+            self.DisplayMessage(message, None, "ERROR", self.GUI)

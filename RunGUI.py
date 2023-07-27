@@ -23,9 +23,19 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 		_translate = QtCore.QCoreApplication.translate
 
 		self.updateModListView()
-		self.CurentSettings.setText(_translate("MainWindow", settings['Name']))
-		self.SettingsDescription.setText(_translate("MainWindow", settings['Description']))
+
+		if 'Name' in settings:
+			self.CurentSettings.setText(_translate("MainWindow", settings['Name']))
+
+		if 'Description' in settings:
+			self.SettingsDescription.setText(_translate("MainWindow", settings['Description']))
+
+		if 'Goal' not in settings:
+			settings["Goal"] = "Red"
+
 		self.CurrentGoal.setText(_translate("MainWindow", settings['Goal']))
+
+
 		if "SilverBadgeUnlockCount" in self.item_rando.settings:
 			_translate = QtCore.QCoreApplication.translate
 			self.BadgesNeeded.setText(_translate("MainWindow",
@@ -60,7 +70,11 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 		yamlfile = open('RandomizerConfig.yml',encoding='utf-8')
 		yamltext = yaml.load(yamlfile,Loader=yaml.FullLoader)
 
-		self.item_rando.loadSettings(yamltext['DefaultSettings'])
+		try:
+			self.item_rando.loadSettings(yamltext['DefaultSettings'])
+		except Exception as e:
+			pass
+
 		self.updateGUIFromSettings(self.item_rando.settings)
 
 		self.modifierList.itemSelectionChanged.connect(self.updateModifierDescription)

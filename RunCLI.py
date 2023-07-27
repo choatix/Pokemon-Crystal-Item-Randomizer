@@ -4,6 +4,7 @@ import argparse
 import traceback
 from typing import TextIO, BinaryIO, Optional
 
+import Version
 from ItemRandomiser import ItemRandomiser
 
 # TODO Refactor code to use filetypes as input variables, but for now rest of codebase does not support
@@ -36,6 +37,7 @@ class ArgumentParser(argparse.Namespace):
 
     def main(self):
         item_rando = ItemRandomiser(GUI=None)
+        item_rando.DisplayMessage("CKIR V{}".format(Version.GetItemRandoVersion()), "Version", type="INFO")
     
         if self.race is None:
             settingsFile = self.mode
@@ -48,7 +50,6 @@ class ArgumentParser(argparse.Namespace):
             rom_md5 = data[3]
     
         flags = {"Spoiler" : self.log, "RaceMode": self.race is not None or self.racestring}
-        print(flags, self)
     
         item_rando.runRandomizer(in_file=self.input, out_file=self.output,
                                  seed=use_seed, run_flags=flags, requiredMD5=rom_md5)
@@ -59,7 +60,7 @@ def main():
         ArgumentParser().main()
         return 0
     except Exception as e:
-        traceback.print_exception(e, file=sys.stderr)
+        traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
         return 1
 
 

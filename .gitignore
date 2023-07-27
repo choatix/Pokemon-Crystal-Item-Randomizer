@@ -21,4 +21,5 @@ Modes/Custom
 Game Files/
 .idea/
 Release-Plus/
-;Data/item_attributes.asm
+play/
+artifacts/

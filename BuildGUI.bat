@@ -1,5 +1,5 @@
-rm -r build
-rm -r dist
+rmdir build /q /s
+rmdir dist /q /s
 
 pyuic5.exe QTGUIDesign.ui -o RandomizerGUI.py
 if errorlevel 1 (
@@ -13,9 +13,8 @@ if errorlevel 1 (
    exit /b %errorlevel%
 )
 
-rm "Warp Data/warp-output.tsv"
-rm -r "dist/Pokemon Crystal Item Randomizer"
-rename "dist/RunGUI" "Pokemon Crystal Item Randomizer"
+del "Warp Data\warp-output.tsv" /q
+rename "dist\RunGUI" "Pokemon Crystal Item Randomizer"
 echo F|Xcopy "crystal-speedchoice-label-details.json" "dist/Pokemon Crystal Item Randomizer/crystal-speedchoice-label-details.json" /i /y
 echo F|Xcopy "ItemValues.csv" "dist/Pokemon Crystal Item Randomizer/ItemValues.csv" /i /y
 echo F|Xcopy "AddItemValues.csv" "dist/Pokemon Crystal Item Randomizer/AddItemValues.csv" /i /y
@@ -34,10 +33,21 @@ Xcopy "Gym Data" "dist/Pokemon Crystal Item Randomizer/Gym Data" /i /y
 Xcopy "ItemData" "dist/Pokemon Crystal Item Randomizer/ItemData" /i /y
 Xcopy "Map Data" "dist/Pokemon Crystal Item Randomizer/Map Data" /i /y
 Xcopy "Config" "dist/Pokemon Crystal Item Randomizer/Config" /i /y
-Xcopy "Modes" "dist/Pokemon Crystal Item Randomizer/Modes" /i /y
+Xcopy "Modes" "dist/Pokemon Crystal Item Randomizer/Modes" /s /i /y
+
+rmdir "dist\Pokemon Crystal Item Randomizer\Modes\Custom" /s /q
+rmdir "dist\Pokemon Crystal Item Randomizer\Modes\Old Modes" /s /q
+
 Xcopy "Modifiers" "dist/Pokemon Crystal Item Randomizer/Modifiers" /s /i /y
 Xcopy "Patches" "dist/Pokemon Crystal Item Randomizer/Patches" /i /y
 Xcopy "Special Pokemon Locations" "dist/Pokemon Crystal Item Randomizer/Special Pokemon Locations" /i /y
 Xcopy "TrainerData" "dist/Pokemon Crystal Item Randomizer/TrainerData" /i /y
 Xcopy "Wild Data" "dist/Pokemon Crystal Item Randomizer/Wild Data" /i /y
 Xcopy "Packs" "dist/Pokemon Crystal Item Randomizer/Packs" /i /y
+
+cd "dist/Pokemon Crystal Item Randomizer"
+wsl zip -r ../../artifacts/PokemonCrystalItemRandomiser.zip .
+cd ../..
+
+rmdir build /q /s
+rmdir dist /q /s

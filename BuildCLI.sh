@@ -21,7 +21,9 @@ fi
 
 rm "Warp Data/warp-output.tsv"
 rm -r "dist/Pokemon Crystal Item Randomizer"
+
 mv "dist/RunCLI" "dist/Pokemon Crystal Item Randomizer"
+
 cp "crystal-speedchoice-label-details.json" "dist/Pokemon Crystal Item Randomizer/crystal-speedchoice-label-details.json"
 cp "ItemValues.csv" "dist/Pokemon Crystal Item Randomizer/ItemValues.csv"
 cp "AddItemValues.csv" "dist/Pokemon Crystal Item Randomizer/AddItemValues.csv"
@@ -41,9 +43,21 @@ cp -r "ItemData" "dist/Pokemon Crystal Item Randomizer/ItemData"
 cp -r "Map Data" "dist/Pokemon Crystal Item Randomizer/Map Data"
 cp -r "Config" "dist/Pokemon Crystal Item Randomizer/Config"
 cp -r "Modes" "dist/Pokemon Crystal Item Randomizer/Modes"
+
+rm -rf "dist/Pokemon Crystal Item Randomizer/Custom"
+rm -rf "dist/Pokemon Crystal Item Randomizer/Old Modes"
+
 cp -r "Modifiers" "dist/Pokemon Crystal Item Randomizer/Modifiers"
 cp -r "Patches" "dist/Pokemon Crystal Item Randomizer/Patches"
 cp -r "Special Pokemon Locations" "dist/Pokemon Crystal Item Randomizer/Special Pokemon Locations"
 cp -r "TrainerData" "dist/Pokemon Crystal Item Randomizer/TrainerData"
 cp -r "Wild Data" "dist/Pokemon Crystal Item Randomizer/Wild Data"
 cp -r "Packs" "dist/Pokemon Crystal Item Randomizer/Packs"
+
+cd "dist/Pokemon Crystal Item Randomizer"
+zip -r ../../artifacts/PokemonCrystalItemRandomiser-LinuxCLI.zip .
+cd ../.
+
+rm -rf build
+rm -rf dist
+
