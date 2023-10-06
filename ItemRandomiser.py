@@ -9,6 +9,9 @@ from collections import OrderedDict
 import time
 import random
 from shutil import copyfile
+
+import Items
+import RandomizeItemsBadgesAssumedFill
 import RunCustomRandomizationAssumedFill as RunCustomRandomization
 
 import yaml
@@ -44,6 +47,10 @@ class ItemRandomiser():
         self.modeVariables = {}
         self.modList = []
         self.settings = {}
+
+        self.result = None
+        self.seed = None
+
         return
 
     def ResetPlando(self):
@@ -272,7 +279,8 @@ class ItemRandomiser():
         # print(hexstring)
         return hexstring
 
-    def runRandomizer(self, seed=None, out_dir=None, in_file=None, out_file=None, requiredMD5=None, run_flags=None):
+    def runRandomizer(self, seed=None, out_dir=None, in_file=None, out_file=None, requiredMD5=None, run_flags=None,
+                      attempts=0):
 
         if 'Name' not in self.settings:
             self.DisplayMessage("No mode has been loaded", "No Mode", type="ERROR", GUI=self.GUI)
@@ -300,8 +308,13 @@ class ItemRandomiser():
         else:
             rngSeed = seed
 
-        rngSeedBytes = rngSeed.encode('utf-8')
-        rSeed = int(hashlib.md5(rngSeedBytes).hexdigest(), 16)
+        if type(rngSeed) is str:
+            rngSeedBytes = rngSeed.encode('utf-8')
+            rSeed = int(hashlib.md5(rngSeedBytes).hexdigest(), 16)
+        else:
+            rSeed = rngSeed
+            rngSeed = "N"+str(rSeed)
+
         print('numeric seed is: ' + str(rSeed))
         random.seed(rSeed)
         _translate = QtCore.QCoreApplication.translate
@@ -410,9 +423,17 @@ class ItemRandomiser():
                              otherSettings=self.settings, plandoPlacements=self.PlandoData, hintConfig=HintOptions,
                              preventAddingItems=preventAdd, bonusTrash=bonusTrash, modeVariables=self.modeVariables)
 
+            if "AllowedLocations" in self.settings and self.settings["AllowedLocations"] is not None:
+                for item in self.settings["AllowedLocations"]:
+                    if item not in resultDict["Reachable"]:
+                        print("Unreachable allowed:", item)
+
             if resultDict is None:
                 self.DisplayMessage("Incorrect rom version provided!", None, "ERROR", self.GUI)
                 raise Exception("Invalid ROM")
+
+            self.result = resultDict
+            self.seed = rSeed
 
             hasWarning = False
             if "Warnings" in resultDict:
@@ -511,3 +532,73 @@ class ItemRandomiser():
             message = ''.join(traceback.format_exc())
             #DisplayMessage(message, messageName, type="INFO", GUI=None):
             self.DisplayMessage(message, None, "ERROR", self.GUI)
+
+
+    def GetAllAccessible(self):
+        if self.result is None:
+            return None
+
+        spoiler = self.result["Spoiler"]
+        fullTree = self.result["FullTree"]
+        inputFlags = self.result["InputFlags"]
+        goal = self.result["Goal"]
+        locations = self.result["Locations"]
+        badgeDict = self.result["BadgeDict"]
+
+        beatability = RandomizeItemsBadgesAssumedFill.checkBeatability(spoiler, fullTree, inputFlags,
+                                                         None, None, None, locations,
+                                                         badgeDict, None, assign_trash=False,
+                                                         forbidden=[], recommended=False)
+
+        return beatability
+
+
+    def performChecks(self, checksList):
+
+        if self.result is None:
+            return None
+
+        spoiler = self.result["Spoiler"]
+        fullTree = self.result["FullTree"]
+        inputFlags = self.result["InputFlags"]
+        goal = self.result["Goal"]
+        locations = self.result["Locations"]
+        badgeDict = self.result["BadgeDict"]
+
+        sanityCheckFailure = \
+            RandomizeFunctions.IsVariableRequired(None, spoiler, locations, inputFlags, fullTree, badgeDict, goal)
+
+        if sanityCheckFailure:
+            raise Exception("Invalid created base conditions")
+
+        KIMap = Items.GetKeyItemMap()
+        InverseKIMap = Items.GetKeyItemMap()
+
+        variable_checks = {}
+
+        for check in checksList:
+            isItem = False
+            isFlag = False
+            if check in KIMap.keys():
+                v = KIMap[check]
+                if v.startswith("ENGINE"):
+                    isFlag = True
+                else:
+                    isItem = True
+
+            checkBase = check
+            input_vars = []
+            if "/" in check:
+                checkList = check.split("/")
+                checkUse = None
+                input_vars = checkList
+            else:
+                checkUse = checkBase
+
+            required = RandomizeFunctions.IsVariableRequired(checkUse, spoiler, locations, inputFlags,
+                                                             fullTree, badgeDict, goal, input_variables=input_vars)
+
+            variable_checks[checkBase] = required
+
+        return variable_checks
+

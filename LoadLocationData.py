@@ -1,6 +1,7 @@
 import hashlib
 import json
 import os
+import zlib
 
 import GenerateWarpData
 import Location
@@ -551,16 +552,19 @@ def CheckLocationData(warpLocations, locationList):
 	return accessible_warp_data,removed_warps
 
 
+DataCache = {}
 
-
-
-
-
-
-
+def GetDataCacheString(ban, allow, mod, flag, l, lw):
+	cache_str = "#".join([json.dumps(ban), json.dumps(allow), json.dumps(mod), json.dumps(flag), str(l), str(lw)])
+	return zlib.compress(bytes(cache_str, "utf8")).hex()
 
 def LoadDataFromFolder(path, banList = None, allowList = None, modifierDict = None, flags = None, labelling = False,
 					   loadWarpData = True):
+
+	data_cache_string = GetDataCacheString(banList, allowList, modifierDict, flags, labelling, loadWarpData)
+	if data_cache_string in DataCache:
+		pass
+		# return DataCache[data_cache_string]
 
 	if modifierDict is None:
 		modifierDict = {}
@@ -638,7 +642,11 @@ def LoadDataFromFolder(path, banList = None, allowList = None, modifierDict = No
 		
 	#print('NameCounts')
 	#print(LocCountDict)
-	return (LocationList,trashList,warp_removed_items)
+
+	returnValues = (LocationList,trashList,warp_removed_items)
+	DataCache[data_cache_string] = returnValues
+
+	return returnValues
 def FlattenLocationTree(locations):
 	nList = []
 	aList = []

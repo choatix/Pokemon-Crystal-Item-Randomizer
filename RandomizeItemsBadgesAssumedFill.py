@@ -1362,19 +1362,25 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 
 	#TODO Add a warning here
 	if trashItems is not None and len(trashItems) != 0:
+		print(trashItems, len(trashItems))
 		warnings["HasLeftoverTrash"] = True
 		#print("leftover trash:", trashItems)
 
 	if failed:
 		raise Exception('Failed mapping due to item requirement seed!')
 
-	#verify that plando is matched if in use
+
+	# verify that plando is matched if in use
 	if plandoPlacements is not None:
+		plando_matches = 0
 		for i in plandoPlacements:
-			if(plandoPlacements[i] in spoiler and spoiler[plandoPlacements[i]] != i):
-				print(spoiler)
-				#raise Exception('Did not match plando placements!!!', plandoPlacements[i], i, spoiler[plandoPlacements[i]],)
-				raise Exception('Did not match plando placements!!!')
+			if (plandoPlacements[i] in spoiler and spoiler[plandoPlacements[i]] != i):
+				print("Plando placement doesn't match:", plandoPlacements[i], i, spoiler[plandoPlacements[i]])
+			else:
+				plando_matches += 1
+
+		if plando_matches != len(plandoPlacements):
+			raise Exception('Did not match plando placements!!!')
 
 	for item in addAfter:
 		if item.wasItem() or item.isItem() or item.isGym():

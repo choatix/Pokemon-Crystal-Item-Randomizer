@@ -168,7 +168,8 @@ def CheckForE4Reachable(resultDict):
 def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None, allowList = None, modifiers = [],
 				 adjustTrainerLevels = False,adjustRegularWildLevels = False, adjustSpecialWildLevels = False, trainerLVBoost = 0,
 				 wildLVBoost = 0, requiredItems = None, plandoPlacements = {}, coreProgress = None,
-				 otherSettings = {}, bonusTrash = None,hintConfig=None, preventAddingItems = None, modeVariables=None):
+				 otherSettings = {}, bonusTrash = None,hintConfig=None, preventAddingItems = None, modeVariables=None,
+				 attempts=0):
 	#print('required items are')
 	#print(requiredItems)
 
@@ -352,7 +353,12 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 		for item in items:
 			spoilerDetails[item] = {}
 
-	while ("Reachable" not in resultDict or goal not in resultDict["Reachable"]) or not completeResult or spoilerLoop:
+	tried_attempts = 0
+
+	while (("Reachable" not in resultDict or goal not in resultDict["Reachable"]) or not completeResult or spoilerLoop) \
+		and (attempts == 0 or tried_attempts < attempts):
+
+		tried_attempts += 1
 		try:
 			completeResult = True
 			res_items = fullLocationData[1].copy()
@@ -680,6 +686,13 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 		if hintConfig.HideSigns:
 			dead_hints = RandomizeFunctions.getHintsToRemove(creation_data, hintConfig)
 			RandomizerRom.WriteHideUnusedSigns(romMap, dead_hints)
+
+	resultDict["BadgeDict"] = BadgeDict
+	resultDict["FullTree"] = fullLocationData[0]
+	resultDict["Goal"] = goal
+	resultDict["InputFlags"] = flags
+	resultDict["Locations"] = res_locations
+
 
 
 

@@ -1,0 +1,495 @@
+Name: Johto Mode
+Description: The item randomizer is restricted to randomizing items which appear in johto.
+BasePatch: Patches/BaseModificationsSpeedchoice.json
+RegularWildLevelScalingDefault: True
+SpecialWildLevelScalingDefault: True
+TrainerLevelScalingDefault: True
+BadgeItemShuffle: null
+DefaultModifiers:
+    - Modifiers/SkipReturningToNewBark.yml    
+    - Modifiers/Behavioural/ProgressiveRods.yml
+    - Modifiers/More Checks/VanillaClair.yml
+    - Modifiers/Behavioural/RemoveCutTreeInIlex.yml
+    - Modifiers/More Checks/EnableTinTower.yml
+    - Modifiers/More Checks/HiddenItems.yml
+    - Modifiers/More Checks/TimeEvents.yml
+    - Modifiers/More Checks/BerryTrees.yml
+    - Modifiers/More Checks/PointlessChecks.yml
+    - Modifiers/More Checks/BugCatchingContest.yml
+    - Modifiers/Improved Flow/StartWithBike.yml
+    - Modifiers/Convenience/Strong Fights/NoEarlyBasement.yml
+    - Modifiers/Convenience/Fly/ForceEarlyFlyTournament2023.yml
+    - Modifiers/Shopsanity/Shopsanity.yml
+    - Modifiers/Shopsanity/BuenaItems.yml
+    - Modifiers/Shopsanity/GameCorner.yml
+    - Modifiers/Shopsanity/PreventShopItems.yml
+    - Modifiers/Improved Flow/NerfHoOhChamber.yml
+    - Modifiers/AddMissingJohtoItems.yml
+    - Modifiers/CardRandomizationJohto.yml
+    - Modifiers/OpenMtSilver.yml
+ProgressItems:
+    - Surf
+    - Squirtbottle
+    - Flash
+    - Mystery Egg
+    - Cut
+    - Strength
+    - Secret Potion
+    - Red Scale
+    - Whirlpool
+    - Card Key
+    - Basement Key
+    - Waterfall
+    - Fly
+    - Bicycle
+BannedLocations:
+AllowedLocations:
+    - Route 30 Berry Man
+    - Route 29 Potion
+    - Elm Aide Potion
+    - Map Card
+    - Route 30 Antidote
+    - Route 30 Psn Cure Berry
+    - Mr. Pokemon's Egg
+    - Route 30 Hidden Potion
+    - Route 36 Arthur
+    - Route 29 Berry
+    - Route 30 Berry
+    - Route 31 Potion
+    - Cherrygrove Mart Potion
+    - Cherrygrove Mart Antidote
+    - Cherrygrove Mart Awakening
+    - Violet City Prz Cure Berry
+    - Violet Mart Escape Rope
+    - Violet Mart Antidote
+    - Violet Mart Awakening
+    - Violet Mart X Defend
+    - Violet Mart X Speed
+    - Violet Mart X Attack
+    - Falkner TM
+    - Mr. Pokemon's EXP Share
+    - Violet Mart Repel
+    - Cherrygrove Mart Repel
+    - Violet Mart Parlyz Heal
+    - Violet Mart Poke Ball
+    - Cherrygrove Mart Poke Ball
+    - Violet City Rare Candy
+    - Violet City Gym Badge
+    - Cherrygrove Mart Parlyz Heal
+    - Mystic Water Man
+    - Violet Mart Ice Heal
+    - Violet City PP UP
+    - Dark Cave Violet Potion
+    - Elm Aide Pokeballs
+    - Route 31 Bitter Berry
+    - Route 29 Tuscany
+    - Route 31 Pokeball
+    - Cherrygrove Mart Ice Heal
+    - Route 27 Rare Candy
+    - Ruins of Alph Rope Chamber 1
+    - Ruins of Alph Rope Chamber 3
+    - Ruins of Alph Rope Chamber 2
+    - Ruins of Alph Rope Chamber 4
+    - Tohjo Falls Moon Stone
+    - Violet City Hidden Hyper Potion
+    - Sprout Tower Parlyz Heal
+    - Route 32 Roar Dude
+    - Route 32 Repel
+    - Route 32 Hidden Super Potion
+    - Miracle Seed Man
+    - Rock Smash Guy
+    - Route 32 Great Ball
+    - Route 32 Hidden Great Ball
+    - Elm Master Ball
+    - Route 32 Freida
+    - Old Rod Guru
+    - Ruins of Alph Light Chamber 1
+    - Ruins of Alph Light Chamber 3
+    - Ruins of Alph Water Chamber 1
+    - Ruins of Alph Water Chamber 3
+    - Sprout Tower X Accuracy
+    - Ruins of Alph Light Chamber 2
+    - Dark Cave Violet Hyper Potion
+    - Dark Cave Violet Hidden Elixer
+    - Dark Cave Violet Dire Hit
+    - Dark Cave Violet Full Heal
+    - Ruins of Alph Light Chamber 4
+    - Ruins of Alph Water Chamber 4
+    - Ruins of Alph Water Chamber 2
+    - Sprout Tower Potion
+    - Sprout Tower Flash HM
+    - Union Cave Floor 1 X Attack
+    - Union Cave Floor 1 Potion
+    - Ecruteak City Hidden Hyper Potion
+    - Itemfinder House
+    - Route 37 Red Apricorn
+    - Route 37 Blk Apricorn
+    - Route 36 Ice Berry
+    - Route 37 Blu Apricorn
+    - Sprout Tower Escape Rope
+    - Dance Theatre Surf HM
+    - Route 37 Hidden Ether
+    - Union Cave Floor 1 Great Ball
+    - Route 46 X Speed
+    - Route 37 Sunny
+    - Union Cave Floor 1 Awakening
+    - Route 46 PRZcureBerry
+    - Route 46 Berry
+    - Burned Tower Rock Smash Item
+    - Burned Tower Hidden Ultra Ball
+    - Union Cave Swift TM
+    - Ecruteak Mart Poke Ball
+    - Ecruteak Mart Potion
+    - Ecruteak Mart Antidote
+    - Ecruteak Mart Awakening
+    - Ecruteak Mart Ice Heal
+    - Union Cave Floor 3 Hyper Potion
+    - Ecruteak Mart Burn Heal
+    - Union Cave Floor 2 X Defend
+    - Ecruteak Mart Parlyz Heal
+    - Burned Tower Strength Item
+    - Ecruteak Mart Great Ball
+    - Union Cave Floor 3 Elixir
+    - Ecruteak Mart Revive
+    - Burned Tower Hidden Ether
+    - Ecruteak Mart Super Potion
+    - Route 33 PSNCureBerry
+    - Route 42 Ultra Ball
+    - Route 27 Sandstorm House
+    - Morty TM
+    - Route 38 Berry
+    - Ilex Forest Revive
+    - Mt Mortar Ether
+    - Azalea Town Wht Apricorn
+    - Ilex Forest Antidote
+    - Headbutt Guy
+    - Ilex Forest Hidden Super Potion
+    - Azalea Mart Charcoal
+    - Azalea Mart Potion
+    - Azalea Mart Escape Rope
+    - Azalea Mart Antidote
+    - Azalea Mart Ice Heal
+    - Mt Mortar Inner Hyper Potion
+    - Mt Mortar Ultra Ball
+    - Mt Mortar Lower Hyper Potion
+    - Mt Mortar Carbos
+    - Azalea Mart Poke Ball
+    - Mt Mortar Max Ether
+    - Mt Mortar Nugget
+    - Azalea Mart Super Potion
+    - Ilex Forest Ether
+    - Mt Mortar Hidden Hyper Potion
+    - Behind Slowpoke Well Hidden
+    - Mt Mortar PP Up
+    - Mt Mortar Inner Escape Rope
+    - Azalea Mart Repel
+    - Sweet Scent Girl
+    - Ilex Forest Hidden Full Heal
+    - Ilex Forest X Attack
+    - Route 27 Solar Beam TM
+    - Mt Mortar Revive
+    - Mt Mortar Full Restore
+    - Route 39 Farmhouse Snore
+    - Ilex Forest Hidden Ether
+    - Route 39 Mint Berry
+    - Olivine Strength HM
+    - Soft Sand Girls
+    - Route 34 Hidden Rare Candy
+    - Route 40 Monica
+    - Lighthouse Ether
+    - Lighthouse Super Repel
+    - Lighthouse Hidden Hyper Potion
+    - Olivine Mart Great Ball
+    - Olivine Mart Hyper Potion
+    - Olivine Mart Parlyz Heal
+    - Olivine Mart Ice Heal
+    - Olivine Mart Surf Mail
+    - Route 40 Hidden Hyper Potion
+    - Lighthouse Rare Candy
+    - Lighthouse Swagger TM
+    - Good Rod Guru
+    - Route 39 Hidden Nugget
+    - Route 26 Max Elixer
+    - Olivine Mart Antidote
+    - Ecruteak City Gym Badge
+    - Olivine Mart Super Potion
+    - Azalea Mart Parlyz Heal
+    - Olivine Mart Awakening
+    - Route 34 Hidden Super Potion
+    - Route 34 Nugget
+    - Lighthouse Super Potion
+    - Bike Shop
+    - Slowpoke Well Floor 1 Super Potion
+    - Mt Mortar Max Potion
+    - Mahogany Mart Rocket Tiny Mushroom
+    - Mahogany Mart Rocket Poke Ball
+    - Route 42 Middle Island Super Potion
+    - Route 42 Grn Apricorn
+    - Route 42 Pnk Apricorn
+    - Lake of Rage Hidden Full Restore
+    - Ilex Cut HM
+    - Mt Mortar Rare Candy
+    - Route 42 Hidden Max Potion
+    - Olivine Mart Super Repel
+    - Route 26 Ice Berry
+    - Mt Mortar Defense Curl TM
+    - Flower Shop
+    - Kurt's Lure Ball
+    - Route 42 Ylw Apricorn
+    - Route 43 Bitter Berry
+    - Mahogany Mart Rocket Slowpoketail
+    - Charcoal Kiln
+    - Route 43 Max Ether
+    - Mahogany Mart Rocket Potion
+    - Goldenrod Underground Hidden Paralyze Heal
+    - Goldenrod Underground Hidden Antidote
+    - Underground Herb Shop Energy Root
+    - Underground Herb Shop Revival Herb
+    - Underground Bargain Shop Pearl
+    - Underground Bargain Shop Stardust
+    - Whitney TM
+    - King's Rock Guy
+    - Goldenrod Game Corner Thunder TM
+    - Goldenrod Game Corner Fire Blast TM
+    - Red Scale Dropped
+    - Jasmine TM
+    - Goldenrod Department Store Return
+    - Department Store Basement 1
+    - Department Store Basement 2
+    - Goldenrod Department Store 4F Protein
+    - Goldenrod Department Store 4F Carbos
+    - Goldenrod Department Store 4F HP Up
+    - Goldenrod Department Store 4F Water Stone
+    - Goldenrod Department Store 4F Thunderstone
+    - Goldenrod Department Store 4F Moon Stone
+    - Goldenrod Department Store 2F1 Super Potion
+    - Goldenrod Department Store 2F1 Parlyz Heal
+    - Goldenrod Department Store 2F1 Burn Heal
+    - Goldenrod Department Store 2F2 Poke Ball
+    - Goldenrod Department Store 2F2 Escape Rope
+    - Goldenrod Department Store 2F2 Revive
+    - Goldenrod Department Store 2F2 Poke Doll
+    - Goldenrod Department Store 3F X Speed
+    - Goldenrod Department Store 3F X Defend
+    - Goldenrod Department Store 3F Dire Hit
+    - Goldenrod Department Store 3FX Accuracy
+    - Goldenrod Department Store 5F Fire Punch TM
+    - Goldenrod Department Store 5F Sweet Scent TM
+    - Goldenrod Department Store 5F Rock Smash TM
+    - Goldenrod Department Store Vending Machine Soda Pop
+    - Goldenrod Department Store Frustration
+    - Underground Herb Shop Heal Powder
+    - Slowpoke Well Rain Dance TM
+    - Goldenrod Department Store 2F2 Repel
+    - Goldenrod Department Store 4F Fire Stone
+    - Department Store Basement 3
+    - Goldenrod Department Store 2F2 Flower Mail
+    - Underground Bargain Shop Star Piece
+    - Goldenrod Department Store Vending Machine Lemonade
+    - Goldenrod Department Store 5F Headbutt TM
+    - Goldenrod Department Store 5F Ice Punch TM
+    - Goldenrod Department Store 5F Thunder Punch TM
+    - Goldenrod Department Store 4F Leaf Stone
+    - Lake of Rage Hidden Max Potion
+    - Goldenrod Department Store 3F X Attack
+    - Goldenrod Department Store 2F2 Great Ball
+    - Underground Bargain Shop Nugget
+    - Goldenrod Underground Hidden Super Potion
+    - Goldenrod Department Store 3F X Special
+    - Goldenrod Department Store 2F1 Potion
+    - Goldenrod Game Corner Blizzard TM
+    - Goldenrod Department Store 4F Iron
+    - Goldenrod Department Store 4F Sun Stone
+    - Goldenrod Department Store 2F1 Antidote
+    - Goldenrod Department Store Vending Machine Fresh Water
+    - Coin Case Underground
+    - Underground Bargain Shop Big Pearl
+    - Goldenrod Department Store 2F2 Full Heal
+    - Route 31 Kenya Item
+    - Goldenrod Department Store 2F1 Awakening
+    - Goldenrod Department Store 2F1 Ice Heal
+    - Underground Herb Shop Energy Powder
+    - Goldenrod Department Store 3F Guard Spec
+    - Goldenrod Department Store 4F Calcium
+    - Victory Road Full Heal
+    - Victory Road Hidden Full Heal
+    - Goldenrod Tunnel Smoke Ball
+    - Goldenrod Tunnel Hidden Max Potion
+    - Lake of Rage Wesley
+    - Lake Of Rage Elixer
+    - Victory Road HP Up
+    - Route 44 Ultra Ball
+    - Route 44 Hidden Elixer
+    - Whirl Islands B2 Max Revive
+    - Whirl Islands SW Ultra Ball
+    - Goldenrod Tunnel Max Ether
+    - Goldenrod Tunnel Ultra Ball
+    - Bugsy TM
+    - Route 41 Hidden Max Ether
+    - Whirl Islands Carbos
+    - Whirl Islands Hidden Rare Candy
+    - Buena Item
+    - Buena Shop Full Restore
+    - Buena Shop Rare Candy
+    - Buena Shop Iron
+    - Buena Shop Calcium
+    - Department Store Basement 4 Underground
+    - Lake of Rage Detect TM
+    - Victory Road Max Revive
+    - Route 44 Max Revive
+    - Route 44 Burnt Berry
+    - Whirl Islands Escape Rope
+    - Buena Shop Nugget
+    - Goldenrod Tunnel Sleep Talk TM
+    - Whirl Islands Nugget
+    - Goldenrod Tunnel Rocket Attack
+    - Radio Tower Rockets Part 2
+    - Goldenrod Tunnel Hidden Revive
+    - Radio Tower Rockets Part 1
+    - Buena Shop HP Up
+    - Lake of Rage Hidden Rare Candy
+    - Buena Shop Ultra Ball
+    - Lake of Rage Hidden Power TM
+    - Radio Tower Sunny Day TM
+    - Buena Shop Carbos
+    - Whirl Islands NE Ultra Ball
+    - Kenya Gate Item
+    - Mahogany Mart Parlyz Heal
+    - Mahogany Mart Rage Candy Bar
+    - Whirl Islands Hidden Full Restore
+    - Mahogany Mart Super Potion
+    - Radio Tower Ultra Ball
+    - Cianwood City Hidden Revive
+    - Route 35 Rollout TM
+    - Tin Tower Full Heal
+    - Secret Potion Man
+    - Cianwood Pharmacy Super Potion
+    - Cianwood Pharmacy Full Heal
+    - Mt Mortar Dragon Scale
+    - Mt Mortar Upper Escape Rope
+    - Victory Road Earthquake TM
+    - Whirl Islands B2 Full Restore
+    - Whirl Islands Calcium
+    - Route 35 MysteryBerry
+    - Mt Mortar Elixer
+    - Mahogany Mart Great Ball
+    - Mahogany Mart Revive
+    - Victory Road Hidden Max Potion
+    - Whirl Islands Hidden Ultra Ball
+    - Cianwood Pharmacy Potion
+    - Rocket Base Hidden Full Heal
+    - Cianwood Pharmacy Hyper Potion
+    - Goldenrod City Gym
+    - Cianwood Pharmacy Revive
+    - Cianwood City Hidden Max Ether
+    - Olivine City Gym Badge
+    - Radio Tower Pink Bow
+    - Goldenrod Tunnel Full Heal
+    - Mahogany Mart Hyper Potion
+    - Whirl Islands B2 Max Elixer
+    - Whirl Islands B1 Full Restore
+    - Route 44 Max Repel
+    - Mahogany Mart Flower Mail
+    - Mt Mortar Hidden Full Restore
+    - Mahogany Mart Super Repel
+    - Rocket Base 1F Nugget
+    - Rocket Base Hidden Revive
+    - Mt Mortar Max Potion Number 2
+    - Mt Mortar Max Revive
+    - Chuck TM
+    - Tin Tower Ultra Ball
+    - Tin Tower Escape Rope
+    - Mt Mortar Hidden Max Revive
+    - Tin Tower Hidden Full Restore
+    - Mahogany Mart Antidote
+    - Victory Road Full Restore
+    - Cianwood City Gym Badge
+    - Mt Mortar Iron
+    - Tin Tower PP Up
+    - Buena Shop Protein
+    - Tin Tower Rare Candy
+    - Mt Mortar Hidden Max Repel
+    - Cianwood Fly HM
+    - Azalea Town Gym Badge
+    - Tin Tower Hidden Max Potion
+    - Rocket Base 1F Hyper Potion
+    - Rocket Base 1F Guard Spec
+    - Tin Tower Hidden Carbos
+    - National Park Quick Claw
+    - National Park Dig TM
+    - National Park Hidden Full Heal
+    - Bug Catching Contest First Place
+    - Bug Catching Contest Third Place
+    - Ice Path Waterfall HM
+    - Indigo Plateau Shop Max Repel
+    - Indigo Plateau Shop Full Restore
+    - Indigo Plateau Shop Full Heal
+    - Rocket Base 3F X Special
+    - Rocket Base 3F Ice Heal
+    - Indigo Plateau Shop Max Potion
+    - Rocket Base 3F Full Heal
+    - Tin Tower Max Potion
+    - National Park Parlyz Heal
+    - Bug Catching Contest Last Place
+    - Indigo Plateau Shop Revive
+    - Bug Catching Contest Second Place
+    - Rocket Base 3F Protein
+    - Indigo Plateau Shop Ultra Ball
+    - Tin Tower Max Revive
+    - Ice Path Hidden Carbos
+    - Tin Tower Max Elixer
+    - Rocket Base 3F Ultra Ball
+    - Rocket Base 2F Thief TM
+    - Rocket Base Whirlpool HM
+    - Tin Tower Full Restore
+    - Ice Path Max Potion
+    - Route 43 Sludge Bomb TM
+    - Tin Tower Nugget
+    - Ice Path Full Heal
+    - Tin Tower HP Up
+    - Ice Path Nevermeltice
+    - Mahogany Town Gym Badge
+    - Pryce TM
+    - Ice Path Rest TM
+    - Ice Path Hidden Ice Heal
+    - Ice Path Iron
+    - Ice Path PP Up
+    - Ice Path Hidden Max Potion
+    - Route 45 Hidden PP Up
+    - Route 45 MysteryBerry
+    - Route 45 Nugget
+    - Route 45 Revive
+    - Route 45 Max Potion
+    - Blackthorn City Santos
+    - Dark Cave Snore TM
+    - Dark Cave Black Glasses
+    - Ice Path Protein
+    - Dark Cave Blackthorn Revive
+    - Blackthorn Mart Great Ball
+    - Blackthorn Mart Hyper Potion
+    - Blackthorn Mart Full Heal
+    - Blackthorn Mart Max Repel
+    - Blackthorn Mart X Attack
+    - Blackthorn Mart Revive
+    - Route 45 Elixer
+    - Blackthorn Mart Max Potion
+    - Blackthorn Mart X Defend
+    - Blackthorn Mart Ultra Ball
+    - Dragons Den Max Elixer
+    - Dragons Den Hidden Max Potion
+    - Dragons Den Calcium
+    - Dragons Den Hidden Revive
+    - Dragons Den Hidden Max Elixer
+    - Blackthorn City Gym Badge
+    - Dragons Den Dragon Fang
+    - Clair TM
+    - Ruins of Alph Ho Oh Chamber 1
+    - Ruins of Alph Ho Oh Chamber 2
+    - Ruins of Alph Ho Oh Chamber 3
+    - Ruins of Alph Ho Oh Chamber 4
+    - Oak Pokedex
+    - Pokegear Gift
+    - Radio Card Quiz
+Goal: Lance
+FlagsSet:
+    - Johto Mode
