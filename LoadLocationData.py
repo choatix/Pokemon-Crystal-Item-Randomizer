@@ -589,9 +589,12 @@ def LoadDataFromFolder(path, banList = None, allowList = None, modifierDict = No
 				try:
 					nLoc = Location.Location(location)
 					nLoc.YmlFile = file
-					nLoc.applyBanList(banList,allowList, flags)
+
+					# Why was this being called before AND after? May relate to a modifier...
+					#nLoc.applyBanList(banList,allowList, flags)
+
 					nLoc.applyModifiers(modifierDict, flags)
-					nLoc.applyBanList(banList,allowList, flags)
+					nLoc.applyBanList(banList,allowList, flags, log=True)
 
 					if "Warps" in flags:
 						nLoc.applyWarpLogic(flags)

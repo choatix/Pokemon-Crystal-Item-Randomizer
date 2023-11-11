@@ -152,8 +152,8 @@ Location:
                 LocationReqs: Route 31
                 FlagReqs:
                     - Phone Call Trainers
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: BERRY

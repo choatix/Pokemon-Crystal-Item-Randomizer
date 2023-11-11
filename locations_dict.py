@@ -145,7 +145,7 @@ locs = {
     'Mt. Silver Hidden Max Potion': 0 ,
     'Mt. Silver Hidden Ultra Ball': 0 ,
     'Mt. Silver Max Elixer': 0 ,
-    'Mt. Silver Max Protein': 0 ,
+    'Mt. Silver Protein': 0 ,
     'Mt. Silver Max Revive': 0 ,
     'Mt. Silver 2F Ultra Ball': 0 ,
     'Mt. Silver Outside Hidden Full Restore': 0 ,

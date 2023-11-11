@@ -129,8 +129,8 @@ Location:
                     - Beat Team Rocket
                     - Became Champion
                     - Gave Elm Egg
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: HP_UP

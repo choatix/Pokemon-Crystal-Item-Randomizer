@@ -632,6 +632,7 @@ Location:
                 WildTableList: 
                 LocationReqs: Ruins of Alph Ho Oh Chamber Access
                 FlagReqs:
+                    - Banned
                 ItemReqs:
                 FlagsSet:
                 NormalItem: 

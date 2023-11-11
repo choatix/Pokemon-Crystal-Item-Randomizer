@@ -225,8 +225,8 @@ Location:
             LocationReqs: Route 36 via Violet
             FlagReqs:
                 - Phone Call Trainers
-            ItemReqs:
                 - Pokegear
+            ItemReqs:
             FlagsSet:
             ReachableReqs:
             NormalItem: FIRE_STONE

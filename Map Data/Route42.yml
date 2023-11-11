@@ -324,8 +324,8 @@ Location:
                 LocationReqs: Route 42 East
                 FlagReqs:
                     - Phone Call Trainers
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: WATER_STONE

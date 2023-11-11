@@ -17,22 +17,29 @@ Changes:
             - Pokegear
             - Radio Card
             - Expansion Card
+        RemoveItemReqs:
+            - Machine Part
 
     -
         Location: Viridian City via Route 2
-        NewLocationReqs:
-            - Route 2
-        NewFlagReqs:
-            - Hive Badge
-        NewItemReqs:
-            - Cut
+        AddFlagReqs:
             - Pokegear
             - Radio Card
             - Expansion Card
+        RemoveItemReqs:
+            - Machine Part
+    -
+        Location: Viridian City via League Gate
+        AddFlagReqs:
+            - Pokegear
+            - Radio Card
+            - Expansion Card
+        RemoveItemReqs:
+            - Machine Part
     -
         Location: League Gate via Viridian
-        NewItemReqs:
-            - Cut
+        RemoveItemReqs:
+            - Machine Part
     -
         Location: Oak Pokedex
         RemoveFlagReqs:

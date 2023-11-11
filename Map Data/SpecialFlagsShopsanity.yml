@@ -113,6 +113,7 @@ Location:
         FlagsSet:
             - All X Items
         ItemReqs:
+        RecommendedItemReqs:
             - X Attack
             - X Defend
             - X Speed

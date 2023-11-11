@@ -5,7 +5,7 @@ Changes:
         Location: Route 37
         AddRecommendedFlagReqs:
             - Storm Badge
-        AddItemReqs:
+        AddRecommendedItemReqs:
             - Fly
     -
         Location: Route 37 via Route 36 Sudowoodo Junction
@@ -27,9 +27,9 @@ Changes:
             - Fly
     -
         Location: Dark Cave Violet Potion
-        AddFlagReqs:
+        AddRecommendedFlagReqs:
             - Storm Badge
-        AddItemReqs:
+        AddRecommendedItemReqs:
             - Fly
     -
         Location: Mr. Pokemon's EXP Share

@@ -159,8 +159,8 @@ Location:
             - Route 45
         FlagReqs:
             - Phone Call Trainers
-        ItemReqs:
             - Pokegear
+        ItemReqs:
         FlagsSet:
         ReachableReqs:
         IsBall: No
@@ -199,8 +199,8 @@ Location:
             - Route 45
         FlagReqs:
             - Phone Call Trainers
-        ItemReqs:
             - Pokegear
+        ItemReqs:
         FlagsSet:
         ReachableReqs:
         IsBall: No

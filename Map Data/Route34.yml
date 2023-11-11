@@ -183,8 +183,8 @@ Location:
                 FlagReqs:
                     - Phone Call Trainers
                     - Beat Team Rocket
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: LEAF_STONE
@@ -210,8 +210,8 @@ Location:
                     - Route 34
                 FlagReqs:
                     - Phone Call Trainers
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                     - Possible Sale
                 ReachableReqs:

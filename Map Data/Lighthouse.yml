@@ -231,8 +231,8 @@ Location:
                     - Phone Call Trainers
                     - Became Champion
                     - Kanto Power Restored
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: PROTEIN

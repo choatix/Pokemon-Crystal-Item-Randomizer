@@ -137,8 +137,8 @@ Location:
                 FlagReqs:
                     - Phone Call Trainers
                     - Mon Locked Checks
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 MonReq: Marill

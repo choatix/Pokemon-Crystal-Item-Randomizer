@@ -358,6 +358,8 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 	while (("Reachable" not in resultDict or goal not in resultDict["Reachable"]) or not completeResult or spoilerLoop) \
 		and (attempts == 0 or tried_attempts < attempts):
 
+		useBonusTrash = copy.deepcopy(bonusTrash)
+
 		tried_attempts += 1
 		try:
 			completeResult = True
@@ -425,21 +427,22 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 			if "Warps" in flags:
 				trashItems = removeWarpTrash(trashItems, criticalTrash, dontReplace, res_removed_items)
 
+
 			if 'BonusItems' in otherSettings or (len(newItems)+len(maybeNewItems)) > 0:
-				bonusTrash.extend(copy.deepcopy(newItems))
+				useBonusTrash.extend(copy.deepcopy(newItems))
 				maybeAdd = []
 				for i in maybeNewItems: #Change to only add MaybeNewItems if not or the ones added are likely duplicated
 					if not i in bonusTrash and not i in trashItems:
 						maybeAdd.append(i)
-				bonusTrash.extend(maybeAdd)
+				useBonusTrash.extend(maybeAdd)
 				for i in range(0,len(trashItems)):
-					if len(bonusTrash) == 0:
+					if len(useBonusTrash) == 0:
 						break
 					if itemsRemoved > 0:
 						itemsRemoved -= 1
-						trashItems.append(bonusTrash.pop(0))
-					elif len(bonusTrash) > 0 and (not (trashItems[i] in criticalTrash)):
-						trashItems[i] = bonusTrash.pop(0)
+						trashItems.append(useBonusTrash.pop(0))
+					elif len(useBonusTrash) > 0 and (not (trashItems[i] in criticalTrash)):
+						trashItems[i] = useBonusTrash.pop(0)
 			#place bonus trash replacing non-critical trash
 			#if 'TrashItemList' in otherSettings:
 			#	trashItems = copy.deepcopy(otherSettings['TrashItemList'])
@@ -670,7 +673,6 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 	RandomizerRom.WriteHardCodedPricesToMemory(addressData, romMap, itemPrices, locations_list, priceSettings)
 
 		# Handle hard-coded prices
-
 
 	if hintConfig is not None and hintConfig.UseHints:
 		hint_desc, locationList = RandomizeFunctions.GenerateHintMessages(resultDict["Spoiler"].copy(), resultDict["Trash"].copy(), res_locations,

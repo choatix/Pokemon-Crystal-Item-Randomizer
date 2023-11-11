@@ -11,6 +11,20 @@ Changes:
         RemoveFlagReqs:
             - Banned
     -
+        Location: Ruins of Alph Ho Oh Chamber
+        RemoveFlagReqs:
+            - Banned
+    -
         Location: Tin Tower
         RemoveFlagReqs:
             - Banned
+    -
+        Location: Tin Tower Floors
+        RemoveFlagReqs:
+            - Banned
+
+    -
+        Location: Climb Tin Tower
+        RemoveFlagReqs:
+            - Banned
+

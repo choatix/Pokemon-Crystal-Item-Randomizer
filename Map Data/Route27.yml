@@ -194,10 +194,10 @@ Location:
                     - Fog Badge
                     - Glacier Badge
                     - Phone Call Trainers
+                    - Pokegear
                 ItemReqs:
                     - Surf
                     - Whirlpool
-                    - Pokegear
                 FlagsSet:
                 ReachableReqs:
                 NormalItem: STAR_PIECE

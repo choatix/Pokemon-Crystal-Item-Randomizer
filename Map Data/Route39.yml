@@ -163,8 +163,8 @@ Location:
                 FlagReqs:
                     - Mon Locked Checks
                     - Phone Call Trainers
-                ItemReqs:
                     - Pokegear
+                ItemReqs:
                 FlagsSet:
                 ReachableReqs:
                 Text:

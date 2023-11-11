@@ -3115,7 +3115,7 @@ Location:
         FileName: CianwoodCity.asm
         Type: Transition
         HasPKMN: No
-        LocationReqs: Lighthouse 4F Middle
+        LocationReqs: Lighthouse 4F Holes
         ItemReqs:
         FlagReqs:
             - Lighthouse4FHoles
@@ -3130,10 +3130,38 @@ Location:
         FileName: CianwoodCity.asm
         Type: Transition
         HasPKMN: No
-        LocationReqs: Lighthouse 4F
+        LocationReqs: Lighthouse 4F Holes
         ItemReqs:
         FlagReqs:
             - Lighthouse4FHoles
+        FlagsSet:
+        ReachableReqs:
+        WildTableList:
+        Code:
+        Text:
+
+    -
+        Name: Lighthouse 4F Holes
+        FileName: CianwoodCity.asm
+        Type: Transition
+        HasPKMN: No
+        LocationReqs: Lighthouse 4F
+        ItemReqs:
+        FlagReqs:
+        FlagsSet:
+        ReachableReqs:
+        WildTableList:
+        Code:
+        Text:
+
+    -
+        Name: Lighthouse 4F Holes
+        FileName: CianwoodCity.asm
+        Type: Transition
+        HasPKMN: No
+        LocationReqs: Lighthouse 4F Middle
+        ItemReqs:
+        FlagReqs:
         FlagsSet:
         ReachableReqs:
         WildTableList:

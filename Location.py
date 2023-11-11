@@ -285,13 +285,15 @@ class Location:
 	def isGym(self):
 		return self.IsGym
 	
-	def applyBanList(self, banList, allowList, flags=None, banned=False):
+	def applyBanList(self, banList, allowList, flags=None, banned=False,log=False):
 		list = [];
 		if flags is None:
 			flags = []
 		# Some location to be banned from being used by default
 		# Need to NOT run this on generation
 		if banned or "Banned" in self.FlagReqs and "No Ban" not in flags:
+			if log:
+				print("Banned:", self.Name)
 			if self.IsItem:
 				self.IsItem = False
 				self.WasItem = True
@@ -304,13 +306,13 @@ class Location:
 			for i in self.Sublocations:
 				# What does this affect? Currently this over-bans all sublocations
 				# but getting there should not be possible anyway
-				i.applyBanList(banList, allowList, flags)
+				i.applyBanList(banList, allowList, flags, banned=True)
 
 			return
 
 		if((not (banList is None) and self.Name in banList) or (not (allowList is None) and self.Name not in allowList)):
 			#print('Banning '+self.Name)
-			if(self.isItem()):
+			if(self.isItem() and not self.Dummy):
 				self.IsItem = False
 				self.WasItem = True
 				self.Type = 'Map'
@@ -544,7 +546,7 @@ class Location:
 			include = False
 
 		if include:
-			if self.NormalItem is not None and self.isItem():
+			if self.NormalItem is not None and self.isItem() and not self.Dummy:
 				list.append(self.NormalItem)
 			for i in self.Sublocations:
 				list.extend(i.getTrashItemList(flags, labelling = labelling))

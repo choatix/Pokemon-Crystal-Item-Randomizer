@@ -31,7 +31,7 @@ Changes:
         Location: League Gate via Route 26
         AddRecommendedFlagReqs:
             - Storm Badge
-        NewItemReqs:
+        AddRecommendedItemReqs:
             - Fly
     -
         Location: Victory Road

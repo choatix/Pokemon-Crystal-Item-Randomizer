@@ -175,7 +175,7 @@ def ConvertHintLevelToFlags(level, MaxHints=None):
         Options.MaximumHints = 50
 
     if level >= 3:
-        Options.RequireHints = True
+        Options.RequireHints = False
 
     if level >= 4:
         Options.InHints = True
@@ -1741,7 +1741,7 @@ def GenerateHintMessages(spoiler, spoilerTrash, locations, criticalTrash, badgeD
     warp_hub_locations = []
 
 
-    location_sim_mapping = {"Dark Cave": {"Dark Cave Violet", "Dark Cave Blackthorn"},
+    location_sim_mapping = {"Dark Cave": {"Dark Cave Violet Entrance", "Dark Cave Blackthorn"},
                             "Routes 26/27": {"Route 26", "Route 27", "Tojho Falls",
                                              "Route 27 Right Side"}, # Add inferred until complex logic
                             "Cerulean Cape": {"Route 24", "Route 25"}
@@ -1887,6 +1887,7 @@ def GenerateHintMessages(spoiler, spoilerTrash, locations, criticalTrash, badgeD
 
 
 
+
                     for valid in validReqs:
                         # Check also re-run the check that this item can be obtained
                         # By removing this single new requirement
@@ -1913,6 +1914,18 @@ def GenerateHintMessages(spoiler, spoilerTrash, locations, criticalTrash, badgeD
         for item in to_check_item:
             if item in badgeDict:
                 continue
+
+            # Remove hints here which have NO non-recommend uses
+
+            timesAsRecommended = [ l for l in locationList if item in l.RecommendedItemReqs or item in l.RecommendedFlagReqs]
+
+            timesAsRequirement = [ l for l in locationList if item in l.ItemReqs or item in l.FlagReqs ]
+
+            print("TimesAsRequirement:", item, len(timesAsRequirement), len(timesAsRecommended))
+            if len(timesAsRequirement) == 0 or item == "Fly":
+                print("Skip item:", item)
+                continue
+
             required = IsVariableRequired(item, spoiler, locations, inputFlags, fullTree, badgeDict, unlock_goal)
             if not required:
                 if HintOptions.BarrenHints:
