@@ -1,5 +1,5 @@
 VersionNumberText::
-        db "v8.0.0@"
+        db "v8.1.0@"
 
 SpeedchoiceVersion:
 .ckir_BEFORE_MajorVersionNumber::
@@ -9,7 +9,7 @@ db 8
 
 ; Speedchoice Minor Version
 .ckir_BEFORE_MinorVersionNumber::
-db 0
+db 1
 .ckir_AFTER_MinorVersionNumber::
 
 ; Speedchoice Revision

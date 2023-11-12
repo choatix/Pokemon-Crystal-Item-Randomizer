@@ -400,6 +400,8 @@ BugContestResults_FirstPlace:
 	checkevent EVENT_BGC_FIRST
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_FIRST
+	ld b, 1
+	getnum STRING_BUFFER_3
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	getitemname STRING_BUFFER_4, SUN_STONE
 	farwritetext ContestResults_PlayerWonAPrizeText
@@ -408,27 +410,41 @@ BugContestResults_FirstPlace:
 	iffalse BugContestResults_NoRoomForSunStone
 	sjump BugContestResults_ReturnAfterWinnersPrize
 
+
 BugContestResults_SecondPlace:
+.ckir_BEFORE_BugContestResults_Second::
+.ckir_AFTER_BugContestResults_Second::
 	checkevent EVENT_BGC_SECOND
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_SECOND
+	ld b, 2
+	getnum STRING_BUFFER_3
 	getitemname STRING_BUFFER_4, EVERSTONE
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
 	verbosegiveitem EVERSTONE
 	iffalse BugContestResults_NoRoomForEverstone
+.ckir_BEFORE_SecondJumpBack::
 	sjump BugContestResults_ReturnAfterWinnersPrize
+.ckir_AFTER_SecondJumpBack::
+
 
 BugContestResults_ThirdPlace:
+.ckir_BEFORE_BugContestResults_Third::
+.ckir_AFTER_BugContestResults_Third::
 	checkevent EVENT_BGC_THIRD
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_THIRD
+	ld b, 3
+	getnum STRING_BUFFER_3
 	getitemname STRING_BUFFER_4, GOLD_BERRY
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
 	verbosegiveitem GOLD_BERRY
 	iffalse BugContestResults_NoRoomForGoldBerry
+.ckir_BEFORE_ThirdJumpBack::
 	sjump BugContestResults_ReturnAfterWinnersPrize
+.ckir_AFTER_ThirdJumpBack::
 
 BugContestResults_NoRoomForSunStone:
 	farwritetext BugContestPrizeNoRoomText
@@ -440,13 +456,17 @@ BugContestResults_NoRoomForEverstone:
 	farwritetext BugContestPrizeNoRoomText
 	promptbutton
 	setevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
+.ckir_BEFORE_SecondNoRoomJumpBack::
 	sjump BugContestResults_ReturnAfterWinnersPrize
+.ckir_AFTER_SecondNoRoomJumpBack::
 
 BugContestResults_NoRoomForGoldBerry:
 	farwritetext BugContestPrizeNoRoomText
 	promptbutton
 	setevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
+.ckir_BEFORE_ThirdNoRoomJumpBack::
 	sjump BugContestResults_ReturnAfterWinnersPrize
+.ckir_AFTER_ThirdNoRoomJumpBack::
 
 BugContestResults_NoRoomForBerry:
 	farwritetext BugContestPrizeNoRoomText

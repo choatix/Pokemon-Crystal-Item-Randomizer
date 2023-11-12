@@ -618,7 +618,7 @@ FlyFunction:
         farscall Script_AbortBugContest
         special WarpToSpawnPoint
         callasm SkipUpdateMapSprites
-        loadvar VAR_MOVEMENT, PLAYER_NORMAL
+        scall ResetPlayerSprite
         newloadmap MAPSETUP_FLY
         callasm FlyToAnim
         special WaitSFX
@@ -777,6 +777,10 @@ EscapeRopeOrDig:
         jr z, .incave
         cp DUNGEON
         jr z, .incave
+        cp TALL_INDOOR
+        jr z, .incave
+        cp GYM
+        jr z, .incave
 .fail
         ld a, $2
         ret
@@ -851,7 +855,7 @@ UsedDigOrEscapeRopeScript:
         applymovement PLAYER, DigOut
         farscall Script_AbortBugContest
         special WarpToSpawnPoint
-        loadvar VAR_MOVEMENT, PLAYER_NORMAL
+        scall ResetPlayerSprite
         newloadmap MAPSETUP_DOOR
         playsound SFX_WARP_FROM
         applymovement PLAYER, DigReturn
@@ -944,7 +948,7 @@ TeleportFunction:
         applymovement PLAYER, .TeleportFrom
         farscall Script_AbortBugContest
         special WarpToSpawnPoint
-        loadvar VAR_MOVEMENT, PLAYER_NORMAL
+        scall ResetPlayerSprite
         newloadmap MAPSETUP_TELEPORT
         playsound SFX_WARP_FROM
         applymovement PLAYER, .TeleportTo
@@ -1616,9 +1620,17 @@ RodNothingText:
         text_far _RodNothingText
         text_end
 
-UnusedNothingHereText: ; unused
+UnusedNothingHereText: ; unused'
         text_far _UnusedNothingHereText
         text_end
+
+ResetPlayerSprite:
+	;ld a, b
+	;cp b
+	;jr nz, .DoNothing
+	;loadvar VAR_MOVEMENT, PLAYER_NORMAL
+;.DoNothing
+	end
 
 BikeFunction:
         call .TryBike

@@ -24,6 +24,11 @@ MountMoonSquare_MapScripts:
     return
 
 .DisappearRock:
+	checkitemrando
+	iffalse .HideRock
+	end
+
+.HideRock
 	disappear MOUNTMOONSQUARE_ROCK
 	return
 

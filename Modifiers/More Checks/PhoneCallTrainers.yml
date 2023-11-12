@@ -12,3 +12,23 @@ Changes:
         Location: Phone Call Trainers
         RemoveFlagReqs:
             - Banned
+
+    -
+        Location: Route 44 Bird Keeper Vance Carbos
+        RemoveFlagReqs:
+            - Became Champion
+
+    -
+        Location: Route 45 Parry Iron
+        RemoveFlagReqs:
+            - Became Champion
+
+    -
+        Location: Lighthouse Sailor Huey Protein
+        RemoveFlagReqs:
+            - Became Champion
+
+    -
+        Location: Route 46 Picknicker Erin Calcium
+        RemoveFlagReqs:
+            - Became Champion

@@ -162,15 +162,15 @@
             "new": [
                 6,
                 10,
-                35,
+                47,
                 113,
                 43,
                 7
             ]
         },
         "address_range": {
-            "begin": 487598,
-            "end": 487604
+            "begin": 487610,
+            "end": 487616
         },
         "label": "ClefairyDance.ckir_BEFORE_timed_events_MOUNTMOON",
         "description": "Clefairy dance happens regardless of time/day"

@@ -440,15 +440,15 @@
         "tileAddress": 710057
     },
     {
-        "start": 1612916,
-        "end": 1612947,
+        "start": 1612913,
+        "end": 1612944,
         "name": "FightingDojoSign1Text",
         "map": "FightingDojo.asm",
         "commands": 3
     },
     {
-        "start": 1612948,
-        "end": 1612971,
+        "start": 1612945,
+        "end": 1612968,
         "name": "FightingDojoSign2Text",
         "map": "FightingDojo.asm",
         "commands": 3
@@ -780,8 +780,8 @@
         "tileAddress": 710377
     },
     {
-        "start": 487751,
-        "end": 487779,
+        "start": 487763,
+        "end": 487791,
         "name": "DontLitterSignText",
         "map": "MountMoonSquare.asm",
         "commands": 3,
@@ -1138,8 +1138,8 @@
         "tileAddress": 703840
     },
     {
-        "start": 1777798,
-        "end": 1777816,
+        "start": 1777805,
+        "end": 1777823,
         "name": "PowerPlantSignText",
         "map": "Route10North.asm",
         "commands": 2,

@@ -10,6 +10,7 @@ import time
 import random
 from shutil import copyfile
 
+import GenerateWarpData
 import Items
 import RandomizeItemsBadgesAssumedFill
 import RunCustomRandomizationAssumedFill as RunCustomRandomization
@@ -300,6 +301,15 @@ class ItemRandomiser():
         if conflict:
             return
 
+        hasWarpsMod = len([mod for mod in self.modList if mod["Name"] == "Warps"])>0
+        if not hasWarpsMod:
+            # Check a series of warps to see if warp rando seems to be enabled
+            is_vanilla = GenerateWarpData.checkForVanilla(in_file)
+            if not is_vanilla:
+                message = "Warps are not vanilla. Please enable the Warps Pack or check your rom."
+                self.DisplayMessage(message, None, "ERROR", self.GUI)
+                return
+
         os.environ['PYTHONHASHSEED'] = '0'  # this needs to be reproducible! so this can't be random!
         if seed is None:
             rngSeed = str(time.time())
@@ -364,6 +374,10 @@ class ItemRandomiser():
 
             if not randomizedFileName.endswith(".gbc"):
                 randomizedFileName += ".gbc"
+
+
+
+
             if 'HintLevel' in self.settings:
                 HINT_LEVEL = self.settings['HintLevel']
                 MAX_HINTS = self.settings['nHints']

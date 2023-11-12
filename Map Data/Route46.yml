@@ -132,7 +132,7 @@ Location:
             Route46FruitTree2:
                 ITEMLINE
     -   
-        Name: Route 46 Picknicker Erin
+        Name: Route 46 Picknicker Erin Calcium
         FileName: Route46.asm
         SecondaryFile: Route46.asm
         Type: Item

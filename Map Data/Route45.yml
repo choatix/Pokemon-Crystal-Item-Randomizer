@@ -198,6 +198,8 @@ Location:
         LocationReqs:
             - Route 45
         FlagReqs:
+            - Became Champion
+            - Kanto Power Restored
             - Phone Call Trainers
             - Pokegear
         ItemReqs:

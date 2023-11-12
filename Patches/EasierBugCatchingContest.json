@@ -1,0 +1,82 @@
+[
+    {
+        "integer_values": {
+            "old": [
+                3,
+                204,
+                66
+            ],
+            "new": [
+                3,
+                120,
+                67
+            ]
+        },
+        "address_range": {
+            "begin": 770933,
+            "end": 770936
+        },
+        "label": "BugContestResults_SecondPlace.ckir_BEFORE_SecondJumpBack",
+        "description": "Get Third Place prize after Second Place Prize"
+    },
+    {
+        "integer_values": {
+            "old": [
+                3,
+                0,
+                0
+            ],
+            "new": [
+                3,
+                90,
+                67
+            ]
+        },
+        "address_range": {
+            "begin": 770963,
+            "end": 770966
+        },
+        "label": "BugContestResults_ThirdPlace.ckir_BEFORE_ThirdJumpBack",
+        "description": "Get Second Place prize after Third Place Prize"
+    },
+    {
+        "integer_values": {
+            "old": [
+                3,
+                0,
+                0
+            ],
+            "new": [
+                3,
+                120,
+                67
+            ]
+        },
+        "address_range": {
+            "begin": 770985,
+            "end": 770988
+        },
+        "label": "BugContestResults_NoRoomForEverstone.ckir_BEFORE_SecondNoRoomJumpBack",
+        "description": "Get Third Place prize after Second Place Prize Full"
+    },
+    {
+        "integer_values": {
+            "old": [
+                3,
+                0,
+                0
+            ],
+            "new": [
+                3,
+                90,
+                67
+            ]
+        },
+        "address_range": {
+            "begin": 770996,
+            "end": 770999
+        },
+        "label": "BugContestResults_NoRoomForGoldBerry.ckir_BEFORE_ThirdNoRoomJumpBack",
+        "description": "Get Second Place prize after Third Place Prize Full"
+    }
+]

@@ -1294,7 +1294,12 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 						(i.wasItem() or i.isItem()) \
 						and "Impossible" not in i.FlagReqs and assign_trash:
 
-					i.item = item_processor.GetRandomItem(i.NormalItem)
+					givenItem = item_processor.GetRandomItem(i.NormalItem)
+					itemChange = RandomizeFunctions.HandleItemReplacement([givenItem], inputFlags)
+					if givenItem in itemChange:
+						i.item = itemChange[givenItem]
+					else:
+						i.item = givenItem
 
 					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, reachable, trashItems,
 																			inputFlags, starting_trash, spoiler, addAfter=addAfter, force=True)
@@ -1330,8 +1335,14 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				and i.Name not in reachable and i not in addAfter and \
 				"Impossible" not in i.FlagReqs and assign_trash:
 				if (i.isItem() or i.isGym() or i.wasItem()):
-					pass
-					i.item = item_processor.GetRandomItem(i.NormalItem)
+					givenItem = item_processor.GetRandomItem(i.NormalItem)
+					itemChanges = RandomizeFunctions.HandleItemReplacement([givenItem], inputFlags)
+					if len(itemChanges) > 0:
+						itemChange = itemChanges[0]
+						i.item = itemChange[1]
+					else:
+						i.item = givenItem
+
 					# Dont use the list of trash items for randomised items
 					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, reachable, trashItems,
 																			inputFlags, starting_trash, spoiler, addAfter=addAfter, force=True)

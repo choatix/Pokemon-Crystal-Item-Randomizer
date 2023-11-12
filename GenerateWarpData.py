@@ -513,6 +513,21 @@ def getWarpGroupData():
     warpGroupData = LoadLocationData.readTSVFile(warpFileLocation)
     return warpGroupData
 
+def checkForVanilla(in_file):
+    interpretDataForRandomisedRom(in_file)
+    warp_file = "Warp Data/warp-output.tsv"
+    warpTSV = LoadLocationData.readTSVFile(warp_file)
+
+    vanilla_warp_file = "Warp Data/vanilla-warp-output.tsv"
+    vanillaTSV = LoadLocationData.readTSVFile(vanilla_warp_file)
+
+    for warp_index in range(0,len(warpTSV)):
+        if warpTSV[warp_index] != vanillaTSV[warp_index]:
+            return False
+
+    return True
+
+
 def interpretDataForRandomisedRom(file, out_file="warp-output.tsv"):
     json_file = Static.warp_labels_file
     rom_file = file

@@ -285,6 +285,8 @@ Location:
                         checkevent EVENT_BGC_FIRST
                         iftrue BugContestResults_ReturnAfterWinnersPrize
                         setevent EVENT_BGC_FIRST
+                        ld b, 1
+                        getnum STRING_BUFFER_3
                         setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
                         getitemname STRING_BUFFER_4, SUN_STONE
                         farwritetext ContestResults_PlayerWonAPrizeText
@@ -314,17 +316,23 @@ Location:
                         writetext Route36NationalParkGateOfficer1HeresThePrizeText
                         promptbutton
                         ITEMLINE
-                SecondaryCode: |
+                SecondaryCode: |                    
                     BugContestResults_SecondPlace:
+                    .ckir_BEFORE_BugContestResults_Second::
+                    .ckir_AFTER_BugContestResults_Second::
                         checkevent EVENT_BGC_SECOND
                         iftrue BugContestResults_ReturnAfterWinnersPrize
                         setevent EVENT_BGC_SECOND
+                        ld b, 2
+                        getnum STRING_BUFFER_3
                         getitemname STRING_BUFFER_4, EVERSTONE
                         farwritetext ContestResults_PlayerWonAPrizeText
                         waitbutton
                         ITEMLINE
                         iffalse BugContestResults_NoRoomForEverstone
+                    .ckir_BEFORE_SecondJumpBack::
                         sjump BugContestResults_ReturnAfterWinnersPrize
+                    .ckir_AFTER_SecondJumpBack::
                 Text:
                 TrainerList: 
                 Sublocations:
@@ -347,17 +355,23 @@ Location:
                         writetext Route36NationalParkGateOfficer1HeresThePrizeText
                         promptbutton
                         ITEMLINE
-                SecondaryCode: |
+                SecondaryCode: |                    
                     BugContestResults_ThirdPlace:
+                    .ckir_BEFORE_BugContestResults_Third::
+                    .ckir_AFTER_BugContestResults_Third::
                         checkevent EVENT_BGC_THIRD
                         iftrue BugContestResults_ReturnAfterWinnersPrize
                         setevent EVENT_BGC_THIRD
+                        ld b, 3
+                        getnum STRING_BUFFER_3
                         getitemname STRING_BUFFER_4, GOLD_BERRY
                         farwritetext ContestResults_PlayerWonAPrizeText
                         waitbutton
                         ITEMLINE
                         iffalse BugContestResults_NoRoomForGoldBerry
+                    .ckir_BEFORE_ThirdJumpBack::
                         sjump BugContestResults_ReturnAfterWinnersPrize
+                    .ckir_AFTER_ThirdJumpBack::
                 Text:
                 TrainerList: 
                 Sublocations:

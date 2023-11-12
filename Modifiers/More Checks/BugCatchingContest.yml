@@ -4,6 +4,7 @@ FlagsSet:
     - Bug Catching Contest
 NewGamePatches:
     - 'Patches/BugCatchingContestAlways.json'
+    - 'Patches/EasierBugCatchingContest.json'
 Changes:
     -
         Location: Bug Catching Contest
