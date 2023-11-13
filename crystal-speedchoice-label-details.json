@@ -2324,17 +2324,17 @@
   {
     "label": "ClefairyDance.ckir_BEFORE_timed_events_MOUNTMOON",
     "address_range": {
-      "begin": 487610,
-      "end": 487616
+      "begin": 487622,
+      "end": 487628
     },
-    "integer_values": "6 10 47 113 43 7",
-    "hex_values": "$6 $a $2f $71 $2b $7"
+    "integer_values": "6 10 59 113 43 7",
+    "hex_values": "$6 $a $3b $71 $2b $7"
   },
   {
     "label": "ClefairyDance.ckir_BEFORE_timed_events_MOUNTMOON_NoDancing",
     "address_range": {
-      "begin": 487727,
-      "end": 487727
+      "begin": 487739,
+      "end": 487739
     },
     "integer_values": "",
     "hex_values": ""
@@ -10118,17 +10118,17 @@
   {
     "label": "MountMoonGiftShop_MapEvents.ckir_BEFORE_shop_events_MOONSHOP",
     "address_range": {
-      "begin": 487951,
-      "end": 487964
+      "begin": 487963,
+      "end": 487976
     },
-    "integer_values": "47 7 8 6 0 255 255 0 0 192 113 255 255",
-    "hex_values": "$2f $7 $8 $6 $0 $ff $ff $0 $0 $c0 $71 $ff $ff"
+    "integer_values": "47 7 8 6 0 255 255 0 0 204 113 255 255",
+    "hex_values": "$2f $7 $8 $6 $0 $ff $ff $0 $0 $cc $71 $ff $ff"
   },
   {
     "label": "MountMoonGiftShop_MapScripts.ckir_BEFORE_shop_events_MOONSHOP_MountMoonGiftShopClerkScript",
     "address_range": {
-      "begin": 487872,
-      "end": 487872
+      "begin": 487884,
+      "end": 487884
     },
     "integer_values": "",
     "hex_values": ""
@@ -10136,8 +10136,8 @@
   {
     "label": "MountMoonSquareHiddenMoonStone.ckir_BEFOREMOUNTMOONSQUAREHIDDENMOONSTONE0ITEMCODE",
     "address_range": {
-      "begin": 487728,
-      "end": 487731
+      "begin": 487740,
+      "end": 487743
     },
     "integer_values": "236 0 8",
     "hex_values": "$ec $0 $8"
@@ -10154,11 +10154,11 @@
   {
     "label": "MountMoonSquare_MapEvents.ckir_BEFOREMOUNTMOONSQUAREHIDDENMOONSTONE0ITEMCODEB",
     "address_range": {
-      "begin": 487820,
-      "end": 487825
+      "begin": 487832,
+      "end": 487837
     },
-    "integer_values": "7 7 7 48 113",
-    "hex_values": "$7 $7 $7 $30 $71"
+    "integer_values": "7 7 7 60 113",
+    "hex_values": "$7 $7 $7 $3c $71"
   },
   {
     "label": "MountMoon_Blocks.ckir_BEFORE_MountMoon_Blocks",
@@ -11720,8 +11720,8 @@
   {
     "label": "Randomizer_HoOhSpecies.ckir_BEFORE_HOOHENCOUNTER",
     "address_range": {
-      "begin": 488059,
-      "end": 488062
+      "begin": 488071,
+      "end": 488074
     },
     "integer_values": "93 250 60",
     "hex_values": "$5d $fa $3c"
@@ -18641,26 +18641,26 @@
   {
     "label": "TinTowerRoof_MapScripts.ckir_BEFORE_ALWAYSHOOHSETTING1",
     "address_range": {
-      "begin": 488019,
-      "end": 488022
+      "begin": 488031,
+      "end": 488034
     },
-    "integer_values": "8 103 114",
-    "hex_values": "$8 $67 $72"
+    "integer_values": "8 115 114",
+    "hex_values": "$8 $73 $72"
   },
   {
     "label": "TinTowerRoof_MapScripts.ckir_BEFORE_ALWAYSHOOHSETTING2",
     "address_range": {
-      "begin": 488033,
-      "end": 488036
+      "begin": 488045,
+      "end": 488048
     },
-    "integer_values": "3 103 114",
-    "hex_values": "$3 $67 $72"
+    "integer_values": "3 115 114",
+    "hex_values": "$3 $73 $72"
   },
   {
     "label": "TinTowerRoof_MapScripts.ckir_BEFORE_ALWAYSHOOHSETTING3",
     "address_range": {
-      "begin": 488036,
-      "end": 488036
+      "begin": 488048,
+      "end": 488048
     },
     "integer_values": "",
     "hex_values": ""
@@ -18668,8 +18668,8 @@
   {
     "label": "TinTowerRoof_MapScripts.ckir_BEFORE_ALWAYSHOOHSETTING4",
     "address_range": {
-      "begin": 488039,
-      "end": 488039
+      "begin": 488051,
+      "end": 488051
     },
     "integer_values": "",
     "hex_values": ""

@@ -15,7 +15,9 @@ MountMoonSquare_MapScripts:
 	end
 
 .DisappearMoonStone:
-    checkitemrando
+	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
+	iffalse .HideStone
+	checkitemrando
     iffalse .HideStone
     end
 
@@ -24,6 +26,8 @@ MountMoonSquare_MapScripts:
     return
 
 .DisappearRock:
+	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
+	iffalse .HideStone
 	checkitemrando
 	iffalse .HideRock
 	end

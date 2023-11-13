@@ -124,7 +124,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 		if 'FirstRun' in yamltext:
 			firstRunCheck = yamltext['FirstRun']
 			if firstRunCheck:
-				ItemRandomiser.DisplayMessage('Please select previous install directory to import custom settings', "First Run", "INFO", self)
+				ItemRandomiser.DisplayMessage(None,'Please select previous install directory to import custom settings', "First Run", "INFO", self)
 				previous_dir = QFileDialog.getExistingDirectory()
 				if previous_dir != "":
 					self.importSettings(previous_dir)
@@ -227,14 +227,14 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 		if nBadge <= 16 and ok2:
 			if nBadge <= 0:
 				message = "You must choose a number of badges greater than 1! Setting badge requirement to 1."
-				ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+				ItemRandomiser.DisplayMessage(None,message, None, "ERROR", self)
 			self.item_rando.settings["SilverBadgeUnlockCount"] = nBadge
 			_translate = QtCore.QCoreApplication.translate
 			self.BadgesNeeded.setText(_translate("MainWindow", "Change # of badges\n to unlock Mt. Silver? \n(Currently "+str(nBadge)+")"))
 			QtGui.QGuiApplication.processEvents()
 		elif ok2:
 			message = "There are only 16 badges in Pokemon Crystal! You can't require more, or your game will not be completable!"
-			ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+			ItemRandomiser.DisplayMessage(None,message, None, "ERROR", self)
 
 	def AddBonusItem(self):
 		(addedItem, ok1) = QInputDialog.getItem(self, "Select item you wish to add to the pool", "Select item you wish to add to the pool", self.itemsList, 0, False)
@@ -303,7 +303,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 					self.item_rando.modList[-1]['fileName'] = self.item_rando.makeFileNameSafe(mod)
 				else:
 					message = 'Pack Modifier not found:' + "\n" + mod
-					ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+					ItemRandomiser.DisplayMessage(None,message, None, "ERROR", self)
 
 
 
@@ -327,7 +327,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 				if loadedYaml["Name"] in currentModifierNames:
 					if len(modfiles) == 1:
 						message = loadedYaml["Name"] + " is already loaded!"
-						ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+						ItemRandomiser.DisplayMessage(None,message, None, "ERROR", self)
 					continue
 
 				is_incompatible = False
@@ -336,7 +336,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 						if incomp in currentModifierNames:
 							is_incompatible = True
 							message = loadedYaml["Name"] + "/" + incomp
-							ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+							ItemRandomiser.DisplayMessage(None, message, None, "ERROR", GUI=self)
 
 				if "IncompatibleWithout" in loadedYaml:
 					options = loadedYaml["IncompatibleWithout"]
@@ -378,7 +378,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 						self.item_rando.modList[-1]['fileName'] = self.item_rando.makeFileNameSafe(miss)
 					else:
 						message = missYaml["Name"] + ":" + '/'.join(options)
-						ItemRandomiser.DisplayMessage(message, None, "ERROR", self)
+						ItemRandomiser.DisplayMessage(None,message, None, "ERROR", self)
 
 			if self.setNewVariables.isChecked():
 				for variable in variablesToSet:
@@ -449,7 +449,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 			self.updateGUIFromSettings(self.item_rando.settings)
 				
 	def SetUpPlando(self):
-		ItemRandomiser.DisplayMessage('Select a log file (which need not specify every item allocation) to use as basis for plandomizer.\n'
+		ItemRandomiser.DisplayMessage(None,'Select a log file (which need not specify every item allocation) to use as basis for plandomizer.\n'
 					   ' NOTE: We are not reponsible for any lost friendships due to use of plandomizer mode',
 					   'Plandomizer Mode',"INFO", self)
 		file = QFileDialog.getOpenFileName(directory = '.')[0]
@@ -510,14 +510,14 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 			yaml.dump(yamltext, f, default_flow_style=False)
 			
 	def SelectDefaultSettings(self):
-		ItemRandomiser.DisplayMessage(
+		ItemRandomiser.DisplayMessage(None,
 			'Select the mode which should be loaded by default when you open up the randomizer',
 			'Choose default settings', "INFO", self)
 		defaultFile = QFileDialog.getOpenFileName(directory = 'Modes')[0]
 		if(defaultFile != ''):
 			self.WriteRandomizerConfig(defaultFile)
 		else:
-			ItemRandomiser.DisplayMessage("A file was not selected", None, "ERROR", self)
+			ItemRandomiser.DisplayMessage(None,"A file was not selected", None, "ERROR", self)
 
 	def LoadRaceModeSettingsUI(self):
 		success = QInputDialog.getText(self, "Race Mode", "Input Race Mode Here")
@@ -574,7 +574,7 @@ class RunWindow(QtWidgets.QMainWindow, RandomizerGUI.Ui_MainWindow):
 						variablesToSet.append(variable)
 
 		if len(variablesToSet) == 0:
-			ItemRandomiser.DisplayMessage(
+			ItemRandomiser.DisplayMessage(None,
 				'No variables to set.',
 				'Variables', "INFO", self)
 		else:
