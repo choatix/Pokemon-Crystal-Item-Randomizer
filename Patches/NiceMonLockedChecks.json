@@ -106,14 +106,14 @@
                 254,
                 175,
                 32,
-                0,
+                8,
                 17,
                 84,
                 0,
                 6,
                 1,
                 205,
-                55,
+                56,
                 47
             ],
             "new": [
@@ -122,7 +122,7 @@
                 209,
                 254,
                 175,
-                32,
+                0,
                 0,
                 17,
                 84,
@@ -130,13 +130,13 @@
                 6,
                 1,
                 205,
-                55,
+                56,
                 47
             ]
         },
         "address_range": {
-            "begin": 94661,
-            "end": 94676
+            "begin": 94657,
+            "end": 94672
         },
         "label": "HatchEggs.ckir_BEFORE_TOGEPIFLAG",
         "description": "Makes it so you can hatch any egg, rather than just a togepi egg"

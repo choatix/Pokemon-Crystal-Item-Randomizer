@@ -186,13 +186,13 @@
             "new": [
                 10,
                 0,
-                24,
+                45,
                 116
             ]
         },
         "address_range": {
-            "begin": 504849,
-            "end": 504853
+            "begin": 504870,
+            "end": 504874
         },
         "label": "SandstormHouseWoman.ckir_BEFORE_timed_events_SANDSTORM",
         "description": "Remove happiness check for Sandstorm TM"

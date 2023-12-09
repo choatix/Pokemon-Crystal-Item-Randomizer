@@ -238,14 +238,13 @@ HatchEggs:
 	ld a, [wCurPartySpecies]
 	cp TOGEPI
 	jr nz, .nottogepi
-	.nottogepi
 	; set the event flag for hatching togepi
 	ld de, EVENT_TOGEPI_HATCHED
 	ld b, SET_FLAG
 	call EventFlagAction
 .ckir_AFTER_TOGEPIFLAG::
+.nottogepi
 	pop de
-
 	ld a, [wCurPartySpecies]
 	dec de
 	ld [de], a

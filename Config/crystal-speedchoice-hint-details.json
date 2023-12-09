@@ -1109,8 +1109,8 @@
   {
     "label": "PowerPlantSignText.ctir_BEFORE_PowerPlantSignText",
     "address_range": {
-      "begin": 1777805,
-      "end": 1777824
+      "begin": 1777798,
+      "end": 1777817
     },
     "integer_values": "0 138 128 141 147 142 127 143 142 150 132 145 127 143 139 128 141 147 87",
     "hex_values": "$0 $8a $80 $8d $93 $8e $7f $8f $8e $96 $84 $91 $7f $8f $8b $80 $8d $93 $57"

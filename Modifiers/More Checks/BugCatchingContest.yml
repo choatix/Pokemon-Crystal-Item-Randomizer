@@ -1,5 +1,5 @@
 Name: Bug Catching Contest
-Description: Inlcudes the prizes for completing the bug catching contest (all four items) into the item pool. The bug catching contest will be able to entered everyday and as many times as you desire.
+Description: Inlcudes the prizes for completing the bug catching contest (all four items) into the item pool. The bug catching contest will be able to entered everyday and as many times as you desire. Makes the 2nd and 3rd place both give both rewards.
 FlagsSet:
     - Bug Catching Contest
 NewGamePatches:

@@ -143,6 +143,7 @@ Location:
                 TrainerList: 
                 Code: |
                     ElmGiveMasterBallScript:
+                        clearevent EVENT_ELM_HANDLER
                         writetext ElmGiveMasterBallText1
                         promptbutton
                         ITEMLINE
@@ -186,6 +187,7 @@ Location:
                 TrainerList: 
                 Code: |
                     ElmGiveTicketScript:
+                        clearevent EVENT_ELM_HANDLER
                         writetext ElmGiveTicketText1
                         promptbutton
                         ITEMLINE

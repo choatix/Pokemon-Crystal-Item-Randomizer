@@ -183,9 +183,7 @@ CheckReplaceKrisSprite:
         ;jr z, .no_biking
         cp DUNGEON
         jr z, .no_biking
-        cp TALL_INDOOR
-        jr z, .no_biking
-        cp GYM
+        cp GYM_OR_TALL
         jr z, .no_biking
         jr .nope
 .no_biking

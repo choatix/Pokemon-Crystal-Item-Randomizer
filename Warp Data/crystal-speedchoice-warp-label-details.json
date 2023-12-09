@@ -2054,8 +2054,8 @@
   {
     "label": "DayOfWeekSiblingsHouse_MapEvents.cwri_BEFOREDAY__OF__WEEK__SIBLINGS__HOUSE_2_7_ROUTE__26_3_0",
     "address_range": {
-      "begin": 504806,
-      "end": 504811
+      "begin": 504827,
+      "end": 504832
     },
     "integer_values": "7 2 3 24 1",
     "hex_values": "$7 $2 $3 $18 $1"
@@ -2063,8 +2063,8 @@
   {
     "label": "DayOfWeekSiblingsHouse_MapEvents.cwri_BEFOREDAY__OF__WEEK__SIBLINGS__HOUSE_3_7_ROUTE__26_3_1",
     "address_range": {
-      "begin": 504811,
-      "end": 504816
+      "begin": 504832,
+      "end": 504837
     },
     "integer_values": "7 3 3 24 1",
     "hex_values": "$7 $3 $3 $18 $1"
@@ -2774,8 +2774,8 @@
   {
     "label": "ElmsHouse_MapEvents.cwri_BEFOREELMS__HOUSE_2_7_NEW__BARK__TOWN_4_0",
     "address_range": {
-      "begin": 504155,
-      "end": 504160
+      "begin": 504176,
+      "end": 504181
     },
     "integer_values": "7 2 4 24 4",
     "hex_values": "$7 $2 $4 $18 $4"
@@ -2783,8 +2783,8 @@
   {
     "label": "ElmsHouse_MapEvents.cwri_BEFOREELMS__HOUSE_3_7_NEW__BARK__TOWN_4_1",
     "address_range": {
-      "begin": 504160,
-      "end": 504165
+      "begin": 504181,
+      "end": 504186
     },
     "integer_values": "7 3 4 24 4",
     "hex_values": "$7 $3 $4 $18 $4"
@@ -2792,8 +2792,8 @@
   {
     "label": "ElmsLab_MapEvents.cwri_BEFOREELMS__LAB_4_11_NEW__BARK__TOWN_1_0",
     "address_range": {
-      "begin": 500804,
-      "end": 500809
+      "begin": 500825,
+      "end": 500830
     },
     "integer_values": "11 4 1 24 4",
     "hex_values": "$b $4 $1 $18 $4"
@@ -2801,8 +2801,8 @@
   {
     "label": "ElmsLab_MapEvents.cwri_BEFOREELMS__LAB_5_11_NEW__BARK__TOWN_1_1",
     "address_range": {
-      "begin": 500809,
-      "end": 500814
+      "begin": 500830,
+      "end": 500835
     },
     "integer_values": "11 5 1 24 4",
     "hex_values": "$b $5 $1 $18 $4"
@@ -5501,8 +5501,8 @@
   {
     "label": "OlivineLighthouse1F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__1F_10_17_OLIVINE__CITY_9_0",
     "address_range": {
-      "begin": 372645,
-      "end": 372650
+      "begin": 372692,
+      "end": 372697
     },
     "integer_values": "17 10 9 1 14",
     "hex_values": "$11 $a $9 $1 $e"
@@ -5510,8 +5510,8 @@
   {
     "label": "OlivineLighthouse1F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__1F_11_17_OLIVINE__CITY_9_1",
     "address_range": {
-      "begin": 372650,
-      "end": 372655
+      "begin": 372697,
+      "end": 372702
     },
     "integer_values": "17 11 9 1 14",
     "hex_values": "$11 $b $9 $1 $e"
@@ -5519,8 +5519,8 @@
   {
     "label": "OlivineLighthouse1F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__1F_16_13_OLIVINE__LIGHTHOUSE__2F_3_3",
     "address_range": {
-      "begin": 372660,
-      "end": 372665
+      "begin": 372707,
+      "end": 372712
     },
     "integer_values": "13 16 3 3 43",
     "hex_values": "$d $10 $3 $3 $2b"
@@ -5528,8 +5528,8 @@
   {
     "label": "OlivineLighthouse1F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__1F_17_13_OLIVINE__LIGHTHOUSE__2F_4_4",
     "address_range": {
-      "begin": 372665,
-      "end": 372670
+      "begin": 372712,
+      "end": 372717
     },
     "integer_values": "13 17 4 3 43",
     "hex_values": "$d $11 $4 $3 $2b"
@@ -5537,8 +5537,8 @@
   {
     "label": "OlivineLighthouse1F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__1F_3_11_OLIVINE__LIGHTHOUSE__2F_1_2",
     "address_range": {
-      "begin": 372655,
-      "end": 372660
+      "begin": 372702,
+      "end": 372707
     },
     "integer_values": "11 3 1 3 43",
     "hex_values": "$b $3 $1 $3 $2b"
@@ -5546,8 +5546,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_16_11_OLIVINE__LIGHTHOUSE__3F_4_4",
     "address_range": {
-      "begin": 373376,
-      "end": 373381
+      "begin": 373423,
+      "end": 373428
     },
     "integer_values": "11 16 4 3 44",
     "hex_values": "$b $10 $4 $3 $2c"
@@ -5555,8 +5555,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_16_13_OLIVINE__LIGHTHOUSE__1F_4_2",
     "address_range": {
-      "begin": 373366,
-      "end": 373371
+      "begin": 373413,
+      "end": 373418
     },
     "integer_values": "13 16 4 3 42",
     "hex_values": "$d $10 $4 $3 $2a"
@@ -5564,8 +5564,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_17_11_OLIVINE__LIGHTHOUSE__3F_5_5",
     "address_range": {
-      "begin": 373381,
-      "end": 373386
+      "begin": 373428,
+      "end": 373433
     },
     "integer_values": "11 17 5 3 44",
     "hex_values": "$b $11 $5 $3 $2c"
@@ -5573,8 +5573,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_17_13_OLIVINE__LIGHTHOUSE__1F_5_3",
     "address_range": {
-      "begin": 373371,
-      "end": 373376
+      "begin": 373418,
+      "end": 373423
     },
     "integer_values": "13 17 5 3 42",
     "hex_values": "$d $11 $5 $3 $2a"
@@ -5582,8 +5582,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_3_11_OLIVINE__LIGHTHOUSE__1F_3_0",
     "address_range": {
-      "begin": 373356,
-      "end": 373361
+      "begin": 373403,
+      "end": 373408
     },
     "integer_values": "11 3 3 3 42",
     "hex_values": "$b $3 $3 $3 $2a"
@@ -5591,8 +5591,8 @@
   {
     "label": "OlivineLighthouse2F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__2F_5_3_OLIVINE__LIGHTHOUSE__3F_2_1",
     "address_range": {
-      "begin": 373361,
-      "end": 373366
+      "begin": 373408,
+      "end": 373413
     },
     "integer_values": "3 5 2 3 44",
     "hex_values": "$3 $5 $2 $3 $2c"
@@ -5600,8 +5600,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_13_3_OLIVINE__LIGHTHOUSE__4F_1_0",
     "address_range": {
-      "begin": 374000,
-      "end": 374005
+      "begin": 374047,
+      "end": 374052
     },
     "integer_values": "3 13 1 3 45",
     "hex_values": "$3 $d $1 $3 $2d"
@@ -5609,8 +5609,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_16_11_OLIVINE__LIGHTHOUSE__2F_5_3",
     "address_range": {
-      "begin": 374015,
-      "end": 374020
+      "begin": 374062,
+      "end": 374067
     },
     "integer_values": "11 16 5 3 43",
     "hex_values": "$b $10 $5 $3 $2b"
@@ -5618,8 +5618,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_16_9_OLIVINE__LIGHTHOUSE__4F_5_5",
     "address_range": {
-      "begin": 374025,
-      "end": 374030
+      "begin": 374072,
+      "end": 374077
     },
     "integer_values": "9 16 5 3 45",
     "hex_values": "$9 $10 $5 $3 $2d"
@@ -5627,8 +5627,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_17_11_OLIVINE__LIGHTHOUSE__2F_6_4",
     "address_range": {
-      "begin": 374020,
-      "end": 374025
+      "begin": 374067,
+      "end": 374072
     },
     "integer_values": "11 17 6 3 43",
     "hex_values": "$b $11 $6 $3 $2b"
@@ -5636,8 +5636,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_17_9_OLIVINE__LIGHTHOUSE__4F_6_6",
     "address_range": {
-      "begin": 374030,
-      "end": 374035
+      "begin": 374077,
+      "end": 374082
     },
     "integer_values": "9 17 6 3 45",
     "hex_values": "$9 $11 $6 $3 $2d"
@@ -5645,8 +5645,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_5_3_OLIVINE__LIGHTHOUSE__2F_2_1",
     "address_range": {
-      "begin": 374005,
-      "end": 374010
+      "begin": 374052,
+      "end": 374057
     },
     "integer_values": "3 5 2 3 43",
     "hex_values": "$3 $5 $2 $3 $2b"
@@ -5654,8 +5654,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_8_3_OLIVINE__LIGHTHOUSE__4F_7_7",
     "address_range": {
-      "begin": 374035,
-      "end": 374040
+      "begin": 374082,
+      "end": 374087
     },
     "integer_values": "3 8 7 3 45",
     "hex_values": "$3 $8 $7 $3 $2d"
@@ -5663,8 +5663,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_9_3_OLIVINE__LIGHTHOUSE__4F_8_8",
     "address_range": {
-      "begin": 374040,
-      "end": 374045
+      "begin": 374087,
+      "end": 374092
     },
     "integer_values": "3 9 8 3 45",
     "hex_values": "$3 $9 $8 $3 $2d"
@@ -5672,8 +5672,8 @@
   {
     "label": "OlivineLighthouse3F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__3F_9_5_OLIVINE__LIGHTHOUSE__4F_4_2",
     "address_range": {
-      "begin": 374010,
-      "end": 374015
+      "begin": 374057,
+      "end": 374062
     },
     "integer_values": "5 9 4 3 45",
     "hex_values": "$5 $9 $4 $3 $2d"
@@ -5681,8 +5681,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_13_3_OLIVINE__LIGHTHOUSE__3F_1_0",
     "address_range": {
-      "begin": 374575,
-      "end": 374580
+      "begin": 374622,
+      "end": 374627
     },
     "integer_values": "3 13 1 3 44",
     "hex_values": "$3 $d $1 $3 $2c"
@@ -5690,8 +5690,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_16_7_OLIVINE__LIGHTHOUSE__5F_4_8",
     "address_range": {
-      "begin": 374615,
-      "end": 374620
+      "begin": 374662,
+      "end": 374667
     },
     "integer_values": "7 16 4 3 46",
     "hex_values": "$7 $10 $4 $3 $2e"
@@ -5699,8 +5699,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_16_9_OLIVINE__LIGHTHOUSE__3F_6_4",
     "address_range": {
-      "begin": 374595,
-      "end": 374600
+      "begin": 374642,
+      "end": 374647
     },
     "integer_values": "9 16 6 3 44",
     "hex_values": "$9 $10 $6 $3 $2c"
@@ -5708,8 +5708,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_17_7_OLIVINE__LIGHTHOUSE__5F_5_9",
     "address_range": {
-      "begin": 374620,
-      "end": 374625
+      "begin": 374667,
+      "end": 374672
     },
     "integer_values": "7 17 5 3 46",
     "hex_values": "$7 $11 $5 $3 $2e"
@@ -5717,8 +5717,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_17_9_OLIVINE__LIGHTHOUSE__3F_7_5",
     "address_range": {
-      "begin": 374600,
-      "end": 374605
+      "begin": 374647,
+      "end": 374652
     },
     "integer_values": "9 17 7 3 44",
     "hex_values": "$9 $11 $7 $3 $2c"
@@ -5726,8 +5726,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_3_5_OLIVINE__LIGHTHOUSE__5F_2_1",
     "address_range": {
-      "begin": 374580,
-      "end": 374585
+      "begin": 374627,
+      "end": 374632
     },
     "integer_values": "5 3 2 3 46",
     "hex_values": "$5 $3 $2 $3 $2e"
@@ -5735,8 +5735,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_8_3_OLIVINE__LIGHTHOUSE__3F_8_6",
     "address_range": {
-      "begin": 374605,
-      "end": 374610
+      "begin": 374652,
+      "end": 374657
     },
     "integer_values": "3 8 8 3 44",
     "hex_values": "$3 $8 $8 $3 $2c"
@@ -5744,8 +5744,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_9_3_OLIVINE__LIGHTHOUSE__3F_9_7",
     "address_range": {
-      "begin": 374610,
-      "end": 374615
+      "begin": 374657,
+      "end": 374662
     },
     "integer_values": "3 9 9 3 44",
     "hex_values": "$3 $9 $9 $3 $2c"
@@ -5753,8 +5753,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_9_5_OLIVINE__LIGHTHOUSE__3F_3_3",
     "address_range": {
-      "begin": 374590,
-      "end": 374595
+      "begin": 374637,
+      "end": 374642
     },
     "integer_values": "5 9 3 3 44",
     "hex_values": "$5 $9 $3 $3 $2c"
@@ -5762,8 +5762,8 @@
   {
     "label": "OlivineLighthouse4F_MapEvents.cwri_BEFOREOLIVINE__LIGHTHOUSE__4F_9_7_OLIVINE__LIGHTHOUSE__5F_3_2",
     "address_range": {
-      "begin": 374585,
-      "end": 374590
+      "begin": 374632,
+      "end": 374637
     },
     "integer_values": "7 9 3 3 46",
     "hex_values": "$7 $9 $3 $3 $2e"
@@ -6185,8 +6185,8 @@
   {
     "label": "PlayersHouse1F_MapEvents.cwri_BEFOREPLAYERS__HOUSE__1F_6_7_NEW__BARK__TOWN_2_0",
     "address_range": {
-      "begin": 502690,
-      "end": 502695
+      "begin": 502711,
+      "end": 502716
     },
     "integer_values": "7 6 2 24 4",
     "hex_values": "$7 $6 $2 $18 $4"
@@ -6194,8 +6194,8 @@
   {
     "label": "PlayersHouse1F_MapEvents.cwri_BEFOREPLAYERS__HOUSE__1F_7_7_NEW__BARK__TOWN_2_1",
     "address_range": {
-      "begin": 502695,
-      "end": 502700
+      "begin": 502716,
+      "end": 502721
     },
     "integer_values": "7 7 2 24 4",
     "hex_values": "$7 $7 $2 $18 $4"
@@ -6203,8 +6203,8 @@
   {
     "label": "PlayersHouse1F_MapEvents.cwri_BEFOREPLAYERS__HOUSE__1F_9_0_PLAYERS__HOUSE__2F_1_2",
     "address_range": {
-      "begin": 502700,
-      "end": 502705
+      "begin": 502721,
+      "end": 502726
     },
     "integer_values": "0 9 1 24 7",
     "hex_values": "$0 $9 $1 $18 $7"
@@ -6212,8 +6212,8 @@
   {
     "label": "PlayersHouse2F_MapEvents.cwri_BEFOREPLAYERS__HOUSE__2F_7_0_PLAYERS__HOUSE__1F_3_0",
     "address_range": {
-      "begin": 503050,
-      "end": 503055
+      "begin": 503071,
+      "end": 503076
     },
     "integer_values": "0 7 3 24 6",
     "hex_values": "$0 $7 $3 $18 $6"
@@ -6221,8 +6221,8 @@
   {
     "label": "PlayersNeighborsHouse_MapEvents.cwri_BEFOREPLAYERS__NEIGHBORS__HOUSE_2_7_NEW__BARK__TOWN_3_0",
     "address_range": {
-      "begin": 503585,
-      "end": 503590
+      "begin": 503606,
+      "end": 503611
     },
     "integer_values": "7 2 3 24 4",
     "hex_values": "$7 $2 $3 $18 $4"
@@ -6230,8 +6230,8 @@
   {
     "label": "PlayersNeighborsHouse_MapEvents.cwri_BEFOREPLAYERS__NEIGHBORS__HOUSE_3_7_NEW__BARK__TOWN_3_1",
     "address_range": {
-      "begin": 503590,
-      "end": 503595
+      "begin": 503611,
+      "end": 503616
     },
     "integer_values": "7 3 3 24 4",
     "hex_values": "$7 $3 $3 $18 $4"
@@ -6617,8 +6617,8 @@
   {
     "label": "Route10North_MapEvents.cwri_BEFOREROUTE__10__NORTH_11_1_ROUTE__10__POKECENTER__1F_1_0",
     "address_range": {
-      "begin": 1777827,
-      "end": 1777832
+      "begin": 1777820,
+      "end": 1777825
     },
     "integer_values": "1 11 1 7 8",
     "hex_values": "$1 $b $1 $7 $8"
@@ -6626,8 +6626,8 @@
   {
     "label": "Route10North_MapEvents.cwri_BEFOREROUTE__10__NORTH_3_9_POWER__PLANT_1_1",
     "address_range": {
-      "begin": 1777832,
-      "end": 1777837
+      "begin": 1777825,
+      "end": 1777830
     },
     "integer_values": "9 3 1 7 10",
     "hex_values": "$9 $3 $1 $7 $a"
@@ -7040,8 +7040,8 @@
   {
     "label": "Route26HealHouse_MapEvents.cwri_BEFOREROUTE__26__HEAL__HOUSE_2_7_ROUTE__26_2_0",
     "address_range": {
-      "begin": 504364,
-      "end": 504369
+      "begin": 504385,
+      "end": 504390
     },
     "integer_values": "7 2 2 24 1",
     "hex_values": "$7 $2 $2 $18 $1"
@@ -7049,8 +7049,8 @@
   {
     "label": "Route26HealHouse_MapEvents.cwri_BEFOREROUTE__26__HEAL__HOUSE_3_7_ROUTE__26_2_1",
     "address_range": {
-      "begin": 504369,
-      "end": 504374
+      "begin": 504390,
+      "end": 504395
     },
     "integer_values": "7 3 2 24 1",
     "hex_values": "$7 $3 $2 $18 $1"
@@ -7085,8 +7085,8 @@
   {
     "label": "Route27SandstormHouse_MapEvents.cwri_BEFOREROUTE__27__SANDSTORM__HOUSE_2_7_ROUTE__27_1_0",
     "address_range": {
-      "begin": 505347,
-      "end": 505352
+      "begin": 505368,
+      "end": 505373
     },
     "integer_values": "7 2 1 24 2",
     "hex_values": "$7 $2 $1 $18 $2"
@@ -7094,8 +7094,8 @@
   {
     "label": "Route27SandstormHouse_MapEvents.cwri_BEFOREROUTE__27__SANDSTORM__HOUSE_3_7_ROUTE__27_1_1",
     "address_range": {
-      "begin": 505352,
-      "end": 505357
+      "begin": 505373,
+      "end": 505378
     },
     "integer_values": "7 3 1 24 2",
     "hex_values": "$7 $3 $1 $18 $2"
@@ -7166,8 +7166,8 @@
   {
     "label": "Route29Route46Gate_MapEvents.cwri_BEFOREROUTE__29__ROUTE__46__GATE_4_0_ROUTE__46_1_0",
     "address_range": {
-      "begin": 505573,
-      "end": 505578
+      "begin": 505594,
+      "end": 505599
     },
     "integer_values": "0 4 1 5 9",
     "hex_values": "$0 $4 $1 $5 $9"
@@ -7175,8 +7175,8 @@
   {
     "label": "Route29Route46Gate_MapEvents.cwri_BEFOREROUTE__29__ROUTE__46__GATE_4_7_ROUTE__29_1_2",
     "address_range": {
-      "begin": 505583,
-      "end": 505588
+      "begin": 505604,
+      "end": 505609
     },
     "integer_values": "7 4 1 24 3",
     "hex_values": "$7 $4 $1 $18 $3"
@@ -7184,8 +7184,8 @@
   {
     "label": "Route29Route46Gate_MapEvents.cwri_BEFOREROUTE__29__ROUTE__46__GATE_5_0_ROUTE__46_2_1",
     "address_range": {
-      "begin": 505578,
-      "end": 505583
+      "begin": 505599,
+      "end": 505604
     },
     "integer_values": "0 5 2 5 9",
     "hex_values": "$0 $5 $2 $5 $9"
@@ -7193,8 +7193,8 @@
   {
     "label": "Route29Route46Gate_MapEvents.cwri_BEFOREROUTE__29__ROUTE__46__GATE_5_7_ROUTE__29_1_3",
     "address_range": {
-      "begin": 505588,
-      "end": 505593
+      "begin": 505609,
+      "end": 505614
     },
     "integer_values": "7 5 1 24 3",
     "hex_values": "$7 $5 $1 $18 $3"
@@ -8615,8 +8615,8 @@
   {
     "label": "RuinsOfAlphAerodactylItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_3_1_RUINS__OF__ALPH__AERODACTYL__WORD__ROOM_1_2",
     "address_range": {
-      "begin": 367452,
-      "end": 367457
+      "begin": 367499,
+      "end": 367504
     },
     "integer_values": "1 3 1 3 36",
     "hex_values": "$1 $3 $1 $3 $24"
@@ -8624,8 +8624,8 @@
   {
     "label": "RuinsOfAlphAerodactylItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_3_9_RUINS__OF__ALPH__AERODACTYL__CHAMBER_5_0",
     "address_range": {
-      "begin": 367442,
-      "end": 367447
+      "begin": 367489,
+      "end": 367494
     },
     "integer_values": "9 3 5 3 26",
     "hex_values": "$9 $3 $5 $3 $1a"
@@ -8633,8 +8633,8 @@
   {
     "label": "RuinsOfAlphAerodactylItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_4_1_RUINS__OF__ALPH__AERODACTYL__WORD__ROOM_2_3",
     "address_range": {
-      "begin": 367457,
-      "end": 367462
+      "begin": 367504,
+      "end": 367509
     },
     "integer_values": "1 4 2 3 36",
     "hex_values": "$1 $4 $2 $3 $24"
@@ -8642,8 +8642,8 @@
   {
     "label": "RuinsOfAlphAerodactylItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_4_9_RUINS__OF__ALPH__AERODACTYL__CHAMBER_5_1",
     "address_range": {
-      "begin": 367447,
-      "end": 367452
+      "begin": 367494,
+      "end": 367499
     },
     "integer_values": "9 4 5 3 26",
     "hex_values": "$9 $4 $5 $3 $1a"
@@ -8651,8 +8651,8 @@
   {
     "label": "RuinsOfAlphAerodactylWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__WORD__ROOM_10_5_RUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_4_1",
     "address_range": {
-      "begin": 367606,
-      "end": 367611
+      "begin": 367653,
+      "end": 367658
     },
     "integer_values": "5 10 4 3 32",
     "hex_values": "$5 $a $4 $3 $20"
@@ -8660,8 +8660,8 @@
   {
     "label": "RuinsOfAlphAerodactylWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__WORD__ROOM_17_11_RUINS__OF__ALPH__INNER__CHAMBER_8_2",
     "address_range": {
-      "begin": 367611,
-      "end": 367616
+      "begin": 367658,
+      "end": 367663
     },
     "integer_values": "11 17 8 3 27",
     "hex_values": "$b $11 $8 $3 $1b"
@@ -8669,8 +8669,8 @@
   {
     "label": "RuinsOfAlphAerodactylWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__AERODACTYL__WORD__ROOM_9_5_RUINS__OF__ALPH__AERODACTYL__ITEM__ROOM_3_0",
     "address_range": {
-      "begin": 367601,
-      "end": 367606
+      "begin": 367648,
+      "end": 367653
     },
     "integer_values": "5 9 3 3 32",
     "hex_values": "$5 $9 $3 $3 $20"
@@ -8723,8 +8723,8 @@
   {
     "label": "RuinsOfAlphHoOhItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__ITEM__ROOM_3_1_RUINS__OF__ALPH__HO__OH__WORD__ROOM_1_2",
     "address_range": {
-      "begin": 367038,
-      "end": 367043
+      "begin": 367085,
+      "end": 367090
     },
     "integer_values": "1 3 1 3 33",
     "hex_values": "$1 $3 $1 $3 $21"
@@ -8732,8 +8732,8 @@
   {
     "label": "RuinsOfAlphHoOhItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__ITEM__ROOM_3_9_RUINS__OF__ALPH__HO__OH__CHAMBER_5_0",
     "address_range": {
-      "begin": 367028,
-      "end": 367033
+      "begin": 367075,
+      "end": 367080
     },
     "integer_values": "9 3 5 3 23",
     "hex_values": "$9 $3 $5 $3 $17"
@@ -8741,8 +8741,8 @@
   {
     "label": "RuinsOfAlphHoOhItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__ITEM__ROOM_4_1_RUINS__OF__ALPH__HO__OH__WORD__ROOM_2_3",
     "address_range": {
-      "begin": 367043,
-      "end": 367048
+      "begin": 367090,
+      "end": 367095
     },
     "integer_values": "1 4 2 3 33",
     "hex_values": "$1 $4 $2 $3 $21"
@@ -8750,8 +8750,8 @@
   {
     "label": "RuinsOfAlphHoOhItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__ITEM__ROOM_4_9_RUINS__OF__ALPH__HO__OH__CHAMBER_5_1",
     "address_range": {
-      "begin": 367033,
-      "end": 367038
+      "begin": 367080,
+      "end": 367085
     },
     "integer_values": "9 4 5 3 23",
     "hex_values": "$9 $4 $5 $3 $17"
@@ -8759,8 +8759,8 @@
   {
     "label": "RuinsOfAlphHoOhWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__WORD__ROOM_10_9_RUINS__OF__ALPH__HO__OH__ITEM__ROOM_4_1",
     "address_range": {
-      "begin": 367537,
-      "end": 367542
+      "begin": 367584,
+      "end": 367589
     },
     "integer_values": "9 10 4 3 29",
     "hex_values": "$9 $a $4 $3 $1d"
@@ -8768,8 +8768,8 @@
   {
     "label": "RuinsOfAlphHoOhWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__WORD__ROOM_17_21_RUINS__OF__ALPH__INNER__CHAMBER_2_2",
     "address_range": {
-      "begin": 367542,
-      "end": 367547
+      "begin": 367589,
+      "end": 367594
     },
     "integer_values": "21 17 2 3 27",
     "hex_values": "$15 $11 $2 $3 $1b"
@@ -8777,8 +8777,8 @@
   {
     "label": "RuinsOfAlphHoOhWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__HO__OH__WORD__ROOM_9_9_RUINS__OF__ALPH__HO__OH__ITEM__ROOM_3_0",
     "address_range": {
-      "begin": 367532,
-      "end": 367537
+      "begin": 367579,
+      "end": 367584
     },
     "integer_values": "9 9 3 3 29",
     "hex_values": "$9 $9 $3 $3 $1d"
@@ -8912,8 +8912,8 @@
   {
     "label": "RuinsOfAlphKabutoItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__ITEM__ROOM_3_1_RUINS__OF__ALPH__KABUTO__WORD__ROOM_1_2",
     "address_range": {
-      "begin": 367176,
-      "end": 367181
+      "begin": 367223,
+      "end": 367228
     },
     "integer_values": "1 3 1 3 34",
     "hex_values": "$1 $3 $1 $3 $22"
@@ -8921,8 +8921,8 @@
   {
     "label": "RuinsOfAlphKabutoItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__ITEM__ROOM_3_9_RUINS__OF__ALPH__KABUTO__CHAMBER_5_0",
     "address_range": {
-      "begin": 367166,
-      "end": 367171
+      "begin": 367213,
+      "end": 367218
     },
     "integer_values": "9 3 5 3 24",
     "hex_values": "$9 $3 $5 $3 $18"
@@ -8930,8 +8930,8 @@
   {
     "label": "RuinsOfAlphKabutoItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__ITEM__ROOM_4_1_RUINS__OF__ALPH__KABUTO__WORD__ROOM_2_3",
     "address_range": {
-      "begin": 367181,
-      "end": 367186
+      "begin": 367228,
+      "end": 367233
     },
     "integer_values": "1 4 2 3 34",
     "hex_values": "$1 $4 $2 $3 $22"
@@ -8939,8 +8939,8 @@
   {
     "label": "RuinsOfAlphKabutoItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__ITEM__ROOM_4_9_RUINS__OF__ALPH__KABUTO__CHAMBER_5_1",
     "address_range": {
-      "begin": 367171,
-      "end": 367176
+      "begin": 367218,
+      "end": 367223
     },
     "integer_values": "9 4 5 3 24",
     "hex_values": "$9 $4 $5 $3 $18"
@@ -8948,8 +8948,8 @@
   {
     "label": "RuinsOfAlphKabutoWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__WORD__ROOM_10_5_RUINS__OF__ALPH__KABUTO__ITEM__ROOM_4_1",
     "address_range": {
-      "begin": 367560,
-      "end": 367565
+      "begin": 367607,
+      "end": 367612
     },
     "integer_values": "5 10 4 3 30",
     "hex_values": "$5 $a $4 $3 $1e"
@@ -8957,8 +8957,8 @@
   {
     "label": "RuinsOfAlphKabutoWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__WORD__ROOM_17_11_RUINS__OF__ALPH__INNER__CHAMBER_4_2",
     "address_range": {
-      "begin": 367565,
-      "end": 367570
+      "begin": 367612,
+      "end": 367617
     },
     "integer_values": "11 17 4 3 27",
     "hex_values": "$b $11 $4 $3 $1b"
@@ -8966,8 +8966,8 @@
   {
     "label": "RuinsOfAlphKabutoWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__KABUTO__WORD__ROOM_9_5_RUINS__OF__ALPH__KABUTO__ITEM__ROOM_3_0",
     "address_range": {
-      "begin": 367555,
-      "end": 367560
+      "begin": 367602,
+      "end": 367607
     },
     "integer_values": "5 9 3 3 30",
     "hex_values": "$5 $9 $3 $3 $1e"
@@ -9020,8 +9020,8 @@
   {
     "label": "RuinsOfAlphOmanyteItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__ITEM__ROOM_3_1_RUINS__OF__ALPH__OMANYTE__WORD__ROOM_1_2",
     "address_range": {
-      "begin": 367314,
-      "end": 367319
+      "begin": 367361,
+      "end": 367366
     },
     "integer_values": "1 3 1 3 35",
     "hex_values": "$1 $3 $1 $3 $23"
@@ -9029,8 +9029,8 @@
   {
     "label": "RuinsOfAlphOmanyteItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__ITEM__ROOM_3_9_RUINS__OF__ALPH__OMANYTE__CHAMBER_5_0",
     "address_range": {
-      "begin": 367304,
-      "end": 367309
+      "begin": 367351,
+      "end": 367356
     },
     "integer_values": "9 3 5 3 25",
     "hex_values": "$9 $3 $5 $3 $19"
@@ -9038,8 +9038,8 @@
   {
     "label": "RuinsOfAlphOmanyteItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__ITEM__ROOM_4_1_RUINS__OF__ALPH__OMANYTE__WORD__ROOM_2_3",
     "address_range": {
-      "begin": 367319,
-      "end": 367324
+      "begin": 367366,
+      "end": 367371
     },
     "integer_values": "1 4 2 3 35",
     "hex_values": "$1 $4 $2 $3 $23"
@@ -9047,8 +9047,8 @@
   {
     "label": "RuinsOfAlphOmanyteItemRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__ITEM__ROOM_4_9_RUINS__OF__ALPH__OMANYTE__CHAMBER_5_1",
     "address_range": {
-      "begin": 367309,
-      "end": 367314
+      "begin": 367356,
+      "end": 367361
     },
     "integer_values": "9 4 5 3 25",
     "hex_values": "$9 $4 $5 $3 $19"
@@ -9056,8 +9056,8 @@
   {
     "label": "RuinsOfAlphOmanyteWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__WORD__ROOM_10_7_RUINS__OF__ALPH__OMANYTE__ITEM__ROOM_4_1",
     "address_range": {
-      "begin": 367583,
-      "end": 367588
+      "begin": 367630,
+      "end": 367635
     },
     "integer_values": "7 10 4 3 31",
     "hex_values": "$7 $a $4 $3 $1f"
@@ -9065,8 +9065,8 @@
   {
     "label": "RuinsOfAlphOmanyteWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__WORD__ROOM_17_13_RUINS__OF__ALPH__INNER__CHAMBER_6_2",
     "address_range": {
-      "begin": 367588,
-      "end": 367593
+      "begin": 367635,
+      "end": 367640
     },
     "integer_values": "13 17 6 3 27",
     "hex_values": "$d $11 $6 $3 $1b"
@@ -9074,8 +9074,8 @@
   {
     "label": "RuinsOfAlphOmanyteWordRoom_MapEvents.cwri_BEFORERUINS__OF__ALPH__OMANYTE__WORD__ROOM_9_7_RUINS__OF__ALPH__OMANYTE__ITEM__ROOM_3_0",
     "address_range": {
-      "begin": 367578,
-      "end": 367583
+      "begin": 367625,
+      "end": 367630
     },
     "integer_values": "7 9 3 3 31",
     "hex_values": "$7 $9 $3 $3 $1f"
@@ -9182,8 +9182,8 @@
   {
     "label": "RuinsOfAlphResearchCenter_MapEvents.cwri_BEFORERUINS__OF__ALPH__RESEARCH__CENTER_2_7_RUINS__OF__ALPH__OUTSIDE_6_0",
     "address_range": {
-      "begin": 366908,
-      "end": 366913
+      "begin": 366942,
+      "end": 366947
     },
     "integer_values": "7 2 6 3 22",
     "hex_values": "$7 $2 $6 $3 $16"
@@ -9191,8 +9191,8 @@
   {
     "label": "RuinsOfAlphResearchCenter_MapEvents.cwri_BEFORERUINS__OF__ALPH__RESEARCH__CENTER_3_7_RUINS__OF__ALPH__OUTSIDE_6_1",
     "address_range": {
-      "begin": 366913,
-      "end": 366918
+      "begin": 366947,
+      "end": 366952
     },
     "integer_values": "7 3 6 3 22",
     "hex_values": "$7 $3 $6 $3 $16"
@@ -9956,8 +9956,8 @@
   {
     "label": "SlowpokeWellB1F_MapEvents.cwri_BEFORESLOWPOKE__WELL__B1F_17_15_AZALEA__TOWN_6_0",
     "address_range": {
-      "begin": 371955,
-      "end": 371960
+      "begin": 372002,
+      "end": 372007
     },
     "integer_values": "15 17 6 8 7",
     "hex_values": "$f $11 $6 $8 $7"
@@ -9965,8 +9965,8 @@
   {
     "label": "SlowpokeWellB1F_MapEvents.cwri_BEFORESLOWPOKE__WELL__B1F_7_11_SLOWPOKE__WELL__B2F_1_1",
     "address_range": {
-      "begin": 371960,
-      "end": 371965
+      "begin": 372007,
+      "end": 372012
     },
     "integer_values": "11 7 1 3 41",
     "hex_values": "$b $7 $1 $3 $29"
@@ -9974,8 +9974,8 @@
   {
     "label": "SlowpokeWellB2F_MapEvents.cwri_BEFORESLOWPOKE__WELL__B2F_9_11_SLOWPOKE__WELL__B1F_2_0",
     "address_range": {
-      "begin": 372399,
-      "end": 372404
+      "begin": 372446,
+      "end": 372451
     },
     "integer_values": "11 9 2 3 40",
     "hex_values": "$b $9 $2 $3 $28"
@@ -10640,8 +10640,8 @@
   {
     "label": "UnionCave1F_MapEvents.cwri_BEFOREUNION__CAVE__1F_17_31_ROUTE__33_1_2",
     "address_range": {
-      "begin": 368555,
-      "end": 368560
+      "begin": 368602,
+      "end": 368607
     },
     "integer_values": "31 17 1 8 6",
     "hex_values": "$1f $11 $1 $8 $6"
@@ -10649,8 +10649,8 @@
   {
     "label": "UnionCave1F_MapEvents.cwri_BEFOREUNION__CAVE__1F_17_3_ROUTE__32_4_3",
     "address_range": {
-      "begin": 368560,
-      "end": 368565
+      "begin": 368607,
+      "end": 368612
     },
     "integer_values": "3 17 4 10 1",
     "hex_values": "$3 $11 $4 $a $1"
@@ -10658,8 +10658,8 @@
   {
     "label": "UnionCave1F_MapEvents.cwri_BEFOREUNION__CAVE__1F_3_33_UNION__CAVE__B1F_4_1",
     "address_range": {
-      "begin": 368550,
-      "end": 368555
+      "begin": 368597,
+      "end": 368602
     },
     "integer_values": "33 3 4 3 38",
     "hex_values": "$21 $3 $4 $3 $26"
@@ -10667,8 +10667,8 @@
   {
     "label": "UnionCave1F_MapEvents.cwri_BEFOREUNION__CAVE__1F_5_19_UNION__CAVE__B1F_3_0",
     "address_range": {
-      "begin": 368545,
-      "end": 368550
+      "begin": 368592,
+      "end": 368597
     },
     "integer_values": "19 5 3 3 38",
     "hex_values": "$13 $5 $3 $3 $26"
@@ -10676,8 +10676,8 @@
   {
     "label": "UnionCaveB1F_MapEvents.cwri_BEFOREUNION__CAVE__B1F_17_31_UNION__CAVE__B2F_1_4",
     "address_range": {
-      "begin": 369422,
-      "end": 369427
+      "begin": 369469,
+      "end": 369474
     },
     "integer_values": "31 17 1 3 39",
     "hex_values": "$1f $11 $1 $3 $27"
@@ -10685,8 +10685,8 @@
   {
     "label": "UnionCaveB1F_MapEvents.cwri_BEFOREUNION__CAVE__B1F_3_11_RUINS__OF__ALPH__OUTSIDE_8_1",
     "address_range": {
-      "begin": 369407,
-      "end": 369412
+      "begin": 369454,
+      "end": 369459
     },
     "integer_values": "11 3 8 3 22",
     "hex_values": "$b $3 $8 $3 $16"
@@ -10694,8 +10694,8 @@
   {
     "label": "UnionCaveB1F_MapEvents.cwri_BEFOREUNION__CAVE__B1F_3_33_UNION__CAVE__1F_2_3",
     "address_range": {
-      "begin": 369417,
-      "end": 369422
+      "begin": 369464,
+      "end": 369469
     },
     "integer_values": "33 3 2 3 37",
     "hex_values": "$21 $3 $2 $3 $25"
@@ -10703,8 +10703,8 @@
   {
     "label": "UnionCaveB1F_MapEvents.cwri_BEFOREUNION__CAVE__B1F_3_3_RUINS__OF__ALPH__OUTSIDE_7_0",
     "address_range": {
-      "begin": 369402,
-      "end": 369407
+      "begin": 369449,
+      "end": 369454
     },
     "integer_values": "3 3 7 3 22",
     "hex_values": "$3 $3 $7 $3 $16"
@@ -10712,8 +10712,8 @@
   {
     "label": "UnionCaveB1F_MapEvents.cwri_BEFOREUNION__CAVE__B1F_7_19_UNION__CAVE__1F_1_2",
     "address_range": {
-      "begin": 369412,
-      "end": 369417
+      "begin": 369459,
+      "end": 369464
     },
     "integer_values": "19 7 1 3 37",
     "hex_values": "$13 $7 $1 $3 $25"
@@ -10721,8 +10721,8 @@
   {
     "label": "UnionCaveB2F_MapEvents.cwri_BEFOREUNION__CAVE__B2F_5_3_UNION__CAVE__B1F_5_0",
     "address_range": {
-      "begin": 370150,
-      "end": 370155
+      "begin": 370197,
+      "end": 370202
     },
     "integer_values": "3 5 5 3 38",
     "hex_values": "$3 $5 $5 $3 $26"

@@ -8,13 +8,13 @@
             ],
             "new": [
                 9,
-                25,
+                37,
                 76
             ]
         },
         "address_range": {
-            "begin": 494563,
-            "end": 494566
+            "begin": 494569,
+            "end": 494572
         },
         "label": "CheckMonChecks.ckir_BEFORE_ELMSLAB_MONLOCKEDCHECKS",
         "description": "Enable jumping to Togepi check only when MonLockedChecks is enabled"

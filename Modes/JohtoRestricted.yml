@@ -1,0 +1,37 @@
+AllowedLocations: null
+BadgeItemShuffle: null
+BannedLocations: null
+BasePatch: Patches/BaseModificationsSpeedchoice.json
+CoreProgress:
+- Surf
+- Fog Badge
+- Pass
+- S S Ticket
+- Squirtbottle
+DefaultModifiers:
+- Modifiers/Convenience/Strong Fights/NoEarlyBasement.yml
+- Modifiers/Improved Flow/SkipReturningToNewBark.yml
+- Modifiers/Behavioural/ProgressiveRods.yml
+- Modifiers/Behavioural/RemoveCutTreeInIlex.yml
+- Modifiers/More Checks/VanillaClair.yml
+- Modifiers/More Checks/EnableTinTower.yml
+- Modifiers/More Checks/CardRandomization.yml
+- Modifiers/Convenience/Extra Fights/NoVanillaBasement.yml
+- Modifiers/Improved Flow/NerfHoOhChamber.yml
+- Modifiers/Improved Flow/StartWithBike.yml
+- Modifiers/Improved Flow/StartWithRepel.yml
+- Modifiers/More Checks/ShuffleLeftovers.yml
+- Modifiers/Convenience/Fly/NoBacktrackingEarlyFly.yml
+Description: Itens Restritos em Johto, Goal Lance.
+FlagsSet:
+- Kanto Mode
+- Sane Extreme E4 Access
+Goal: Lance
+ModeVariables: {}
+Name: Full Item Rando Johto Restricted
+Plando:
+  Elm SS Ticket: S S Ticket
+  Rainbow Wing Gift: Pass
+RegularWildLevelScalingDefault: false
+SpecialWildLevelScalingDefault: false
+TrainerLevelScalingDefault: false

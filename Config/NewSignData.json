@@ -1138,8 +1138,8 @@
         "tileAddress": 703840
     },
     {
-        "start": 1777805,
-        "end": 1777823,
+        "start": 1777798,
+        "end": 1777816,
         "name": "PowerPlantSignText",
         "map": "Route10North.asm",
         "commands": 2,

@@ -777,9 +777,7 @@ EscapeRopeOrDig:
         jr z, .incave
         cp DUNGEON
         jr z, .incave
-        cp TALL_INDOOR
-        jr z, .incave
-        cp GYM
+        cp GYM_OR_TALL
         jr z, .incave
 .fail
         ld a, $2
@@ -1628,7 +1626,7 @@ ResetPlayerSprite:
 	;ld a, b
 	;cp b
 	;jr nz, .DoNothing
-	;loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 ;.DoNothing
 	end
 

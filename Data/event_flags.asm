@@ -381,8 +381,8 @@
 	const EVENT_CGC_TM32
 	const EVENT_CGC_TM29
 	const EVENT_CGC_TM15
-	const EVENT_171
-	const EVENT_172
+	const EVENT_GOT_UNOWN_INFO
+	const EVENT_ELM_HANDLER
 	const EVENT_173
 	const EVENT_174
 	const EVENT_175

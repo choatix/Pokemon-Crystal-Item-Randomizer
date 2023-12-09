@@ -400,8 +400,7 @@ BugContestResults_FirstPlace:
 	checkevent EVENT_BGC_FIRST
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_FIRST
-	ld b, 1
-	getnum STRING_BUFFER_3
+	getstring STRING_BUFFER_3, .FirstPlace
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	getitemname STRING_BUFFER_4, SUN_STONE
 	farwritetext ContestResults_PlayerWonAPrizeText
@@ -410,6 +409,8 @@ BugContestResults_FirstPlace:
 	iffalse BugContestResults_NoRoomForSunStone
 	sjump BugContestResults_ReturnAfterWinnersPrize
 
+.FirstPlace:
+	db "1@"
 
 BugContestResults_SecondPlace:
 .ckir_BEFORE_BugContestResults_Second::
@@ -417,8 +418,7 @@ BugContestResults_SecondPlace:
 	checkevent EVENT_BGC_SECOND
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_SECOND
-	ld b, 2
-	getnum STRING_BUFFER_3
+	getstring STRING_BUFFER_3, .SecondPlace
 	getitemname STRING_BUFFER_4, EVERSTONE
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
@@ -428,6 +428,8 @@ BugContestResults_SecondPlace:
 	sjump BugContestResults_ReturnAfterWinnersPrize
 .ckir_AFTER_SecondJumpBack::
 
+.SecondPlace:
+	db "2@"
 
 BugContestResults_ThirdPlace:
 .ckir_BEFORE_BugContestResults_Third::
@@ -435,8 +437,7 @@ BugContestResults_ThirdPlace:
 	checkevent EVENT_BGC_THIRD
 	iftrue BugContestResults_ReturnAfterWinnersPrize
 	setevent EVENT_BGC_THIRD
-	ld b, 3
-	getnum STRING_BUFFER_3
+	getstring STRING_BUFFER_3, .ThirdPlace
 	getitemname STRING_BUFFER_4, GOLD_BERRY
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
@@ -445,6 +446,9 @@ BugContestResults_ThirdPlace:
 .ckir_BEFORE_ThirdJumpBack::
 	sjump BugContestResults_ReturnAfterWinnersPrize
 .ckir_AFTER_ThirdJumpBack::
+
+.ThirdPlace:
+	db "3@"
 
 BugContestResults_NoRoomForSunStone:
 	farwritetext BugContestPrizeNoRoomText
