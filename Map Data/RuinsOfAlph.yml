@@ -76,8 +76,7 @@ Location:
                 WildTableList:
                 LocationReqs: Ruins of Alph
                 FlagReqs:
-                    - Most Map Access
-                    - Mon Locked Checks
+                    - Mons Available
                     - Unown Puzzle
                 ItemReqs:
                 FlagsSet:
@@ -131,7 +130,7 @@ Location:
                     WildTableList:
                     LocationReqs: Ruins of Alph UnownDex
                     FlagReqs:
-                        - Mon Locked Checks
+                        - Mons Available
                     ItemReqs:
                     FlagsSet:
                     ReachableReqs:

@@ -159,11 +159,9 @@ Location:
                 WildTableList:
                 LocationReqs: 
                     - Route 39
-                    - Most Map Access
                 FlagReqs:
-                    - Mon Locked Checks
+                    - Mons Available
                     - Phone Call Trainers
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

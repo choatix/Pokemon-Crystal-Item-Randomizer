@@ -528,6 +528,8 @@ class Location:
 			include = False
 		if 'Mon Locked Checks' in self.FlagReqs and 'Mon Locked Checks' not in flags:
 			include = False
+		if "Mons Available" in self.FlagReqs and "Mon Locked Checks" not in flags:
+			include = False
 		if 'Pointless Checks' in self.FlagReqs and "Pointless Checks" not in flags:
 			include = False
 		if 'NPC Trash Can' in self.FlagReqs and "NPC Trash Can" not in flags:

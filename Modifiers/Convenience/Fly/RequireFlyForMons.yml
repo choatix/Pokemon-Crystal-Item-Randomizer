@@ -1,0 +1,12 @@
+Name: Fly Before Mon Checks
+Description: "Requires Fly/Storm before any Mon Locked Checks. Only useful when playing without standard Fly Logic."
+Changes:
+    -
+        Location: Mon Locked Checks
+        AddRecommendedItemReqs:
+            - Fly
+        AddRecommendedFlagReqs:
+            - Storm Badge
+IncompatibleWith:
+    - 'Delete Fly'
+    - 'Teleport instead of fly'

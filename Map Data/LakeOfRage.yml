@@ -279,9 +279,8 @@ Location:
         LocationReqs:
             - Route 43
         FlagReqs:
-            - Mon Locked Checks
+            - Mons Available
             - Mahogany Rockets Defeated
-            - Most Map Access
         ItemReqs:
         FlagsSet:
         ReachableReqs:

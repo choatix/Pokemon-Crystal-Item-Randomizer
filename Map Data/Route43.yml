@@ -103,11 +103,9 @@ Location:
         WildTableList: 
         LocationReqs: 
             - Route 43
-            - Most Map Access
         FlagReqs:
             - Phone Call Trainers
-            - Mon Locked Checks
-            - Pokegear
+            - Mons Available
         ItemReqs:
         FlagsSet:
         ReachableReqs:

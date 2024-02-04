@@ -133,11 +133,9 @@ Location:
                 WildTableList:
                 LocationReqs:
                     - National Park
-                    - Most Map Access
                 FlagReqs:
                     - Phone Call Trainers
-                    - Mon Locked Checks
-                    - Pokegear
+                    - Mons Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

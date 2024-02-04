@@ -45,9 +45,14 @@ Xcopy "TrainerData" "dist/Pokemon Crystal Item Randomizer/TrainerData" /i /y
 Xcopy "Wild Data" "dist/Pokemon Crystal Item Randomizer/Wild Data" /i /y
 Xcopy "Packs" "dist/Pokemon Crystal Item Randomizer/Packs" /i /y
 
+mkdir artifacts
 cd "dist/Pokemon Crystal Item Randomizer"
+
+
 wsl zip -r ../../artifacts/PokemonCrystalItemRandomiser.zip .
 cd ../..
 
 rmdir build /q /s
 rmdir dist /q /s
+
+pause

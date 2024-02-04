@@ -139,6 +139,7 @@ Location:
                         LocationReqs: Blackthorn Gym 1F Middle
                         FlagsSet:
                             - Clair Defeated
+                            - Mahogany Shop Open
                         ReachableReqs:
                         Code:
                         Text:

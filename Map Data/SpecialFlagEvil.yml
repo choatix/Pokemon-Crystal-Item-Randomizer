@@ -8,6 +8,7 @@ Location:
         LocationReqs:
         FlagReqs:
             - Phone Call Trainers
+            - Use Phone
             - Banned
         ItemReqs:
         FlagsSet:
@@ -23,11 +24,13 @@ Location:
         HasPKMN: No
         WildTableList:
         LocationReqs:
+            - Most Map Access
         FlagReqs:
             - Mon Locked Checks
             - Banned
         ItemReqs:
         FlagsSet:
+            - Mons Available
         ReachableReqs:
         Code:
         Text:

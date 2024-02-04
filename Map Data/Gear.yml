@@ -1,0 +1,143 @@
+Location:
+    -
+        Name: Vanilla Pokegear Parts
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+        FlagReqs:
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Randomised Pokegear Parts
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Pokegear Gift
+        FlagReqs:
+          - Impossible
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Pokegear
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Pokegear Gift Access
+          - Vanilla Pokegear Parts
+        ItemReqs:
+        FlagReqs:
+        FlagsSet:
+          - Use Phone
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Pokegear
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Randomised Pokegear Parts
+        FlagReqs:
+          - Pokegear
+        ItemReqs:
+        FlagsSet:
+          - Use Phone
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Radio
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Use Pokegear
+          - Randomised Pokegear Parts
+        FlagReqs:
+          - Radio Card
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Radio
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Use Pokegear
+          - Vanilla Pokegear Parts
+          - Radio Card Quiz Access
+        FlagReqs:
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Poke Flute
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Use Radio
+          - Randomised Pokegear Parts
+        FlagReqs:
+          - Expansion Card
+        ItemReqs:
+        FlagsSet:
+          - Poke Flute
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
+        Name: Use Poke Flute
+        FileName: ElmsLab.asm
+        Type: Map
+        WildTableList:
+        HasPKMN: No
+        LocationReqs:
+          - Use Radio
+          - Vanilla Pokegear Parts
+          - Expansion Card Gift Access
+        FlagReqs:
+        ItemReqs:
+        FlagsSet:
+          - Poke Flute
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:

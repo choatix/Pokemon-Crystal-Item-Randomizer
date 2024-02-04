@@ -140,7 +140,6 @@ Location:
             LocationReqs: Route 38 Entrance
             FlagReqs:
                 - Phone Call Trainers
-                - Pokegear
             ItemReqs:
             FlagsSet:
             ReachableReqs:

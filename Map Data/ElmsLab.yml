@@ -197,6 +197,39 @@ Location:
                     .BagFull
                         waitbutton
                         sjump ElmCheckMasterBall
+
+            -
+                Name: Elm Togepi Unlock
+                FileName: ElmsLab.asm
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Elm's Lab
+                FlagReqs:
+                    - Use Phone
+                ItemReqs:
+                FlagsSet:
+                ReachableReqs:
+                Text:
+                TrainerList:
+                Code:
+
+            -
+                Name: Elm Togepi Unlock
+                FileName: ElmsLab.asm
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Elm's Lab
+                FlagReqs:
+                    - Received Togepi Egg
+                ItemReqs:
+                FlagsSet:
+                ReachableReqs:
+                Text:
+                TrainerList:
+                Code:
+
             -             
                 Name: Elm Everstone
                 FileName: ElmsLab.asm
@@ -205,8 +238,8 @@ Location:
                 WildTableList:
                 LocationReqs: Elm's Lab
                 FlagReqs:
-                    - Most Map Access
-                    - Mon Locked Checks
+                    - Mons Available
+                    - Elm Togepi Unlock
                 ItemReqs:
                 FlagsSet:
                 MonReq: Togepi

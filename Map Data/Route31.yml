@@ -152,7 +152,6 @@ Location:
                 LocationReqs: Route 31
                 FlagReqs:
                     - Phone Call Trainers
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

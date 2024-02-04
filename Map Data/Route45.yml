@@ -159,7 +159,6 @@ Location:
             - Route 45
         FlagReqs:
             - Phone Call Trainers
-            - Pokegear
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -201,7 +200,6 @@ Location:
             - Became Champion
             - Kanto Power Restored
             - Phone Call Trainers
-            - Pokegear
         ItemReqs:
         FlagsSet:
         ReachableReqs:

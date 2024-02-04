@@ -193,6 +193,7 @@ Location:
                 ItemReqs:
                 FlagsSet:
                     - Beat Team Rocket
+                    - Mahogany Shop Open
                 ReachableReqs:
                 NormalItem: CLEAR_BELL
                 Code: |

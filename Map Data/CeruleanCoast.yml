@@ -186,9 +186,8 @@ Location:
                         WildTableList: 
                         LocationReqs:
                             - Bills Grandpas House
-                            - Most Map Access
                         FlagReqs:
-                            - Mon Locked Checks
+                            - Mons Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -216,9 +215,8 @@ Location:
                         LocationReqs:
                             - Bills Grandpas House
                             - Bills Grandpa Wants Lickitung
-                            - Most Map Access
                         FlagReqs:
-                            - Mon Locked Checks
+                            - Mons Available
                         ItemReqs:
                         FlagsSet:
                         MonReq: Oddish
@@ -246,9 +244,8 @@ Location:
                         LocationReqs:
                             - Bills Grandpas House
                             - Bills Grandpa Wants Oddish
-                            - Most Map Access
                         FlagReqs:
-                            - Mon Locked Checks
+                            - Mons Available
                         ItemReqs:
                         FlagsSet:
                         MonReq: Staryu
@@ -276,9 +273,8 @@ Location:
                         LocationReqs:
                             - Bills Grandpas House
                             - Bills Grandpa Wants Staryu
-                            - Most Map Access
                         FlagReqs:
-                            - Mon Locked Checks
+                            - Mons Available
                         ItemReqs:
                         FlagsSet:
                         MonReq: Vulpix
@@ -306,9 +302,8 @@ Location:
                         LocationReqs:
                             - Bills Grandpas House
                             - Bills Grandpa Wants Growlithe
-                            - Most Map Access
                         FlagReqs:
-                            - Mon Locked Checks
+                            - Mons Available
                         ItemReqs:
                         FlagsSet:
                         MonReq: Pichu

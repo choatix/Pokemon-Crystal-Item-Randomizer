@@ -8,38 +8,13 @@ AddedTrash:
     - ENGINE_POKEDEX
 Changes:
     -
-        Location: Woke Snorlax
-        RemoveLocationReqs:
-            - Expansion Card Gift Access
-            - Radio Card Quiz Access
-            - Pokegear Gift Access
+        Location: Vanilla Pokegear Parts
         AddFlagReqs:
-            - Pokegear
-            - Radio Card
-            - Expansion Card
-        RemoveItemReqs:
-            - Machine Part
-
+            - Impossible
     -
-        Location: Viridian City via Route 2
-        AddFlagReqs:
-            - Pokegear
-            - Radio Card
-            - Expansion Card
-        RemoveItemReqs:
-            - Machine Part
-    -
-        Location: Viridian City via League Gate
-        AddFlagReqs:
-            - Pokegear
-            - Radio Card
-            - Expansion Card
-        RemoveItemReqs:
-            - Machine Part
-    -
-        Location: League Gate via Viridian
-        RemoveItemReqs:
-            - Machine Part
+        Location: Randomised Pokegear Parts
+        RemoveFlagReqs:
+            - Impossible
     -
         Location: Oak Pokedex
         RemoveFlagReqs:

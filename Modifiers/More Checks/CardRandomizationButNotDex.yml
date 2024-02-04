@@ -6,30 +6,13 @@ AddedItems:
     - Expansion Card
 Changes:
     -
-        Location: Woke Snorlax
-        RemoveLocationReqs:
-            - Expansion Card Gift Access
-            - Radio Card Quiz Access
-            - Pokegear Gift Access
+        Location: Vanilla Pokegear Parts
         AddFlagReqs:
-            - Pokegear
-            - Radio Card
-            - Expansion Card
+            - Impossible
     -
-        Location: Viridian City via Route 2
-        NewLocationReqs:
-            - Route 2
-        NewFlagReqs:
-            - Hive Badge
-        NewItemReqs:
-            - Cut
-            - Pokegear
-            - Radio Card
-            - Expansion Card
-    -
-        Location: League Gate via Viridian
-        NewItemReqs:
-            - Cut
+        Location: Randomised Pokegear Parts
+        RemoveFlagReqs:
+            - Impossible
 
     -
         Location: Radio Card Quiz

@@ -225,7 +225,6 @@ Location:
             LocationReqs: Route 36 via Violet
             FlagReqs:
                 - Phone Call Trainers
-                - Pokegear
             ItemReqs:
             FlagsSet:
             ReachableReqs:

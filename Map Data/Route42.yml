@@ -324,7 +324,6 @@ Location:
                 LocationReqs: Route 42 East
                 FlagReqs:
                     - Phone Call Trainers
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

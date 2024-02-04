@@ -1370,10 +1370,9 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 		else:
 			stuckCount = 0
 
-
-	#TODO Add a warning here
 	if trashItems is not None and len(trashItems) != 0:
-		print(trashItems, len(trashItems))
+		if not randomizerFailed:
+			print(trashItems, len(trashItems))
 		warnings["HasLeftoverTrash"] = True
 		#print("leftover trash:", trashItems)
 

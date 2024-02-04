@@ -183,7 +183,6 @@ Location:
                 FlagReqs:
                     - Phone Call Trainers
                     - Beat Team Rocket
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -210,7 +209,6 @@ Location:
                     - Route 34
                 FlagReqs:
                     - Phone Call Trainers
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                     - Possible Sale

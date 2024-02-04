@@ -173,7 +173,6 @@ Location:
                     - Phone Call Trainers
                     - Kanto Power Restored
                     - Became Champion
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -218,7 +217,6 @@ Location:
                     - Route 44
                 FlagReqs:
                     - Phone Call Trainers
-                    - Pokegear
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
