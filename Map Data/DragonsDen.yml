@@ -91,7 +91,7 @@ Location:
                 WildTableList:
                 LocationReqs: Dragons Den
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                 ItemReqs:
                     - Surf
@@ -212,7 +212,7 @@ Location:
                 WildTableList:
                 LocationReqs: Dragons Den Shrine
                 FlagReqs:
-                  - Hidden Items
+                  - Hidden Items Available
                   - Fog Badge
                 ItemReqs:
                   - Surf
@@ -235,7 +235,7 @@ Location:
                 WildTableList:
                 LocationReqs: Dragons Den Shrine
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                 ItemReqs:
                     - Surf

@@ -98,7 +98,7 @@ Location:
                 WildTableList:
                 LocationReqs: Ecruteak City
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

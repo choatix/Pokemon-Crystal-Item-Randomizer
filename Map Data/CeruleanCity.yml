@@ -26,7 +26,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 25
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                 ItemReqs:
                     - Surf

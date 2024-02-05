@@ -173,7 +173,7 @@ Location:
                 WildTableList:
                 LocationReqs: Lake Of Rage Back
                 FlagReqs:
-                  - Hidden Items
+                  - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -312,7 +312,7 @@ Location:
         WildTableList:
         LocationReqs: Route 43
         FlagReqs:
-            - Hidden Items
+            - Hidden Items Available
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -333,7 +333,7 @@ Location:
         WildTableList:
         LocationReqs: Route 43
         FlagReqs:
-            - Hidden Items
+            - Hidden Items Available
         ItemReqs:
         FlagsSet:
         ReachableReqs:

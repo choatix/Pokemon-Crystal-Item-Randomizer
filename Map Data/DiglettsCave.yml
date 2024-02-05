@@ -27,7 +27,7 @@ Location:
                 WildTableList:
                 LocationReqs: Diglett's Cave
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

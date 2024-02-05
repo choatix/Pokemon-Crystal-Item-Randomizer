@@ -25,7 +25,7 @@ Location:
                 WildTableList:
                 LocationReqs: Celadon City
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

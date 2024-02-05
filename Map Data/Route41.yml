@@ -97,7 +97,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 41 Whirl SW
                 FlagReqs:
-                  - Hidden Items
+                  - Hidden Items Available
                   - Fog Badge
                 ItemReqs:
                   - Surf

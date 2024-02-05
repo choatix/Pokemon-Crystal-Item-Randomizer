@@ -137,7 +137,10 @@ class Location:
 			self.FlagReqs = []
 		elif isinstance(self.FlagReqs,str):
 			self.FlagReqs = [self.FlagReqs]
-		if("Hidden Items" in self.FlagReqs):
+		if("Hidden Items Available" in self.FlagReqs):
+			self.IsHidden = True
+			self.IsSpecial = True
+		elif "Hidden Items" in self.FlagReqs:
 			self.IsHidden = True
 			self.IsSpecial = True
 		else:
@@ -516,7 +519,7 @@ class Location:
 		list = []
 		include = True
 
-		if 'Hidden Items' in self.FlagReqs and "Hidden Items" not in flags:
+		if 'Hidden Items Available' in self.FlagReqs and "Hidden Items" not in flags:
 			include = False
 		if 'Berry Trees' in self.FlagReqs and "Berry Trees" not in flags:
 			include = False

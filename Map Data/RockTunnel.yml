@@ -189,7 +189,7 @@ Location:
                     WildTableList:
                     LocationReqs: Rock Tunnel North
                     FlagReqs:
-                        - Hidden Items
+                        - Hidden Items Available
                         - Zephyr Badge
                     ItemReqs:
                         - Flash
@@ -325,7 +325,7 @@ Location:
                     WildTableList:
                     LocationReqs: Rock Tunnel South Exit
                     FlagReqs:
-                        - Hidden Items
+                        - Hidden Items Available
                         - Zephyr Badge
                     ItemReqs:
                         - Flash
@@ -423,7 +423,7 @@ Location:
                     WildTableList:
                     LocationReqs: Rock Tunnel BF1 South
                     FlagReqs:
-                        - Hidden Items
+                        - Hidden Items Available
                         - Zephyr Badge
                     ItemReqs:
                         - Flash

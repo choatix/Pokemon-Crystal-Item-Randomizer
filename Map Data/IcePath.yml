@@ -172,7 +172,7 @@ Location:
                         WildTableList:
                         LocationReqs: Ice Path Boulder Drop Room
                         FlagReqs:
-                            - Hidden Items
+                            - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -341,7 +341,7 @@ Location:
                     WildTableList:
                     LocationReqs: Ice Path Island Room
                     FlagReqs:
-                        - Hidden Items
+                        - Hidden Items Available
                     ItemReqs:
                     FlagsSet:
                     ReachableReqs:
@@ -399,7 +399,7 @@ Location:
                         WildTableList:
                         LocationReqs: Ice Path Access
                         FlagReqs:
-                          - Hidden Items
+                          - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:

@@ -37,9 +37,9 @@ Location:
             LocationReqs:
                 -   Route 3 and Mt. Moon
             FlagReqs:
-                -   Timed Events
+                - Timed Events
                 - Rock Smash Usable
-                -   Hidden Items
+                - Hidden Items Available
             ItemReqs:
             FlagsSet:
             NormalItem: MOON_STONE

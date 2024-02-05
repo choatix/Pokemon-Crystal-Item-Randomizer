@@ -162,7 +162,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 42 Center
                 FlagReqs:
-                  - Hidden Items
+                  - Hidden Items Available
                   - Fog Badge
                 ItemReqs:
                   - Surf

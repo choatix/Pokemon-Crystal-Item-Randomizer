@@ -325,7 +325,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 2
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -346,7 +346,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 2
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -367,7 +367,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 2
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -388,7 +388,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 2
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

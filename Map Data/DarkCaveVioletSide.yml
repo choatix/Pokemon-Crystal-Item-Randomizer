@@ -128,7 +128,7 @@ Location:
                 WildTableList:
                 LocationReqs: Dark Cave Violet Side
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Zephyr Badge
                     - Rock Smash Usable
                 ItemReqs:

@@ -31,3 +31,20 @@ Location:
         Text:
         TrainerList: 
         Sublocations:
+    -
+        Name: Hidden Items Unlocked
+        FileName: Route32.asm
+        Type: Map
+        HasPKMN: No
+        WildTableList:
+        LocationReqs:
+            - Hidden Items
+        FlagReqs:
+        ItemReqs:
+        FlagsSet:
+            - Hidden Items Available
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:

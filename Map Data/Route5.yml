@@ -129,7 +129,7 @@ Location:
                 WildTableList:
                 LocationReqs: Underground Path NS
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -151,7 +151,7 @@ Location:
                 WildTableList:
                 LocationReqs: Underground Path NS
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

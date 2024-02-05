@@ -364,7 +364,7 @@ Location:
                 WildTableList:
                 LocationReqs: Ilex Forest Back
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -385,7 +385,7 @@ Location:
                 WildTableList:
                 LocationReqs: Ilex Forest Back
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -406,7 +406,7 @@ Location:
                 WildTableList:
                 LocationReqs: Ilex Forest Back
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

@@ -104,7 +104,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 9
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

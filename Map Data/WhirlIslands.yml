@@ -123,7 +123,7 @@ Location:
                         WildTableList:
                         LocationReqs: Whirl Islands Boulder Room
                         FlagReqs:
-                          - Hidden Items
+                          - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -219,7 +219,7 @@ Location:
                         WildTableList:
                         LocationReqs: Whirl Islands Main Room
                         FlagReqs:
-                            - Hidden Items
+                            - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -241,7 +241,7 @@ Location:
                         WildTableList:
                         LocationReqs: Whirl Islands Main Room
                         FlagReqs:
-                          - Hidden Items
+                          - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:

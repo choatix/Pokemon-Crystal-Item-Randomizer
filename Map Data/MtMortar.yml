@@ -132,7 +132,7 @@ Location:
                 WildTableList:
                 LocationReqs: Mt Mortar
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -377,7 +377,7 @@ Location:
                         WildTableList:
                         LocationReqs: Mt Mortar Inside Top
                         FlagReqs:
-                            - Hidden Items
+                            - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -740,7 +740,7 @@ Location:
                         WildTableList:
                         LocationReqs: Mt Mortar Upper Floor Back
                         FlagReqs:
-                            - Hidden Items
+                            - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -779,7 +779,7 @@ Location:
                     WildTableList:
                     LocationReqs: Mt Mortar Tyrogue Room
                     FlagReqs:
-                      - Hidden Items
+                      - Hidden Items Available
                     ItemReqs:
                     FlagsSet:
                     ReachableReqs:

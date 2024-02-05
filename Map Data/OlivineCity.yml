@@ -191,7 +191,7 @@ Location:
                 WildTableList:
                 LocationReqs: SS Aqua via Vermilion
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                     - Ship Sidequest
                 ItemReqs:

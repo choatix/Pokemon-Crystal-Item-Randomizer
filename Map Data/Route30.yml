@@ -42,7 +42,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 30
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

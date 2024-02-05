@@ -169,7 +169,7 @@ Location:
                 WildTableList: 
                 LocationReqs: Lighthouse
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs: 
                 FlagsSet:
                 ReachableReqs:

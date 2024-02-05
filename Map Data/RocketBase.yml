@@ -137,7 +137,7 @@ Location:
                         WildTableList:
                         LocationReqs: Rocket Base 1F
                         FlagReqs:
-                            - Hidden Items
+                            - Hidden Items Available
                         ItemReqs:
                         FlagsSet:
                         ReachableReqs:
@@ -224,7 +224,7 @@ Location:
                 WildTableList:
                 LocationReqs: Rocket Base 2F
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

@@ -4,11 +4,9 @@ AddedItems:
     - Itemfinder
 Changes:
     -
-        Location: Hidden Items
-        AddRecommendedFlagReqs:
+        Location: Hidden Items Unlocked
+        AddRecommendedItemReqs:
             - Itemfinder
-        RemoveFlagReqs:
-            - Banned
 IncompatibleWith:
     - 'No backtracking early bike'
     - 'No backtracking early fly'

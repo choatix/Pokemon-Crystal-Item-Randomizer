@@ -30,7 +30,7 @@ Location:
                 WildTableList:
                 LocationReqs: Cycling Road
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                     - Bicycle
                 FlagsSet:
@@ -52,7 +52,7 @@ Location:
                 WildTableList:
                 LocationReqs: Cycling Road
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                     - Bicycle
                 FlagsSet:

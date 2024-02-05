@@ -1756,7 +1756,7 @@ def GenerateHintMessages(spoiler, spoilerTrash, locations, criticalTrash, badgeD
                      ]
 
 
-    valid_input_flags = ["Shopsanity","Hidden Items","Mon Locked Checks","Bug Catching Contest",
+    valid_input_flags = ["Shopsanity","Hidden Items Available","Mon Locked Checks","Bug Catching Contest",
                          "Phone Call Trainers","Timed Events", "Berry Trees", "Open Mt. Silver"]
 
     for flag in inputFlags:

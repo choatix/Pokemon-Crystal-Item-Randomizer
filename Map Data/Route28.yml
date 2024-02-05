@@ -97,7 +97,7 @@ Location:
         LocationReqs:
             - Route 28 Cut Access
         FlagReqs:
-            - Hidden Items
+            - Hidden Items Available
         ItemReqs:
         FlagsSet:
         ReachableReqs:

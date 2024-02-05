@@ -158,7 +158,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 34
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                 ItemReqs:
                     - Surf
@@ -227,7 +227,7 @@ Location:
         WildTableList:
         LocationReqs: Route 34
         FlagReqs:
-            - Hidden Items
+            - Hidden Items Available
         ItemReqs:
         FlagsSet:
         ReachableReqs:

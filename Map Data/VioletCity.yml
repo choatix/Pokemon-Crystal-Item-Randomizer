@@ -87,7 +87,7 @@ Location:
                 WildTableList:
                 LocationReqs: Violet City
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Hive Badge
                 ItemReqs:
                     - Cut

@@ -92,7 +92,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 37
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

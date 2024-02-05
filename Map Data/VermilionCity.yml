@@ -207,7 +207,7 @@ Location:
                 WildTableList:
                 LocationReqs: Vermilion City
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:
@@ -228,7 +228,7 @@ Location:
                 WildTableList:
                 LocationReqs: SS Aqua via Olivine
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                     - Ship Sidequest
                 ItemReqs:

@@ -25,7 +25,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 40 Land
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Rock Smash Usable
                 ItemReqs:
                 FlagsSet:

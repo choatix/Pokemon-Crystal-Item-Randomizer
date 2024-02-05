@@ -76,7 +76,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 12
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                     - Fog Badge
                 ItemReqs:
                     - Surf

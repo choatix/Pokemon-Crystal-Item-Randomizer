@@ -113,7 +113,7 @@ Location:
         HintName: Route 45
         LocationReqs: Route 45
         FlagReqs:
-            - Hidden Items
+            - Hidden Items Available
             - Fog Badge
         ItemReqs:
             - Surf

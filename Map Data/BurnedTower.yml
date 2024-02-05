@@ -49,7 +49,7 @@ Location:
                 WildTableList: 
                 LocationReqs: Burned Tower 1F
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs: 
                 FlagsSet:
                 ReachableReqs:
@@ -71,7 +71,7 @@ Location:
                 WildTableList: 
                 LocationReqs: Burned Tower 1F
                 FlagReqs:
-                    - Hidden Items
+                    - Hidden Items Available
                 ItemReqs: 
                 FlagsSet:
                 ReachableReqs:
