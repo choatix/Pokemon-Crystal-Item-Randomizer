@@ -4,3 +4,16 @@ NewGamePatches:
   - Patches/5FItemsAlways.json
 IncompatibleWithout:
     - 'Shopsanity'
+Changes:
+-
+        Location: Goldenrod Department Store 5F Rock Smash TM
+        RemoveFlagReqs:
+            - Rock Smash Guy Gives Item
+-
+        Location: Goldenrod Department Store 5F Headbutt TM
+        RemoveFlagReqs:
+            - Headbutt Guy Met
+-
+        Location: Goldenrod Department Store 5F Sweet Scent TM
+        RemoveFlagReqs:
+            - Sweet Scent Girl Met

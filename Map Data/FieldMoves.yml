@@ -28,6 +28,7 @@ Location:
             - Rock Smash
         FlagReqs:
           - Shopsanity
+          - Rock Smash Purchasable
         FlagsSet:
         ReachableReqs:
         Code:

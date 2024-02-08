@@ -175,7 +175,9 @@ class Location:
 		if ("Sublocations" in yamlTree):
 			if (yamlTree["Sublocations"] is not None):
 				for i in yamlTree["Sublocations"]:
-					self.Sublocations.append(Location(i))
+					subLocation = Location(i)
+					subLocation.LocationReqs.append(self.Name)
+					self.Sublocations.append(subLocation)
 
 		if "RecommendedFlagReqs" in yamlTree:
 			self.RecommendedFlagReqs = yamlTree["RecommendedFlagReqs"]
@@ -515,9 +517,14 @@ class Location:
 			 i.applyModifiers(modifierDict, flags)
 	
 	#get all trash items in this locations tree
-	def getTrashItemList(self, flags,labelling = False):
+	def getTrashItemList(self, flags,labelling = False, log=False, exclude=False):
 		list = []
-		include = True
+		exclude_list = []
+		include = not exclude
+
+		if log:
+			print("LOCLOG:", self.Name)
+
 
 		if 'Hidden Items Available' in self.FlagReqs and "Hidden Items" not in flags:
 			include = False
@@ -529,6 +536,8 @@ class Location:
 			include = False
 		if 'Phone Call Trainers' in self.FlagReqs and 'Phone Call Trainers' not in flags:
 			include = False
+		if 'Callable Trainers' in self.FlagReqs and 'Phone Call Trainers' not in flags:
+			include = False
 		if 'Mon Locked Checks' in self.FlagReqs and 'Mon Locked Checks' not in flags:
 			include = False
 		if "Mons Available" in self.FlagReqs and "Mon Locked Checks" not in flags:
@@ -537,7 +546,7 @@ class Location:
 			include = False
 		if 'NPC Trash Can' in self.FlagReqs and "NPC Trash Can" not in flags:
 			include = False
-		if 'Shopsanity' in self.FlagReqs and "Shopsanity" not in flags:
+		if ('Shopsanity' in self.FlagReqs or self.isShop()) and "Shopsanity" not in flags:
 			include = False
 		if "Possible Sale" in self.FlagReqs and "Phone Call Trainers" not in flags:
 			include = False
@@ -554,13 +563,26 @@ class Location:
 			if self.NormalItem is not None and self.isItem() and not self.Dummy:
 				list.append(self.NormalItem)
 			for i in self.Sublocations:
-				list.extend(i.getTrashItemList(flags, labelling = labelling))
+				if log:
+					print("LOC-LOG", self.Sublocations, i)
+				new_list, new_exclude_list = i.getTrashItemList(flags, labelling = labelling, log=log)
+				list.extend(new_list)
+				exclude_list.extend(new_exclude_list)
 		#if this item isn't included, then don't use it as an item location
 		elif not labelling and self.isItem() and not self.Dummy:
 			self.Type = 'Map'
 			self.WasItem = True
 			self.IsItem = False
-		return list
+		else:
+			# This clause is required for sub locations of items behind marks on super-locations
+			for i in self.Sublocations:
+				a, b = i.getTrashItemList(flags, labelling=labelling, log=log, exclude=True)
+				exclude_list.extend(b)
+
+		if not include:
+			exclude_list.append(self.NormalItem)
+
+		return list, exclude_list
 
 	def UpdateTags(self):
 		if self.IsBerry:

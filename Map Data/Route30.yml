@@ -125,7 +125,7 @@ Location:
                 LocationReqs: 
                     - Route 30
                 FlagReqs:
-                    - Phone Call Trainers
+                    - Callable Trainers
                     - Beat Team Rocket
                     - Became Champion
                     - Gave Elm Egg

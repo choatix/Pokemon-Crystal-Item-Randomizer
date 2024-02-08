@@ -996,7 +996,8 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 		item_processor = None
 
 
-	reachable, stateDist, randomizerFailed, trashSpoiler, randomizedExtra, upgradedItems, beatabilityWarnings = \
+	reachable, stateDist, randomizerFailed, trashSpoiler, randomizedExtra, upgradedItems, beatabilityWarnings,\
+		stateDetail = \
 		checkBeatability(spoiler, locationTree, inputFlags, trashItems, plandoPlacements, monReqItems, locList,
 						 badgeSet, item_processor, requiredItems=requiredItems)
 
@@ -1017,6 +1018,7 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	resultDict["UpgradedItems"] = upgradedItems
 	resultDict["RandomizedExtra"] = randomizedExtra
 	resultDict["Warnings"] = beatabilityWarnings
+	resultDict["StateDetail"] = stateDetail
 
 	return resultDict
 
@@ -1119,9 +1121,18 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 	allocatedCount = 0
 	failed = False
 
+	newlyRemoved = []
 	warnings = {}
 
 	assigned = []
+	stateMan = []
+
+	countDistance = 0
+	newlyReachable = {}
+	stateChanges = defaultdict(lambda: (False,""))
+
+	fullReachable = {}
+
 
 	while not goalReached and not randomizerFailed:
 		stage += 1
@@ -1129,10 +1140,32 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 		stuck = True
 		#shuffle the list of active locations to prevent any possible biases
 		random.shuffle(activeLoc)
+
+		activeLoc = sorted(activeLoc, key=PrioritiseMapSort)
+
+		newlyReachable = {}
+		stateChanges = defaultdict(lambda: (False,""))
+
 		for i in activeLoc:
 			#can we get to this location?
 			# Previously added a banned check in here, but this breaks actual ban list if items were set
 			# Unknown what line was changed for, but removed due to breaking change
+
+			newlyRemoved = []
+
+			reachable_maps = [ n for n in newlyReachable.values() if n.Type in ['Map','Transition'] ]
+			if len(reachable_maps) > 0:
+				if i.isItem() or i.isGym():
+					#print("Skip:", i.Name, countDistance, set([n.Type for n in newlyReachable.values()]), activeLoc.index(i), len(activeLoc))
+					# Reach all possible locations before doing any items, even if the next step
+					continue
+			else:
+				if len(newlyReachable) != 0 and not (i.isItem() or i.isGym()):
+				#	print("Skip:", i.Name, countDistance, set([n.Type for n in newlyReachable.values()]), activeLoc.index(i), len(activeLoc))
+					continue
+
+			#if i.Name not in reachable:
+			#	print("Check:", set([n.Type for n in newlyReachable.values()]), i.Name, countDistance, activeLoc.index(i), len(activeLoc))
 
 			if(i.isReachable(state, recommended=recommended) and i.Name not in reachable and i.Name not in forbidden):
 
@@ -1146,6 +1179,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				isForbidden = False
 				for j in i.getFlagList():
 					if j not in forbidden:
+						#print("New flag1:", i.Name, j)
 						preState[j] = True
 						preStateDist[j] = pre_distance
 					else:
@@ -1156,9 +1190,10 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 					continue
 
 				for item in preState.items():
-					state[item[0]] = item[1]
-				for item in preStateDist.items():
-					stateDist[item[0]] = item[1]
+					stateChanges[item[0]] = (item[1],i.Name)
+					#print("New flag2:", i.Name, j)
+				#for item in preStateDist.items():
+					#stateChanges[item[0]] = item[1]
 
 				i.distance = pre_distance
 
@@ -1167,12 +1202,13 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				stuck = False
 				stuckCount = 0
 				#we can get somehwhere, so set this location in the state as true
-				state[i.Name] = True
+				stateChanges[i.Name] = (True,i.Name)
 				#Add sublocations to the set of active locations
 				activeLoc.extend(i.Sublocations)
 				#set this location as reachable
-				reachable[i.Name] = i
-				activeLoc.remove(i)
+				newlyReachable[i.Name] = i
+				fullReachable[i.Name] = i
+				newlyRemoved.append(i)
 				#set distance of this location
 
 				#set distance of location
@@ -1221,7 +1257,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 
 								placeItem = chosen
 
-							replacedItem = RandomizeFunctions.HandleShopLimitations(placeItem, i, locList, reachable,
+							replacedItem = RandomizeFunctions.HandleShopLimitations(placeItem, i, locList, fullReachable,
 																					trashItems, inputFlags,starting_trash, spoiler)
 							if replacedItem is not None:
 								placeItem = replacedItem
@@ -1241,16 +1277,16 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 							cleanItem = string.capwords(cleanItem, " ")
 
 							if cleanItem in requiredItems:
-								state[cleanItem] = True
+								stateChanges[cleanItem] = (True,i.Name)
 								stateDist[i.item] = max(stateDist[i.item], stateDist[i.Name])
 
 							if i.isShop() and cleanItem in RandomizeFunctions.REQUIRED_BUY_ITEMS:
-								state[cleanItem + " Purchasable"] = True
+								stateChanges[cleanItem + " Purchasable"] = (True, i.Name)
 								stateDist[cleanItem + " Purchasable"] = max(stateDist[cleanItem + " Purchasable"],
 																			stateDist[i.Name])
 					else:
 						if i.item not in forbidden:
-							state[i.item] = True
+							stateChanges[i.item] = (True, i.Name)
 							stateDist[i.item] = max(stateDist[i.item],stateDist[i.Name])
 							i.item = next(key for key, value in spoiler.items() if value == i.Name)
 							i.IsGym = False
@@ -1265,7 +1301,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 							cleanItem = string.capwords(cleanItem, " ")
 
 							if i.isShop() and cleanItem in RandomizeFunctions.REQUIRED_BUY_ITEMS:
-								state[cleanItem + " Purchasable"] = True
+								stateChanges[cleanItem + " Purchasable"] = (True, i.Name)
 								stateDist[cleanItem + " Purchasable"] = max(stateDist[cleanItem + " Purchasable"],
 																			stateDist[i.Name])
 
@@ -1282,13 +1318,13 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 						# stateDist[i.badge.Name] = max(stateDist[i.badge.Name],stateDist[i.Name])
 					#set badge count based flags
 					if(nBadges == 7):
-						state['Rocket Invasion'] = True
+						stateChanges['Rocket Invasion'] = (True, i.Name)
 						stateDist['Rocket Invasion'] = maxBadgeDist
 					if(nBadges == 8):
-						state['8 Badges'] = True
+						stateChanges['8 Badges'] = (True, i.Name)
 						stateDist['8 Badges'] = maxBadgeDist
 					if(nBadges == 16):
-						state['All Badges'] = True
+						stateChanges['All Badges'] = (True, i.Name)
 						stateDist['All Badges'] = maxBadgeDist
 				elif "RandomiseItems" in inputFlags and i.Banned and \
 						(i.wasItem() or i.isItem()) \
@@ -1301,7 +1337,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 					else:
 						i.item = givenItem
 
-					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, reachable, trashItems,
+					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, fullReachable, trashItems,
 																			inputFlags, starting_trash, spoiler, addAfter=addAfter, force=True)
 
 					if replacedItem is not None:
@@ -1314,14 +1350,14 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				newState = False
 				for j in i.getFlagList():
 					if j not in state or not state[j]:
-						state[j] = True
+						stateChanges[j] = (True, i.Name)
 						maxdist = max([stateDist[flag] for flag in i.requirementsNeeded(defaultdict(lambda: False))],
 								  default=0)
 						stateDist[j] = maxdist
 						stuck = False
 						stuckCount = 0
 
-				activeLoc.remove(i)
+				newlyRemoved.append(i)
 
 
 
@@ -1344,7 +1380,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 						i.item = givenItem
 
 					# Dont use the list of trash items for randomised items
-					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, reachable, trashItems,
+					replacedItem = RandomizeFunctions.HandleShopLimitations(i.item, i, locList, fullReachable, trashItems,
 																			inputFlags, starting_trash, spoiler, addAfter=addAfter, force=True)
 					if replacedItem is not None:
 						i.item = replacedItem
@@ -1356,19 +1392,46 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				else:
 					activeLoc.extend(i.Sublocations)
 
-		if(stuckCount == 4):
-			randomizerFailed = True
-			for j in activeLoc:
-				if(not state[j.Name]):
-					1+1
-					#print('Stuck on '+j.Name+', which needs:')
-					#print(j.requirementsNeeded(state))
-			#print(state)
+		changes = 0
+
+		items_this_round = len([n for n in newlyReachable.values() if n.isItem() or n.isGym()])
+
+		for r in newlyReachable.items():
+			reachable[r[0]] = r[1]
+			#print("reachable now:", r[1].Name, items_this_round, countDistance)
+		for s in stateChanges.items():
+			state[s[0]] = s[1][0] # Mostly sets to True
+			stateMan.append((s[0], s[1], s[1][1], countDistance))
+			changes += 1
+			#print("State change:", s[0], changes)
+
+		for item in newlyRemoved:
+			activeLoc.remove(item)
+
+		#if items_this_round:
+		#	time.sleep(60)
+
+		countDistance += 1 #if items_this_round > 0 else 0
+
+		if changes == 0:
+			print("No changes...", len(activeLoc))
+			break
+
+
+
+		#if(stuckCount == 4):
+		#	randomizerFailed = True
+		#	for j in activeLoc:
+		#		if(not state[j.Name]):
+		#			1+1
+		#			#print('Stuck on '+j.Name+', which needs:')
+		#			#print(j.requirementsNeeded(state))
+		#	#print(state)
 		#check if we've become stuck
-		if(stuck):
-			stuckCount = stuckCount+1
-		else:
-			stuckCount = 0
+		#if(stuck):
+		#	stuckCount = stuckCount+1
+		#else:
+		#	stuckCount = 0
 
 	if trashItems is not None and len(trashItems) != 0:
 		if not randomizerFailed:
@@ -1482,4 +1545,42 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 	#print(trashItems)
 	#print('Total number of checks in use: '+str(len(spoiler)+len(trashSpoiler)))
 
-	return reachable, stateDist, randomizerFailed, trashSpoiler, randomizedExtra, changes, warnings
+	#print(stateMan)
+
+	# s0 is item
+
+	#stateMan.append((s[0], s[1], countDistance))
+	# relevantStates = [ (spoiler[s[0]], s[0], s[3])
+	# 				   for s in stateMan
+	# 				   if s[0] in spoiler and s[2] == spoiler[s[0]]
+	# 				]
+	#
+	# groupedStates = {}
+	# for state in relevantStates:
+	#
+	# 	accessValue = state[2]
+	# 	if accessValue not in groupedStates:
+	# 		groupedStates[accessValue] = []
+	#
+	# 	groupedStates[accessValue].append((state[0],state[1]))
+	#
+	# index = 0
+	# # Note, if there are duplicates of an item but the spoiler only has one
+	# for state in groupedStates.items():
+	# 	print(str(index)+":")
+	# 	index += 1
+	#
+	# 	itemListForState = state[1]
+	# 	for item in itemListForState:
+	# 		print("\t"+item[0], ":", item[1])
+
+
+
+
+	#print("Spoiler is", spoiler)
+
+	return reachable, stateDist, randomizerFailed, trashSpoiler, randomizedExtra, changes, warnings, stateMan
+
+
+def PrioritiseMapSort(location):
+	return (location.Type not in  ['Map', 'Transition'])

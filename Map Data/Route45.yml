@@ -158,7 +158,7 @@ Location:
         LocationReqs: 
             - Route 45
         FlagReqs:
-            - Phone Call Trainers
+            - Callable Trainers
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -199,7 +199,7 @@ Location:
         FlagReqs:
             - Became Champion
             - Kanto Power Restored
-            - Phone Call Trainers
+            - Callable Trainers
         ItemReqs:
         FlagsSet:
         ReachableReqs:

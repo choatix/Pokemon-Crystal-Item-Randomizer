@@ -18,6 +18,7 @@ Location:
             - Fog Badge
             - Glacier Badge
             - Rising Badge
+            - Zephyr Badge
         ItemReqs:
         RecommendedItemReqs:
             - Surf
@@ -28,6 +29,7 @@ Location:
             - Card Key
             - Clear Bell
             - Rainbow Wing
+            - Flash
         FlagsSet:
         ReachableReqs:
         Code:

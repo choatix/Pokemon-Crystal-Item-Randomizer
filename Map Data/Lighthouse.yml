@@ -228,7 +228,7 @@ Location:
                 LocationReqs: 
                     - Lighthouse
                 FlagReqs:
-                    - Phone Call Trainers
+                    - Callable Trainers
                     - Became Champion
                     - Kanto Power Restored
                 ItemReqs:

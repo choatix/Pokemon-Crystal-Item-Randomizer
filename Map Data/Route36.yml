@@ -222,9 +222,9 @@ Location:
             Type: Item
             HasPKMN: No
             WildTableList: 
-            LocationReqs: Route 36 via Violet
+            LocationReqs: Route 36 Goldenrod Side
             FlagReqs:
-                - Phone Call Trainers
+                - Callable Trainers
             ItemReqs:
             FlagsSet:
             ReachableReqs:

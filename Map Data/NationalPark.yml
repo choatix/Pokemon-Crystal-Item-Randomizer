@@ -134,7 +134,7 @@ Location:
                 LocationReqs:
                     - National Park
                 FlagReqs:
-                    - Phone Call Trainers
+                    - Callable Trainers
                     - Mons Available
                 ItemReqs:
                 FlagsSet:

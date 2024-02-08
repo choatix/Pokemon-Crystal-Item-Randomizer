@@ -141,7 +141,7 @@ Location:
         LocationReqs: 
             - Route 46 Upper
         FlagReqs:
-            - Phone Call Trainers
+            - Callable Trainers
             - Kanto Power Restored
             - Became Champion
         ItemReqs:

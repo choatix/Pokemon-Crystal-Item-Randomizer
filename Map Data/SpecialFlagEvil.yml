@@ -12,6 +12,7 @@ Location:
             - Banned
         ItemReqs:
         FlagsSet:
+            - Callable Trainers
         ReachableReqs:
         Code:
         Text:

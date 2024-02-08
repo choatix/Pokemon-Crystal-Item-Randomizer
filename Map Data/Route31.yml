@@ -151,7 +151,7 @@ Location:
                 WildTableList:
                 LocationReqs: Route 31
                 FlagReqs:
-                    - Phone Call Trainers
+                    - Callable Trainers
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

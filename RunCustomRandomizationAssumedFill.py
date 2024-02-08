@@ -485,9 +485,22 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 				rBadgeList.append(i)
 			#print(BadgeDict)
 
+			debug = False
+
+			if debug:
+				locList = sorted(LoadLocationData.FlattenLocationTree(LocationList),
+							 key=lambda i: ''.join(i.Name).join(i.requirementsNeeded(defaultdict(lambda: False))))
+				forceLocations = [ x.Name for x in list(filter(lambda x: "Mons Available" in x.FlagReqs
+									  or "Callable Trainers" in x.FlagReqs
+															   or "Buena Access" in x.FlagReqs
+															   , locList))]
+
 			resultDict = RandomizeItemsBadges.RandomizeItems('None',LocationList,progressItems,trashItems,BadgeDict, seed,
 															 inputFlags = flags, inputVariables = inputVariables, reqBadges = rBadgeList, plandoPlacements = plandoPlacements,
 															 coreProgress = coreProgress, dontReplace = dontReplace, badgeShuffle=badgeShuffle)
+
+
+
 
 			if goal not in resultDict["Reachable"]:
 				handleBadSpoiler(resultDict, flags, maxSize=10 if spoilerLoop else None)
@@ -542,6 +555,12 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 
 						json_out = json.dumps(spoilerDetails, indent=2)
 						print(json_out)
+
+			if debug:
+				used = [ loc for loc in forceLocations if loc in resultDict["Spoiler"].values() ]
+				if len(used) < 5:
+					completeResult = False
+
 
 		except Exception as err:
 			print('Failed with error: '+str(err)+' retrying...')

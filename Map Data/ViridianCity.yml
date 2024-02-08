@@ -30,7 +30,6 @@ Location:
         ItemReqs:
             - Surf
             - Cut
-            - Machine Part
         FlagsSet:
         ReachableReqs:
         Code:
@@ -69,7 +68,6 @@ Location:
         ItemReqs:
             - Surf
             - Waterfall
-            - Machine Part
         FlagsSet:
         ReachableReqs:
         Code:

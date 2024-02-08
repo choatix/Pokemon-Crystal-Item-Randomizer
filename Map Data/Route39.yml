@@ -161,7 +161,7 @@ Location:
                     - Route 39
                 FlagReqs:
                     - Mons Available
-                    - Phone Call Trainers
+                    - Callable Trainers
                 ItemReqs:
                 FlagsSet:
                 ReachableReqs:

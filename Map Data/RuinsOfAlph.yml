@@ -246,8 +246,9 @@ Location:
                 WildTableList:
                 LocationReqs: Ruins of Alph
                 FlagReqs:
+                    - Shopsanity
+                    - Escape Rope Purchasable
                 ItemReqs:
-                    - Escape Rope
                 FlagsSet:
                 ReachableReqs:
                 Code:
@@ -495,10 +496,11 @@ Location:
                 FlagReqs:
                   - Fog Badge
                   - Plain Badge
+                  - Shopsanity
+                  - Water Stone Purchasable
                 ItemReqs:
                   - Surf
                   - Strength
-                  - Water Stone
                 FlagsSet:
                 NormalItem:
                 ReachableReqs:

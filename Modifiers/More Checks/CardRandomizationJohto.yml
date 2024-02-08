@@ -29,14 +29,6 @@ Changes:
             - Radio Card
             - Expansion Card
     -
-        Location: Viridian City via League Gate
-        AddFlagReqs:
-            - Pokegear
-            - Radio Card
-            - Expansion Card
-        RemoveItemReqs:
-            - Machine Part
-    -
         Location: League Gate via Viridian
         NewItemReqs:
             - Cut

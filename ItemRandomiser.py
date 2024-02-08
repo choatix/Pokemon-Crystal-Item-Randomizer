@@ -280,6 +280,44 @@ class ItemRandomiser():
         # print(hexstring)
         return hexstring
 
+    def CreatePathFromStateDetailAndSpoiler(self, stateDetail, spoiler):
+        # spoiler_item_location, item, current_location
+        relevantStates = [(spoiler[s[0]], s[0], s[3])
+                          for s in stateDetail
+                          if s[0] in spoiler and s[2] == spoiler[s[0]]
+                          ]
+
+        ropeStates = [ s for s in stateDetail if "ROPE" in s[0].upper() ]
+        print(ropeStates, spoiler)
+
+        groupedStates = {}
+        for state in relevantStates:
+
+            accessValue = state[2]
+            if accessValue not in groupedStates:
+                groupedStates[accessValue] = []
+
+            groupedStates[accessValue].append((state[0], state[1]))
+
+        index = 0
+        path = {}
+        # Note, if there are duplicates of an item but the spoiler only has one
+        text_lines = []
+        for state in groupedStates.items():
+            #text_lines.append(str(index) + ":")
+
+            path_at_index = {}
+            index += 1
+
+            itemListForState = state[1]
+            for item in itemListForState:
+                path_at_index[item[0]] = item[1]
+                #text_lines.append("\t" + item[0] + ":" + item[1])
+
+            path[index] = path_at_index
+
+        return path
+
     def runRandomizer(self, seed=None, out_dir=None, in_file=None, out_file=None, requiredMD5=None, run_flags=None,
                       attempts=0):
 
@@ -523,6 +561,9 @@ class ItemRandomiser():
 
                 if raceModeString is not None:
                     outputSpoiler["Race"] = raceModeString
+
+                outputSpoiler["Solution_Order"] = self.CreatePathFromStateDetailAndSpoiler\
+                    (resultDict["StateDetail"], resultDict["Spoiler"])
 
                 with open(randomizedFileName + '_SPOILER.txt', 'w') as f:
                     yaml.dump(outputSpoiler, f, default_flow_style=False)

@@ -113,14 +113,14 @@ Location:
         FlagsSet:
             - All X Items
         ItemReqs:
-        RecommendedItemReqs:
-            - X Attack
-            - X Defend
-            - X Speed
-            - X Special
-            - X Accuracy
-            - Dire Hit
-            - Guard Spec
+        RecommendedFlagReqs:
+            - X Attack Purchasable
+            - X Defend Purchasable
+            - X Speed Purchasable
+            - X Special Purchasable
+            - X Accuracy Purchasable
+            - Dire Hit Purchasable
+            - Guard Spec Purchasable
         ReachableReqs:
         Code:
         Text:
