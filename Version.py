@@ -1,8 +1,8 @@
 def GetItemRandoVersion():
-    return "8.1.1"
+    return "8.1.2"
 
 def GetSupportedSpeedchoiceVersion():
     return [8,1,1]
 
 def GetExpectedDataHash():
-    return "cef526fc6806c3b4e9e4402a361f7b5b"
+    return "91a266ce48852268bbf463ddecc1ae8f"
