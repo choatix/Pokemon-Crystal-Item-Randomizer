@@ -176,7 +176,7 @@ class Location:
 			if (yamlTree["Sublocations"] is not None):
 				for i in yamlTree["Sublocations"]:
 					subLocation = Location(i)
-					subLocation.LocationReqs.append(self.Name)
+					#subLocation.LocationReqs.append(self.Name)
 					self.Sublocations.append(subLocation)
 
 		if "RecommendedFlagReqs" in yamlTree:
