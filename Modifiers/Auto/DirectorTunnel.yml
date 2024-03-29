@@ -4,7 +4,7 @@ Changes:
     -
         Location: Goldenrod Tunnel Rocket Attack
         RemoveFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
 IncompatibleWithout:
     - 'Warps'

@@ -23,6 +23,7 @@ Location:
         WildTableList: Route_42
         LocationReqs: Mahogany Town
         FlagReqs:
+            - Warps
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -93,6 +94,7 @@ Location:
         LocationReqs: Route 42 East
         FlagReqs:
             - Fog Badge
+            - Warps
         ItemReqs:
             - Surf
         FlagsSet:

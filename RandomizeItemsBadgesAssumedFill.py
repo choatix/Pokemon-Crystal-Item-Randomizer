@@ -6,6 +6,7 @@ import random
 import copy
 import time
 
+import Location
 import RandomizeFunctions
 def DebugLegality(toAllocate, location, input1):
 	DEBUG_LEGALITY = False
@@ -32,6 +33,403 @@ def findAllSilverUnlocks(req, locList, handled=None):
 
 	return newFind
 
+
+def ExtendAllRequirements(reqs, loc, banned, spoiler, cache, selfReqs=None,
+						  stack=None, items=None, known=None, banItem=None):
+	if selfReqs is None:
+		selfReqs = []
+
+	if stack is None:
+		stack = []
+
+	if items is None:
+		items = []
+
+	if known is None:
+		known = []
+
+	alreadyKnown = []
+	isBanItem = False
+
+	fromStack = False
+
+	l = []
+	l.extend([ newl for newl in loc.LocationReqs if newl not in  l])
+	l.extend([ newl for newl in loc.RecommendedLocationReqs if newl not in  l])
+	l.extend([newl for newl in loc.FlagReqs if newl not in l])
+	l.extend([newl for newl in loc.RecommendedFlagReqs if newl not in l])
+	l.extend([newl for newl in loc.ItemReqs if newl not in l])
+	l.extend([newl for newl in loc.RecommendedItemReqs if newl not in l])
+
+	if loc.SuperLocation is not None and loc.SuperLocation not in l:
+		#print("SL==", loc.SuperLocation)
+		l.append(loc.SuperLocation)
+
+	# Simplify some elements
+	for itemE in l:
+		if "Purchasable" in itemE:
+			l.append(itemE.replace(" Purchasable", ""))
+
+	for itemS in l:
+		if itemS in spoiler:
+			itemReqs = spoiler[itemS]
+
+			for x in itemReqs.alwaysRequired:
+				if x not in l:
+					l.append(x)
+
+	isBan = False
+	for itemA in l:
+		if banItem is not None and banItem == itemA:
+			#print("itemA==item", banItem, itemA, loc.Name)
+			reqs.append(itemA)
+			isBan = True
+			isBanItem = True
+			continue
+
+		if itemA not in selfReqs:
+			selfReqs.append(itemA)
+		if itemA in [ x.Name for x in stack]:
+			reqs.append(itemA)
+			isBan = True
+			fromStack = True
+			continue
+		if itemA in banned:
+			reqs.append(itemA)
+			isBan = True
+			continue
+
+		if itemA in known:
+			continue
+
+		if itemA not in items:
+			known.append(itemA)
+		#print("Add req:", loc.Name, item)
+		reqs.append(itemA)
+
+	return (isBan, fromStack, alreadyKnown, isBanItem)
+
+class Requirement:
+	location : Location.Location
+	alwaysRequired : list
+	options: dict
+
+	def __str__(self):
+		return self.location.Name + "," + str(self.alwaysRequired)
+
+def UpdateWithFullSpoilerCache(reqsList, spoiler):
+	for spoilerItem in spoiler.items():
+		UpdateWithSpoilerCache(spoilerItem[1], reqsList, spoilerItem[0])
+
+
+#def UpdateSpoilerCache(cache, replaceMe, replaceMeWith):
+def UpdateWithSpoilerCache(changedLoc, reqsList, replaceMe):
+	#changed = cache[replaceMeWith]
+
+	changed = changedLoc
+
+	nowInvalidOptions = {}
+	for option in [ xitem for xitem in changed.options.items() if xitem[0] in changed.alwaysRequired ] :
+		optionLocationName = option[0]
+		optionList = option[1]
+		# Do nothing with this result ATM
+		pathInvalids = []
+		for path in optionList:
+			if replaceMe in path:
+				#print(replaceMe, "req in", path, optionLocationName)
+				pathInvalids.append(path)
+
+		if len(pathInvalids) == len(optionList) and len(pathInvalids) !=0:
+			print("This should never happen")
+
+		for removePath in pathInvalids:
+			print("Now invalid::", optionLocationName, pathInvalids)
+			optionList.remove(removePath)
+
+
+		nowInvalidOptions[optionLocationName] = optionList
+
+	for reqValue in reqsList:
+	#for reqPair in cache.items():
+		#reqKey = reqPair[0]
+		#reqValue = reqPair[1]
+
+		if type(reqValue) == list:
+			print("Not meant to be a list::", reqValue)
+			continue
+
+		if reqValue.location.Name in nowInvalidOptions and replaceMe in reqValue.alwaysRequired:
+			reqValue.options = None
+			reqValue.alwaysRequired.append("Banned")
+
+		if replaceMe in reqValue.alwaysRequired:
+			reqValue.alwaysRequired.extend(changed.alwaysRequired)
+
+		if reqValue.options is not None:
+			# Key match is one thing, but also needed in other required paths?
+
+			for optionKey in reqValue.options.keys():
+				if optionKey in nowInvalidOptions:
+					reqValue.options[optionKey] = nowInvalidOptions[optionKey]
+
+				if len(reqValue.options[optionKey]) == 1:
+					for forcedreq in list(reqValue.options[optionKey])[0]:
+						if forcedreq not in reqValue.alwaysRequired:
+							#print("Add new forced requirement:", forcedreq, reqKey.Name)
+							reqValue.alwaysRequired.append(forcedreq)
+					reqValue.options[optionKey] = []
+
+
+import time
+def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoiler=None,
+							  stack=None, items=None, known=None, banItem=None):
+
+	if items is None:
+		items = []
+
+	if stack is None:
+		stack = []
+
+	if known is None:
+		known = []
+
+	if banned is None:
+		banned = ["Warps", "Impossible", "Banned", "Unreachable"]
+
+	if spoiler is None:
+		spoiler = {}
+
+	if cache is not None and location in cache:
+		fromCache = cache[location]
+		#print("From cache:", location.Name, fromCache.alwaysRequired, fromCache.options)
+		return fromCache
+
+	#print("GDR::", location.Name, location, cache is None, location in cache)
+
+	r = Requirement()
+	r.alwaysRequired = []
+
+	newerReqs = []
+	selfExtraReqs = []
+	options = {}
+
+	#if location.Name in stack:
+	#	pass
+	#	#r.alwaysRequired = ["Banned"]
+	#else:
+	xBan, fromStack, alreadyKnown, isBanItem = ExtendAllRequirements(newerReqs, location, banned=banned, spoiler=spoiler, cache=cache,
+							 stack=stack, items=items, known=known, selfReqs=selfExtraReqs, banItem=banItem)
+	if xBan:
+		r.alwaysRequired = newerReqs
+		if isBanItem:
+			r.alwaysRequired.append(banItem)
+		r.alwaysRequired.append("Banned")
+		r.options = None
+		r.location = location
+
+	iterator = 0
+	while iterator < len(newerReqs) and "Banned" not in r.alwaysRequired:
+		# Find all elements in the location list that have this name
+
+		req = newerReqs[iterator]
+		#print("Check req:", req)
+		#print("Req is",req, "stack is", [ s.Name for s in stack], newerReqs)
+		if req in stack:
+			#print("Requirement in stack:", req, stack)
+			r = Requirement()
+			r.alwaysRequired = newerReqs
+			r.alwaysRequired.append("Banned")
+			r.options = None
+			r.location = location
+			break
+
+		ls = [ f for f in fullList if f.Name == req ]
+		flagSets = [ f for f in fullList if req in f.FlagsSet]
+		ls.extend(flagSets)
+		if len(ls) == 0:
+			if req not in items:
+				items.append(req)
+			#print("Length 0", req)
+			# Might be item requirement etc
+			#r = Requirement()
+			#r.alwaysRequired = []
+			#r.options = {}
+			#r.location = location
+
+			#if cache is not None:
+			#	cache[location] = r
+			iterator += 1
+			continue
+		elif len(ls) == 1:
+			#print("Length 1", ls[0], req)
+			xban, fromStack, alreadyKnown, isBanItem = ExtendAllRequirements(newerReqs, ls[0], spoiler=spoiler, banned=banned, cache=cache,
+										 selfReqs=selfExtraReqs, stack=stack, items=items, known=known, banItem=banItem)
+			if xban:
+				r = Requirement()
+				r.alwaysRequired = newerReqs
+				if isBanItem:
+					r.alwaysRequired.append(banItem)
+				r.alwaysRequired.append("Banned")
+				r.options = None
+				r.location = location
+				break
+
+				#if cache is not None and not fromStack:
+				#	cache[location] = r
+
+			# Optimal to cache this if possible, not like this
+			#r = Requirement()
+			#r.alwaysRequired = selfReqs
+			#r.options = {}
+			#r.location = ls[0]
+			#if cache is not None:
+			#	cache[ls[0]] = r
+		else:
+			#print("Length more for", req)
+			newReqs = []
+			skipped = 0
+			for loc in ls:
+				if 'Assumed Fill' in loc.FlagReqs:
+					skipped += 1
+					continue
+
+				#print("add to stack:", loc.Name)
+				stack.append(loc)
+				newReqs.append(GetDefinitiveRequirements(fullList, loc,
+														 banned=banned, cache=cache, spoiler=spoiler,
+														 stack=stack, items=items, known=copy.copy(known),
+														 banItem=banItem))
+				stack.remove(loc)
+
+			if len(ls) == skipped:
+				iterator += 1
+				continue
+
+			UpdateWithFullSpoilerCache(newReqs, spoiler)
+
+			#print("newreqs--", [ (n.alwaysRequired, n.options) for n in newReqs ])
+
+			# Exclude banned routes
+			bannedOptions = []
+			for ban in banned:
+				for reqSet in newReqs:
+					#print(reqSet, newReqs)
+					if ban in reqSet.alwaysRequired:
+						bannedOptions.append(reqSet)
+
+			nonBannedRoutes = [ route for route in newReqs if route not in bannedOptions ]
+
+			if len(nonBannedRoutes) == 0:
+				r.alwaysRequired = newerReqs
+				r.alwaysRequired.append("Banned")
+				r.options = None
+				r.location = location
+				#if cache is not None:
+				#	cache[location] = r
+				break
+
+			# nonBannedRoutes = RemoveSubsetList(nonBannedRoutes)
+
+			if len(nonBannedRoutes) == 1:
+				for onlyRoute in nonBannedRoutes:
+					for item in onlyRoute.alwaysRequired:
+						if item not in newerReqs:
+							newerReqs.append(item)
+			else:
+
+				allReqs = []
+				common_set = set(nonBannedRoutes[0].alwaysRequired)
+				for lst in nonBannedRoutes[1:]:
+					common_set = common_set.intersection(lst.alwaysRequired)
+				result = list(common_set)
+
+				for reqList in nonBannedRoutes:
+					l = []
+					for alwaysreq in reqList.alwaysRequired:
+						if alwaysreq not in result:
+							l.append(alwaysreq)
+
+					if len(l) > 0:
+						allReqs.append(l)
+
+					if reqList.options is not None:
+						for keyvalue in reqList.options.items():
+							key = keyvalue[0]
+							value = keyvalue[1]
+							options[key] = value
+
+				#print(allReqs, "---")
+				if len(allReqs) > 1:
+					options[req] = allReqs
+					#print("Set options for", req, "with stack", [ s.Name for s in stack])
+
+				newerReqs.extend(result)
+
+			# Find all elements which are in ALL of the lists
+		iterator += 1
+
+	if len(options.keys()) == 0:
+		r.options = None
+
+	if "Banned" not in r.alwaysRequired:
+		r.alwaysRequired = list(set(newerReqs))
+		r.options = options
+		r.location = location
+
+
+		#r.alwaysRequired.extend(selfExtraReqs)
+
+		cache[location] = r
+
+
+	#print(location.Name, selfExtraReqs)
+	#print(location.Name, "Location reqs=", r.alwaysRequired)
+	#print(location.Name, "Location options=", r.options)
+
+
+
+	#print("return", r.location.Name, len(r.options.keys()))
+	return r
+
+
+def RemoveSubsetList(lists):
+	listsToRemove = []
+	for indexA in range(0, len(lists)):
+		for indexB in range(0, len(lists)):
+			if indexA >= indexB:
+				continue
+
+			if indexA in listsToRemove or indexB in listsToRemove:
+				continue
+
+			listA = lists[indexA].alwaysRequired
+			listB = lists[indexB].alwaysRequired
+			common_set = set(listA)
+			#if len(common_set) != len(listA):
+				#print("Invalid count handling")
+			common_set = common_set.intersection(listB)
+
+			if len(listB) == len(listA) and len(listB) == len(common_set):
+				#print("Lists are exactly the same")
+				listsToRemove.append(indexA)
+				continue
+
+			listAInCommon = [ x for x in common_set if x in listA]
+			listBInCommon = [x for x in common_set if x in listB]
+
+			if len(listAInCommon) == len(listA):
+				#print("List A is not required")
+				listsToRemove.append(indexA)
+
+			if len(listBInCommon) == len(listB):
+				#print("List B is not required")
+				listsToRemove.append(indexB)
+
+	listsToRemove.sort(key = lambda s: s, reverse=True)
+
+	for index in listsToRemove:
+		lists.pop(index)
+	return lists
 
 def LoopWarpSet(startingGroups, warpLocations, inputFlags):
 
@@ -282,6 +680,7 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 
 	#build spoiler
 	spoiler = {}
+	counterSpoiler = {}
 	#print('Building mappings')
 	#note: these are the randomizer only flags, they do not map to actual logic defined in the config files
 	#flagList = ['Rocket Invasion', '8 Badges', 'All Badges']
@@ -298,7 +697,9 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	# These must be purchaseable
 
 	requiredItems = []
+	cacher = {}
 	for i in locList:
+
 		#baseline requirements
 		#allReqs = i.LocationReqs+i.FlagReqs+i.itemReqs
 		allReqs = sorted(i.requirementsNeeded(defaultdict(lambda: False)))
@@ -398,6 +799,8 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 		progressList.append('Storm Badge')
 		progressList.append('Fly')
 
+	fullProgress = progressList.copy()
+
 
 	if 'Warps' in inputFlags:
 		warp_sets = GetWarpGroupsSets(locList, inputFlags)
@@ -462,6 +865,9 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	#progressList.reverse()
 	#print(progressList)
 	previousCount = 0
+
+	shortcutCache = {}
+
 	while len(progressList) > 0 and maxIter > 0:
 
 		#print("iter=",maxIter, "pl:", len(progressList), progressList)
@@ -491,9 +897,16 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 
 		#LocationList = list(filter(lambda x: x.Type != "Map" and x.Type != "Transition"), locList)
 
+		banned = [ "Unreachable", "Banned", "Impossible", "Warps"]
+		if "Warps" in inputFlags:
+			banned.remove("Warps")
+
 		while not valid and iter < len(locList) and retryPasses > 0 and len(progressList) > 0:
 			#sub item allocation loop, so that locations are at least randomly given items they can actually have
 			allocated = False
+
+
+
 			nLeft = len(progressList)
 			while nLeft > 0 and not allocated:
 				#if its a plando placement, just place it, we'll complain if infeasible later on
@@ -550,6 +963,9 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 						locList[iter].isVendingMachine() or locList[iter].isBuenaItem():
 						placeable = False
 
+
+
+
 				if toAllocate not in RandomizeFunctions.REQUIRED_BUY_ITEMS:
 					if locList[iter].isShopLike() and "RerollShopPercent" in inputVariables:
 						random_value = random.random() * 100
@@ -557,13 +973,87 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 							break
 
 
-				if locList[iter].Type == "Map" or locList[iter].Type == "Transition" or locList[iter].Dummy:
+				if locList[iter].Type == "Map" or locList[iter].Type == "Transition" or locList[iter].Dummy or \
+					locList[iter].Type == "Starting Warp" or locList[iter].Type == "Border":
 					break
 
 				if not badgeShuffle and toAllocate in badgeSet and not locList[iter].IsActuallyGym:
 					placeable = False
 				elif not badgeShuffle and toAllocate not in badgeSet and locList[iter].IsActuallyGym:
 					placeable = False
+
+					# Add spoiler handling into this function
+
+				UseNewRequirements = True
+				if UseNewRequirements:
+					loc = locList[iter]
+
+					reqs = None
+					if loc in shortcutCache:
+						reqs = shortcutCache[loc]
+						if toAllocate in reqs.alwaysRequired:
+							placeable = False
+
+					if placeable:
+						reqs = GetDefinitiveRequirements(locList, loc, banned=banned, cache={},
+													 spoiler=counterSpoiler, items=fullProgress)
+
+						print(loc.Name, reqs.alwaysRequired)
+
+						shortcutCache[loc] = reqs
+
+					# Cache results to skip some future checks
+
+					#print("Reqs for:", locList[iter].Name, ":", reqs.alwaysRequired)
+
+					if placeable and toAllocate in reqs.alwaysRequired:
+						print("Unable to place:", toAllocate, "in", loc.Name)
+						placeable = False
+
+					if placeable and "Banned" in reqs.alwaysRequired:
+						print("Banned:", toAllocate, "in", loc.Name)
+						placeable = False
+
+					# Check for contradictions, these could be generated but...
+					if placeable:
+						badgeCount = [ req for req in reqs.alwaysRequired if req in badgeSet ]
+						if placeable and 'All Badges' in reqs.alwaysRequired and len(badgeCount) > 0:
+							placeable = False
+
+						if placeable and '8 Badges' in reqs.alwaysRequired and len(badgeCount) > 8:
+							placeable = False
+
+						if placeable and 'Rocket Invasion Active' in reqs.alwaysRequired and len(badgeCount) > 9:
+							placeable = False
+
+						for ban in banned:
+							if ban in reqs.alwaysRequired:
+								placeable = False
+								break
+
+					if placeable:
+						locList.remove(loc)
+						valid = True
+						print('Gave '+ toAllocate +' to '+ loc.Name)
+						progressList.remove(toAllocate)
+						allocated = True
+						# if(loc.isItem()):
+						loc.item = toAllocate
+						loc.IsGym = False
+						loc.IsItem = True
+						# print("Spoilers:", loc.Name, loc.item)
+						spoiler[loc.item] = loc.Name
+						counterSpoiler[loc.item] = reqs
+						# if(loc.isGym()):
+						#	loc.badge = badgeData[toAllocate]
+						#	badgeSet.remove(toAllocate)
+						#	spoiler[loc.badge.Name] = loc.Name
+						allocatedList.append(loc)
+						print("PLL",len(progressList))
+						print("Cache updated...")
+
+					iter = iter + 1
+					continue
 
 				#if placeable and not badgeShuffle and toAllocate in badgeSet:
 				#	print("Attempt:", locList[iter].Name, toAllocate)
@@ -975,7 +1465,17 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 			extraFlags = []
 			if "ImpossibleRandomise" in handle.Handles and "Banned" in handle.FlagReqs:
 				specialFlagName = handle.Name
-				toHandle = list(filter(lambda x: specialFlagName in x.FlagReqs, locList))
+				flagSet = None
+
+				# Lookup FlagsSet
+
+				sublocations = list(filter(lambda x: specialFlagName in x.LocationReqs, locList))
+				for sublocation in sublocations:
+					if len(sublocation.FlagsSet) > 0:
+						flagSet =  sublocation.FlagsSet[0]
+
+				toHandle = list(filter(lambda x: specialFlagName in x.FlagReqs or
+												 (flagSet in x.FlagReqs if flagSet is not None else False), locList))
 				for h in toHandle:
 					h.FlagReqs.append("ImpossibleRandomise")
 					for flag in h.FlagsSet:
@@ -1020,8 +1520,65 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	resultDict["Warnings"] = beatabilityWarnings
 	resultDict["StateDetail"] = stateDetail
 
+	order = CreatePathFromStateDetailAndSpoiler \
+		(resultDict["StateDetail"], resultDict["Spoiler"])
+	print(resultDict["Spoiler"], order)
+
 	return resultDict
 
+
+def CreatePathFromStateDetailAndSpoiler(stateDetail, spoiler):
+	# spoiler_item_location, item, current_location
+	relevantStates = [
+		(
+			s[2],
+			# spoiler[s[0]] if s[0] in spoiler else None,
+			s[0],
+			s[3]
+		)
+		for s in stateDetail
+		if (s[0] in spoiler and s[2] == spoiler[s[0]])
+		# or s[0].startswith("FlagSet")
+	]
+
+	# print(relevantStates)
+
+	groupedStates = {}
+	for state in relevantStates:
+
+		accessValue = state[2]
+		if accessValue not in groupedStates:
+			groupedStates[accessValue] = []
+
+		groupedStates[accessValue].append((state[0], state[1]))
+
+	index = 0
+	path = {}
+	# Note, if there are duplicates of an item but the spoiler only has one
+	text_lines = []
+	for state in groupedStates.items():
+		# text_lines.append(str(index) + ":")
+
+		path_at_index = {}
+		index += 1
+
+		itemListForState = state[1]
+		for item in itemListForState:
+			if item[0] in path_at_index:
+				if type(path_at_index[item[0]]) is list:
+					path_at_index[item[0]].append(item[1])
+				else:
+					v = path_at_index[item[0]]
+					path_at_index[item[0]] = []
+					path_at_index[item[0]].append(v)
+					path_at_index[item[0]].append(item[1])
+			else:
+				path_at_index[item[0]] = item[1]
+		# text_lines.append("\t" + item[0] + ":" + item[1])
+
+		path[index] = path_at_index
+
+	return path
 
 def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 					 plandoPlacements, monReqItems, locList, badgeSet, item_processor,
@@ -1128,8 +1685,6 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 	stateMan = []
 
 	countDistance = 0
-	newlyReachable = {}
-	stateChanges = defaultdict(lambda: (False,""))
 
 	fullReachable = {}
 
@@ -1145,6 +1700,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 
 		newlyReachable = {}
 		stateChanges = defaultdict(lambda: (False,""))
+		newFlagsSet = defaultdict(lambda: (False,""))
 
 		for i in activeLoc:
 			#can we get to this location?
@@ -1153,14 +1709,14 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 
 			newlyRemoved = []
 
-			reachable_maps = [ n for n in newlyReachable.values() if n.Type in ['Map','Transition'] ]
+			reachable_maps = [ n for n in newlyReachable.values() if n.Type in ['Map','Transition'] and not  n.isBorder() ]
 			if len(reachable_maps) > 0:
-				if i.isItem() or i.isGym():
+				if i.isItem() or i.isGym() or i.isBorder():
 					#print("Skip:", i.Name, countDistance, set([n.Type for n in newlyReachable.values()]), activeLoc.index(i), len(activeLoc))
 					# Reach all possible locations before doing any items, even if the next step
 					continue
 			else:
-				if len(newlyReachable) != 0 and not (i.isItem() or i.isGym()):
+				if len(newlyReachable) != 0 and not (i.isItem() or i.isGym() or i.isBorder()):
 				#	print("Skip:", i.Name, countDistance, set([n.Type for n in newlyReachable.values()]), activeLoc.index(i), len(activeLoc))
 					continue
 
@@ -1191,7 +1747,7 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 
 				for item in preState.items():
 					stateChanges[item[0]] = (item[1],i.Name)
-					#print("New flag2:", i.Name, j)
+					newFlagsSet[item[0]] = (item[1], i.Name)
 				#for item in preStateDist.items():
 					#stateChanges[item[0]] = item[1]
 
@@ -1318,8 +1874,8 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 						# stateDist[i.badge.Name] = max(stateDist[i.badge.Name],stateDist[i.Name])
 					#set badge count based flags
 					if(nBadges == 7):
-						stateChanges['Rocket Invasion'] = (True, i.Name)
-						stateDist['Rocket Invasion'] = maxBadgeDist
+						stateChanges['Rocket Invasion Active'] = (True, i.Name)
+						stateDist['Rocket Invasion Active'] = maxBadgeDist
 					if(nBadges == 8):
 						stateChanges['8 Badges'] = (True, i.Name)
 						stateDist['8 Badges'] = maxBadgeDist
@@ -1349,8 +1905,10 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 				# Now you need to add any flags this has!
 				newState = False
 				for j in i.getFlagList():
+					#print("Comp flag:", j)
 					if j not in state or not state[j]:
 						stateChanges[j] = (True, i.Name)
+						newFlagsSet[j] = (True, i.Name)
 						maxdist = max([stateDist[flag] for flag in i.requirementsNeeded(defaultdict(lambda: False))],
 								  default=0)
 						stateDist[j] = maxdist
@@ -1403,7 +1961,8 @@ def checkBeatability(spoiler, locationTree, inputFlags, trashItems,
 			state[s[0]] = s[1][0] # Mostly sets to True
 			stateMan.append((s[0], s[1], s[1][1], countDistance))
 			changes += 1
-			#print("State change:", s[0], changes)
+		for s in newFlagsSet.items():
+			stateMan.append(("FlagSet:" + s[0], s[1], s[1][1], countDistance))
 
 		for item in newlyRemoved:
 			activeLoc.remove(item)

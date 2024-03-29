@@ -4,39 +4,39 @@ Changes:
     -
         Location: Saffron City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Cinnabar Island Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Viridian City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Pewter City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Cerulean City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Celadon City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Erika TM
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Vermilion City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Fuchsia City Gym Badge
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Janine TM
         AddRecommendedFlagReqs:
@@ -44,51 +44,51 @@ Changes:
     -
         Location: Lance
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Battle Clair
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Victory Road Hall 3
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Victory Road Hall 3 Exit
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Cycling Road North
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
     -
         Location: Cycling Road South
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Route 26 North
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Route 26
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Fuchsia
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Fuchsia West
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Early Sabrina
@@ -102,12 +102,12 @@ Changes:
     -
         Location: Sea Cottage Warpie
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Route 25 Trainer Gauntlet
         AddRecommendedFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
 IncompatibleWithout:
     - 'Warps'

@@ -13,6 +13,7 @@ from shutil import copyfile
 import GenerateWarpData
 import Items
 import RandomizeItemsBadgesAssumedFill
+import RandomizerRom
 import RunCustomRandomizationAssumedFill as RunCustomRandomization
 
 import yaml
@@ -282,13 +283,19 @@ class ItemRandomiser():
 
     def CreatePathFromStateDetailAndSpoiler(self, stateDetail, spoiler):
         # spoiler_item_location, item, current_location
-        relevantStates = [(spoiler[s[0]], s[0], s[3])
-                          for s in stateDetail
-                          if s[0] in spoiler and s[2] == spoiler[s[0]]
+        relevantStates = [
+            (
+                s[2],
+                #spoiler[s[0]] if s[0] in spoiler else None,
+              s[0],
+              s[3]
+              )
+            for s in stateDetail
+                          if (s[0] in spoiler and s[2] == spoiler[s[0]])
+                          #or s[0].startswith("FlagSet")
                           ]
 
-        ropeStates = [ s for s in stateDetail if "ROPE" in s[0].upper() ]
-        print(ropeStates, spoiler)
+        #print(relevantStates)
 
         groupedStates = {}
         for state in relevantStates:
@@ -311,7 +318,16 @@ class ItemRandomiser():
 
             itemListForState = state[1]
             for item in itemListForState:
-                path_at_index[item[0]] = item[1]
+                if item[0] in path_at_index:
+                    if type(path_at_index[item[0]]) is list:
+                        path_at_index[item[0]].append(item[1])
+                    else:
+                        v = path_at_index[item[0]]
+                        path_at_index[item[0]] = []
+                        path_at_index[item[0]].append(v)
+                        path_at_index[item[0]].append(item[1])
+                else:
+                    path_at_index[item[0]] = item[1]
                 #text_lines.append("\t" + item[0] + ":" + item[1])
 
             path[index] = path_at_index

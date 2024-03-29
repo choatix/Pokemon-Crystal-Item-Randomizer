@@ -22,6 +22,7 @@ Location:
         WildTableList:
         LocationReqs: Route 42 East
         FlagReqs:
+            - Warps
         ItemReqs:
         FlagsSet:
         ReachableReqs:

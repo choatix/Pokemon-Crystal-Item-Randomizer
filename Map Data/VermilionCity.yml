@@ -50,14 +50,12 @@ Location:
     -
         Name: Vermilion City via SS Aqua
         FileName: VermilionCity.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList:
         LocationReqs: SS Aqua via Olivine
         FlagReqs:
-            - Hive Badge
         ItemReqs:
-            - Cut
             - Squirtbottle
             - S S Ticket
         FlagsSet:

@@ -356,6 +356,7 @@ Location:
         LocationReqs:
             - Viridian City
         FlagReqs:
+            - Assumed Fill
         ItemReqs:
         FlagsSet:
         ReachableReqs:

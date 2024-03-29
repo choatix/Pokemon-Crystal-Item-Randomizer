@@ -61,13 +61,8 @@ Location:
         LocationReqs:
             - League Gate via Route 26
         FlagReqs:
-            - 8 Badges
-            - Rising Badge
-            - Fog Badge
             - Snorlax Woken
         ItemReqs:
-            - Surf
-            - Waterfall
         FlagsSet:
         ReachableReqs:
         Code:

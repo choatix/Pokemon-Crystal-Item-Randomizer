@@ -1768,3 +1768,19 @@ def WriteHardCodedPricesToMemory(addressData, romMap, itemPrices, locations, pri
 		romMap[labelInfo1["address_range"]["begin"] + byteOffset + 1] = bytes[1]
 		romMap[labelInfo2["address_range"]["begin"] + byteOffset] = bytes[0]
 		romMap[labelInfo2["address_range"]["begin"] + byteOffset + 1] = bytes[1]
+
+def DirectWriteWarpData(romMap, warpsToWrite):
+
+	for warp in warpsToWrite:
+		startY = warp[0]
+		startX = warp[1]
+		warpId = warp[2]
+		destBytes = warp[3]
+		addr = warp[4]
+
+		romMap[addr] = startY
+		romMap[addr+1] = startX
+		romMap[addr+2] = warpId
+		romMap[addr+3] = destBytes[0]
+		romMap[addr+4] = destBytes[1]
+

@@ -6,7 +6,7 @@ Location:
         HasPKMN: No
         WildTableList:
         LocationReqs:
-            - Route 2 Center
+            - Route 2 Post Cut via Viridian
         FlagReqs:
             - Hive Badge
         ItemReqs:
@@ -18,7 +18,7 @@ Location:
         TrainerList:
     -
         Name: Route 2 North Access
-        FileName: Route2.asm
+        FileName: Route2.asm9
         Type: Map
         HasPKMN: No
         WildTableList:
@@ -75,6 +75,43 @@ Location:
                 Sublocations:
 
     -
+        Name: Route 2 South Access
+        FileName: Route2.asm
+        Type: Map
+        HasPKMN: No
+        WildTableList:
+            - ROUTE_2
+        LocationReqs:
+        FlagReqs:
+            - Warps
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        WarpReqs: Route 2 South
+        Sublocations:
+    -
+        Name: Route 2 South Access
+        FileName: Route2.asm
+        Type: Map
+        HasPKMN: No
+        WildTableList:
+            - ROUTE_2
+        LocationReqs:
+            - Route 2
+        FlagReqs:
+            - Hive Badge
+        ItemReqs:
+            - Cut
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        TrainerList:
+        Sublocations:
+    -
         Name: Route 2 South
         FileName: Route2.asm
         Type: Map
@@ -82,7 +119,7 @@ Location:
         WildTableList:
             - ROUTE_2
         LocationReqs:
-            - Route 2 Center
+            - Route 2 South Access
         FlagReqs:
         ItemReqs:
         FlagsSet:
@@ -113,28 +150,6 @@ Location:
                 AREALV: 32
                 TrainerList:
                 Sublocations:
-
-    -
-        Name: Route 2 Center
-        FileName: Route2.asm
-        Type: Map
-        HasPKMN: No
-        WildTableList:
-            - ROUTE_2
-        LocationReqs:
-            - Route 2 North
-        FlagReqs:
-            - Hive Badge
-        ItemReqs:
-            - Cut
-        FlagsSet:
-        ReachableReqs:
-        Code:
-        Text:
-        TrainerList:
-        WarpReqs: Route 2 Cut
-        Sublocations:
-
     -
         Name: Route 2 Access
         FileName: Route2.asm
@@ -154,27 +169,6 @@ Location:
         Text:
         TrainerList:
         Sublocations:
-
-    -
-        Name: Route 2 Access
-        FileName: Route2.asm
-        Type: Map
-        HasPKMN: No
-        WildTableList:
-            - ROUTE_2
-        LocationReqs:
-            - Route 2 South
-        FlagReqs:
-            - Hive Badge
-        ItemReqs:
-            - Cut
-        FlagsSet:
-        ReachableReqs:
-        Code:
-        Text:
-        TrainerList:
-        Sublocations:
-
 
     -
         Name: Route 2 Post Cut via Viridian
@@ -185,13 +179,7 @@ Location:
         LocationReqs:
             - Viridian City via League Gate
         FlagReqs:
-            - 8 Badges
-            - Rising Badge
-            - Fog Badge
-            - Snorlax Woken
         ItemReqs:
-            - Surf
-            - Waterfall
         FlagsSet:
         ReachableReqs:
         Code:
@@ -227,23 +215,7 @@ Location:
         LocationReqs:
             - Pewter City
         FlagReqs:
-        ItemReqs:
-        FlagsSet:
-        ReachableReqs:
-        Code:
-        Text:
-        TrainerList:
-        Sublocations:
-
-    -
-        Name: Route 2 Access
-        FileName: Route2.asm
-        Type: Map
-        HasPKMN: No
-        WildTableList:
-        LocationReqs:
-            - Viridian City
-        FlagReqs:
+            - Warps
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -467,4 +439,3 @@ Location:
         TrainerList:
         WarpReqs: Route 2 Nugget House
         Sublocations:
-

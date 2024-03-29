@@ -1,0 +1,11 @@
+Name: Force early fly Tournament Version
+Description: "Bans Ecruteak access via Route 38"
+Changes:
+    -
+        Location: Ecruteak City via Route 38
+        AddFlagReqs:
+            - Banned
+    -
+        Location: Olivine City via Route 39
+        AddFlagReqs:
+            - Banned

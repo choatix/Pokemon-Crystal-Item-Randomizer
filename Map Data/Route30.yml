@@ -69,10 +69,26 @@ Location:
                 Code:
                 Text:
                 AREALV: 2
-                TrainerList: 
-                    - YOUNGSTER 1
-                    - YOUNGSTER 2
-                    - BUG_CATCHER 1                           
+                TrainerList:
+                Sublocations:
+
+            -
+                Name: Route 30 towards Route 31
+                FileName: Route30.asm
+                Type: Map
+                HasPKMN: No
+                WildTableList:
+                LocationReqs: Route 30
+                FlagReqs:
+                    - Hive Badge
+                ItemReqs:
+                    - Cut
+                FlagsSet:
+                ReachableReqs:
+                Code:
+                Text:
+                AREALV: 2
+                TrainerList:
                 Sublocations:
                 
             -

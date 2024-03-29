@@ -2,7 +2,7 @@ Location:
     -
         Name: Saffron City via Magnet Train
         FileName: SaffronCity.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList:
         LocationReqs:

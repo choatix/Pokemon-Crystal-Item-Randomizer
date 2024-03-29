@@ -25,7 +25,7 @@ Location:
         WildTableList: Route_44
         LocationReqs: Mahogany Town
         FlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -38,7 +38,7 @@ Location:
 
         Name: Route 44
         FileName: Route44.asm
-        Type: Map
+        Type: Border
         HasPKMN: Yes
         WildTableList: Route_44
         LocationReqs: Route 44 Entrance

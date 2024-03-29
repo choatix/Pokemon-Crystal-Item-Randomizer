@@ -280,8 +280,8 @@ Location:
         HasPKMN: No
         WildTableList:
         LocationReqs:
-            - Rocket Invasion
         FlagReqs:
+            - Rocket Invasion Active
         ItemReqs:
         FlagsSet:
         ReachableReqs:

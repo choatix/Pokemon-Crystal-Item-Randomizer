@@ -21,7 +21,6 @@ Location:
         WildTableList:
         HasPKMN: No
         LocationReqs:
-          - Pokegear Gift
         FlagReqs:
           - Impossible
         ItemReqs:

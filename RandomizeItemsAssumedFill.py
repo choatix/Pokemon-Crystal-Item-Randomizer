@@ -37,6 +37,7 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	#stores current requirements for each location
 	requirementsDict = defaultdict(lambda: [])
 
+
 	#shuffle the lists (no seriously, this is a perfectly valid randomization strategy)
 	random.shuffle(locList)
 	random.shuffle(progressList)

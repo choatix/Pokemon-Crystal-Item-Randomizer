@@ -4,22 +4,22 @@ Changes:
     -
         Location: Mount Moon Main
         AddFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Mount Moon Shop Passage In
         AddFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Mount Moon Main Ledge
         AddFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
     -
         Location: Mount Moon Shop Passage Out
         AddFlagReqs:
-            - Rocket Invasion
+            - Rocket Invasion Active
 
 IncompatibleWithout:
     - 'Warps'

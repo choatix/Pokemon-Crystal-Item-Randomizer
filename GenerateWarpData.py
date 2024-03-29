@@ -1,7 +1,10 @@
+import copy
 import json
 import os
 import re
 import mmap
+import random
+import time
 
 import yaml
 
@@ -19,7 +22,11 @@ import Static
 
 
 
-def InterpretWarpChanges(file):
+def InterpretWarpChanges(file, makeOnNames=None):
+
+    if makeOnNames is None:
+        makeOnNames = {}
+
     json_file_1 = Static.warp_labels_file
     rom_file = file
 
@@ -142,6 +149,16 @@ def InterpretWarpChanges(file):
 
             if isOnFix and not isOn:
                 isOn = True
+
+            if check["FriendlyName"] in makeOnNames:
+                isOn = True
+                isOff = False
+
+                # Write the bytes!
+                iterator = 0
+                for i in range(romAddress["begin"],romAddress["end"]):
+                    romMap[i] = expectedOnValues[iterator]
+                    iterator += 1
 
             if not isOn and not isOff:
                 print("Error: Neither on nor off")
@@ -514,6 +531,7 @@ def getWarpGroupData():
     return warpGroupData
 
 def checkForVanilla(in_file):
+
     interpretDataForRandomisedRom(in_file)
     warp_file = "Warp Data/warp-output.tsv"
     warpTSV = LoadLocationData.readTSVFile(warp_file)
@@ -526,6 +544,369 @@ def checkForVanilla(in_file):
             return False
 
     return True
+
+
+def PairWarps(warpList):
+    pairs = []
+    paired = []
+
+    # Group together duplicate warps, such as 2x exits to 1x entrance
+
+    reducedWarpList = []
+    dupes = []
+    dupeMatch = []
+    nonDupes = []
+    for warp in warpList:
+
+        if warp in dupes:
+            continue
+
+        dest = [d for d in warpList if d["Dest_X"] == warp["Dest_X"] and
+                d["Dest_Y"] == warp["Dest_Y"] and d["Dest_Warp_Id"] == warp["Dest_Warp_Id"] and
+                d["End Group"] == warp["End Group"]  and warp not in reducedWarpList and
+                d not in reducedWarpList and d not in dupes
+                ]
+
+        toAdd = None
+
+        if len(dest) == 1:
+            nonDupes.append(warp)
+            continue
+
+        for w in dest:
+            linked = [d for d in warpList if d not in paired and d["Start_X"] == w["Dest_X"] and
+                    d["Start_Y"] == w["Dest_Y"] and d["Start_Warp_Id"] == w["Dest_Warp_Id"] and
+                    d["Start Group"] == w["End Group"]
+                    ]
+
+            if len(linked) > 0:
+                toAdd = w
+                break
+
+        # Ensure to only add the main one
+        if toAdd is not None:
+            reducedWarpList.append(toAdd)
+
+            for i in dest:
+                if i != toAdd:
+                    dupes.append(i)
+                    dupeMatch.append((i,toAdd))
+
+        else:
+            print("Unable to find use of:", warp)
+
+    # Prior script works if dupe is found before link, otherwise it doesn't
+    reducedWarpList.extend(nonDupes)
+
+    # Find each warp as a series of pairs
+
+    warpKeyer = {}
+    for warp in reducedWarpList:
+        wKey = (str(warp["Start_X"]) + str(warp["Start_Y"])
+                + str(warp["Start_Warp_Id"]) + str(warp["Start Group"]))
+
+        if wKey not in warpKeyer:
+            warpKeyer[wKey] = []
+
+        warpKeyer[wKey].append(warp)
+
+    # Dupe detection works when travelling to/from 1x to 2x, but not for 2x to 2x (eg Gate entrances)
+    for warp in reducedWarpList:
+        if warp in paired:
+            continue
+
+        wKey = str(warp["Dest_X"]) + str(warp["Dest_Y"]) + str(warp["Dest_Warp_Id"]) + str(warp["End Group"])
+
+        if wKey not in warpKeyer:
+            dest = []
+        else:
+            dest = warpKeyer[wKey]
+
+        if len(dest) == 0:
+            dest = [ d for d in warpList if d not in paired and d["Start_X"] == warp["Dest_X"] and
+                     d["Start_Y"] == warp["Dest_Y"] and d["Start_Warp_Id"] == warp["Dest_Warp_Id"] and
+                     d["Start Group"] == warp["End Group"]
+                     ]
+
+        if len(dest) > 0:
+            pairs.append((warp,dest[0]))
+            paired.append(warp)
+            for d in dest:
+                paired.append(d)
+        else:
+            print("unknown dest", warp, dest)
+
+    # Now they are paired, remove pairs which are likely to be a gatehouse
+
+    groupedPairs = {}
+    for pair in pairs:
+        p0 = pair[0]
+        p1 = pair[1]
+
+        groupValue = str(p0["Dest_Map_Bytes"]) + "/" + str(p1["Dest_Map_Bytes"])
+        if groupValue not in groupedPairs:
+            groupedPairs[groupValue] = []
+
+        groupedPairs[groupValue].append(pair)
+
+
+    for pairSet in groupedPairs.values():
+
+        if len(pairSet) == 1:
+            continue
+
+        print("Pairset", pairSet)
+
+        paired = []
+        for pair in pairSet:
+            if pair in paired:
+                continue
+
+            pairedWith = [ p for p in pairSet if
+                           p not in paired and p != pair and
+                           OffByOnePairs(pair, p)
+            ]
+
+            if len(pairedWith) > 0:
+                for pairWith in pairedWith:
+                    paired.append(pairWith)
+
+                    pairs.remove(pairWith)
+
+                    # Remove both pairs as dupes
+                    dupeMatch.append((pairWith[0], pair[0]))
+                    dupeMatch.append((pairWith[1], pair[1]))
+
+                    print("Dupe with", pairWith)
+
+
+                paired.append(pair)
+
+    return pairs, dupeMatch
+
+
+def OffByOne(a,b):
+    return a + 1 == b or a -1 == b
+
+from operator import xor
+
+DIRECTION_NONE = 0
+DIRECTION_LEFT = 1
+DIRECTION_RIGHT = 2
+DIRECTION_UP = 3
+DIRECTION_DOWN = 4
+
+def DirectionOfValues(x1, y1, x2, y2):
+    if x1 == x2:
+        if y1 - y2 == -1:
+            return DIRECTION_LEFT
+        elif y1 - y2 == 1:
+            return DIRECTION_RIGHT
+
+        return DIRECTION_NONE
+
+    elif y1 == y2:
+        if x1 - x2 == -1:
+            return DIRECTION_UP
+        elif x1 - x2 == 1:
+            return DIRECTION_DOWN
+
+
+        return DIRECTION_NONE
+
+    return DIRECTION_NONE
+
+
+def OffByOnePairs(pair0, pair1):
+    pair0X0 = pair0[0]["Start_X"]
+    pair0X1 = pair0[1]["Start_X"]
+    pair0Y0 = pair0[0]["Start_Y"]
+    pair0Y1 = pair0[1]["Start_Y"]
+
+    pair1X0 = pair1[0]["Start_X"]
+    pair1X1 = pair1[1]["Start_X"]
+    pair1Y0 = pair1[0]["Start_Y"]
+    pair1Y1 = pair1[1]["Start_Y"]
+
+    # If both X=X or Y=Y and other is 1 off
+    # Get the direction
+    # Check if the same between the two pairs
+
+    directionFirst = DirectionOfValues(pair0X0,pair0Y0,pair1X0,pair1Y0)
+    directionSecond = DirectionOfValues(pair0X1,pair0Y1,pair1X1,pair1Y1)
+
+    if directionFirst == directionSecond and directionFirst != DIRECTION_NONE:
+        return True
+
+    return False
+
+
+def RandomiseWarps(in_file):
+    warps = interpretDataForRandomisedRom(in_file)
+
+    paired_warps, dupes = PairWarps(warps)
+
+    # This loop handling should be added to the generative step rather than calculated here
+    for warpPair in paired_warps:
+        warpA = warpPair[0]
+        warpB = warpPair[1]
+
+        warpA["Start_Map_Bytes"] = warpB["Dest_Map_Bytes"]
+        warpB["Start_Map_Bytes"] = warpA["Dest_Map_Bytes"]
+
+    # With the start bytes received, create new pairs from the given sets, ignoring the dupes
+    # Then go through the new pairs, and apply the dupes to the new pairs
+
+    left_of_pairs = [ w[0] for w in paired_warps ]
+    right_of_pairs = [ w[1] for w in paired_warps ]
+
+    full = []
+    full.extend(left_of_pairs)
+    full.extend(right_of_pairs)
+
+    validWarps = [
+        f for f in full
+        if not (
+                f["Start Group"] in ["Unused", "X", "Elms Lab", "Players House", "Players Room", "New Bark House",
+                                "Elms House", "New Bark", "Pokemon Center Upstairs",
+                                     "Players House 2F"]
+                or "Drop Point" in f["Start Name"]
+        )
+    ]
+
+    groupMapping = {}
+    for warp in validWarps:
+        group = warp["Start Group"]
+        if group not in groupMapping:
+            groupMapping[group] = []
+        groupMapping[group].append(warp)
+
+    imperativeGroups = ["Oaks Lab", "Reds Room"]
+    startingGroups = ["New Bark", "Cherrygrove"]
+
+    invalid = True
+    warpsToWrite = []
+
+    while invalid:
+        valid = copy.deepcopy(validWarps)
+        random.shuffle(valid)
+        new_pairs = []
+
+        while len(valid) > 1:
+            one = valid.pop()
+            two = valid.pop()
+
+            diffValue = random.randrange(0, 10)
+
+            groupOne = one["Start Group"]
+            groupTwo = two["Start Group"]
+
+            if diffValue == 0:
+                bo = False
+            elif diffValue == 9:
+                bo = True
+            else:
+                diff = abs(len(groupMapping[groupOne]) - len(groupMapping[groupTwo]))
+                if diffValue < diff:
+                    bo = True
+                else:
+                    bo = False
+
+
+
+            if bo:
+                valid.append(one)
+                valid.append(two)
+            else:
+                new_pairs.append((one, two))
+
+            # Maybe add some checking to prevent single rooms, but alas
+
+        warpsToWrite = []
+
+        # Minimum checks
+        accessible_groups = startingGroups.copy()
+        accessible = []
+        change = True
+        while change:
+            change = False
+            for pair in new_pairs:
+                pairOne = pair[0]
+                pairTwo = pair[1]
+
+                if pairOne in accessible or pairTwo in accessible:
+                    continue
+
+                found = False
+                if pairOne["Start Group"] in accessible_groups:
+                    found = True
+                    accessible_groups.append(pairTwo["Start Group"])
+
+                elif pairTwo["Start Group"] in accessible_groups:
+                    found = True
+                    accessible_groups.append(pairOne["Start Group"])
+
+                if found:
+                    accessible.append(pairOne)
+                    accessible.append(pairTwo)
+                    change = True
+
+        # This does not factor in accessibility outside of the initial branch
+        invalid = False
+        print("Check basic validity", len(accessible_groups), len(valid), len(validWarps), len(warpsToWrite))
+        time.sleep(1)
+        for required in imperativeGroups:
+            if required not in accessible_groups:
+                print("Unable to get to:", required)
+                invalid = True
+            else:
+                print("Able to get to:", required)
+
+
+        if not invalid:
+            for pair in new_pairs:
+
+                pairA = pair[0]
+                pairB = pair[1]
+
+
+                warpElementA = (
+                    pairA["Start_Y"], pairA["Start_X"],
+                    pairB["Start_Warp_Id"], pairB["Start_Map_Bytes"],
+                    pairA["Rom_Start"]
+                )
+
+                warpElementB = (
+                    pairB["Start_Y"], pairB["Start_X"],
+                    pairA["Start_Warp_Id"], pairA["Start_Map_Bytes"],
+                    pairB["Rom_Start"]
+                )
+
+                warpsToWrite.append(warpElementA)
+                warpsToWrite.append(warpElementB)
+
+            for dupe in dupes:
+                dupeWrite = dupe[0]
+                dupeReference = dupe[1]
+
+                newPaired = [ w[0] if w[0] != dupeReference else w[1] for w in new_pairs if w[0] == dupeReference or w[1] == dupeReference ]
+
+                if len(newPaired) > 0:
+                    pairC = newPaired[0]
+                    warpElementC = (
+                        dupeWrite["Start_Y"], dupeWrite["Start_X"],
+                        pairC["Start_Warp_Id"], pairC["Start_Map_Bytes"],
+                        dupeWrite["Rom_Start"]
+                    )
+
+                    warpsToWrite.append(warpElementC)
+                else:
+                    print("Unable to find dupe for", dupeWrite)
+
+
+    return warpsToWrite
+
+
 
 
 def interpretDataForRandomisedRom(file, out_file="warp-output.tsv"):
@@ -639,6 +1020,15 @@ def interpretDataForRandomisedRom(file, out_file="warp-output.tsv"):
             "Start Group": group_data_start[0]["Group"],
             "End Name": group_data_end[0]["Friendly Name"],
             "End Group": group_data_end[0]["Group"],
+            "Rom_Start": addr_start,
+            "Rom_End": addr_end,
+            "Dest_X": int(dest_x),
+            "Dest_Y": int(dest_y),
+            "Start_X": x_value,
+            "Start_Y": y_value,
+            "Dest_Warp_Id": dest_id,
+            "Start_Warp_Id": obj["Iterator"],
+            "Dest_Map_Bytes": dest_map_bytes
         }
 
         resulting_data.append(newObj)
@@ -653,6 +1043,8 @@ def interpretDataForRandomisedRom(file, out_file="warp-output.tsv"):
         out_file.write(toFile)
     out_file.flush()
     out_file.close()
+
+    return resulting_data
 
 if __name__ == '__main__':
     pass

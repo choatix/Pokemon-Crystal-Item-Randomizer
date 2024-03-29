@@ -33,6 +33,12 @@ class Location:
 		self.item = None
 		self.Handles = []
 		self.SuperLocation = None
+		self.Border = False
+
+		if self.Type == "Border":
+			self.Type = "Map"
+			self.Border = True
+
 		self.YmlFile = None
 		self.Dummy = yamlTree["Dummy"] if "Dummy" in yamlTree else False
 		if self.Dummy:
@@ -355,7 +361,7 @@ class Location:
 			validWarpNames = {}
 				#{"Cianwood"}
 
-			dontChange = ["8 Badges", "Rocket Invasion", "All Badges", "Woke Snorlax",
+			dontChange = ["8 Badges", "Rocket Invasion Active", "All Badges", "Woke Snorlax",
 						  "Most Map Access", "Elite Four"]
 
 			newLoc = []
@@ -372,7 +378,7 @@ class Location:
 
 
 		if self.Type == "Transition" or self.Type == "Starting Warp":
-			dontChange = ["8 Badges", "Rocket Invasion", "All Badges", "Woke Snorlax",
+			dontChange = ["8 Badges", "Rocket Invasion Active", "All Badges", "Woke Snorlax",
 						  "Most Map Access", "Elite Four"]
 
 			if self.Name not in dontChange:
@@ -617,3 +623,6 @@ class Location:
 
 	def isShopLike(self):
 		return self.isShop() or self.isVendingMachine() or self.isPrize()
+
+	def isBorder(self):
+		return self.Border

@@ -140,7 +140,7 @@ def LoadWarpData(locationList, flags):
 def ImpossibleWarpRecursion(accessible_groups, fullLocations, l, force=False):
 	flags = []
 	impossible = []
-	dontChange = ["8 Badges", "Rocket Invasion", "All Badges", "Woke Snorlax",
+	dontChange = ["8 Badges", "Rocket Invasion Active", "All Badges", "Woke Snorlax",
 				  "Most Map Access", "Elite Four"]
 
 	for l_s in l.Sublocations:

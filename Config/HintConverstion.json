@@ -3,7 +3,7 @@
   "Locations": [{"Mt Mortar Upper Floor": "Mortar Waterfall" }],
   "Flags":
   [
-    {"Rocket Invasion": "Takeover"},
+    {"Rocket Invasion Active": "Takeover"},
     {"Mahogany Rockets Defeated": "Clearing Hideout"}
 
   ]

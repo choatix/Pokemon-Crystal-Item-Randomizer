@@ -67,7 +67,7 @@ Location:
             -
                 Name: Radio Tower Directors Room Access
                 FileName: RadioTower5F.asm
-                Type: Map
+                Type: Border
                 HasPKMN: No
                 WildTableList:
                 LocationReqs: Radio Tower
@@ -148,7 +148,7 @@ Location:
             -
                 Name: Radio Tower Top Room Normal Access
                 FileName: RadioTower5F.asm
-                Type: Map
+                Type: Border
                 HasPKMN: No
                 WildTableList:
                 LocationReqs: Radio Tower
@@ -264,7 +264,6 @@ Location:
                         - Rockets In Radio Tower
                     ItemReqs:
                     FlagsSet:
-                        - Beat Team Rocket
                     ReachableReqs:
                     Code: |
                         RadioTower5FClearBellBackup:

@@ -72,7 +72,7 @@ Location:
     -
         Name: League Gate
         FileName: VictoryRoadGate.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList: 
         LocationReqs:

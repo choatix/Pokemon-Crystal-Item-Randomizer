@@ -69,6 +69,9 @@ def removeWarpTrash(trashItems, criticalTrash, dontReplace, res_removed_items):
 			# Unless you HAVE to
 
 			itemAtIndex = res_removed_items[ind]
+			if type(itemAtIndex) == list:
+				print("RemoveWarpTrash::Error::", itemAtIndex)
+				continue
 			if not itemAtIndex.isItem() or itemAtIndex.Dummy:
 				continue
 
@@ -209,6 +212,13 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 	for i in addressLists:
 		addressData[i['label'].split(".")[-1]] = i
 
+	warpOns = None
+	if False:
+		DoPreWarpRandomisation(romPath)
+		warpOns = {"Elm Aide Potion As Multi", "Ruins Of Alph Ledge Checks",
+				   "Victory Road Hall 2 Changes", "Ice Path Boulders Pushed",
+				   ""}
+
 	f = open(romPath, 'r+b')
 	romMap = mmap.mmap(f.fileno(), 0)
 
@@ -220,7 +230,7 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 						 newItems, maybeNewItems, maybeRemoveItems, dontReplace, disabledPatches)
 
 	if "Warps" in flags:
-		mod_changes = GenerateWarpData.InterpretWarpChanges(romPath)
+		mod_changes = GenerateWarpData.InterpretWarpChanges(romPath, makeOnNames=warpOns)
 
 		ProcessModifiers(mod_changes, flags, inputVariables, changeListDict, requiredItemsCopy, addedProgressList, extraTrash, patchList,
 						 newItems, maybeNewItems, maybeRemoveItems, dontReplace, disabledPatches)
@@ -349,7 +359,7 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 		flat = LoadLocationData.FlattenLocationTree(fullLocationData[0])
 		#items = [ f.Name for f in flat if f.Type == "Item" or f.Type == "Gym" or f.Type == "Shop" or f.Type == "BargainShop"
 		#		  or f.Type== "Vending Machine" or f.Type == "Prize" or f.Type == "Buena"]
-		items = [ f.Name for f in flat if f.isItem() ]
+		items = [ f.Name for f in flat if f.isItem() or f.isGym() ]
 		for item in items:
 			spoilerDetails[item] = {}
 
@@ -520,7 +530,11 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 					resultDict["Warnings"]["NotAllPlaced"] = True
 
 
-				completeResult = completeResult and CheckForE4Reachable(resultDict)
+				if completeResult:
+					completeResult = completeResult and CheckForE4Reachable(resultDict)
+					if not completeResult:
+						completeResult = True
+						resultDict["Warnings"]["Not All E4"] = True
 
 				#if completeResult:
 				#	flat = LoadLocationData.FlattenLocationTree(fullLocationData[0])
@@ -725,3 +739,14 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 	#print(result[2])
 	#print(result[1])
 	return resultDict
+
+def DoPreWarpRandomisation(in_file):
+	warpData = GenerateWarpData.RandomiseWarps(in_file)
+
+	for w in warpData:
+		print(w)
+
+	f = open(in_file, 'r+b')
+	romMap = mmap.mmap(f.fileno(), 0)
+
+	RandomizerRom.DirectWriteWarpData(romMap, warpData)

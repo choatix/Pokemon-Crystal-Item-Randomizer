@@ -2,7 +2,7 @@ Location:
     -
         Name: Woke Snorlax
         FileName: VermilionCity.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList: 
         LocationReqs: 

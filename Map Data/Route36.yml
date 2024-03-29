@@ -107,7 +107,7 @@ Location:
     -
         Name: Route 36 Sudowoodo Junction
         FileName: Route36.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList:
         LocationReqs: 
@@ -124,7 +124,7 @@ Location:
     -
         Name: Route 36 Sudowoodo Junction
         FileName: Route36.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList:
         LocationReqs: 

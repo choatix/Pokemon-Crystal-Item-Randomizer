@@ -52,18 +52,16 @@ Location:
     -
         Name: Olivine City via SS Aqua
         FileName: OlivineCity.asm
-        Type: Map
+        Type: Border
         HasPKMN: No
         WildTableList:
         LocationReqs: 
             - SS Aqua Entrance
         FlagReqs:
-            - Hive Badge
             - Kanto Mode
         ItemReqs:
             - S S Ticket
             - Pass
-            - Cut
         FlagsSet:
         ReachableReqs:
         Code:

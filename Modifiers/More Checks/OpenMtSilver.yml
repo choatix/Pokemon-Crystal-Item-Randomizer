@@ -6,37 +6,16 @@ FlagsSet:
     - Open Mt. Silver
 Changes:
     -
-        Location: Open Mt. Silver
-        RemoveFlagReqs:
-            - Banned
-    -
-        Location: Mt. Silver Unlock A
-        NewFlagReqs:
-            - Impossible
-    -
-        Location: Mt. Silver Unlock B
-        NewFlagReqs:
-            - Impossible
-    -
-        Location: Mt. Silver Unlock C
-        NewFlagReqs:
-            - Impossible
-    -
-        Location: Mt. Silver Unlock D
-        NewFlagReqs:
-            - Impossible
-    -
-        Location: Mt. Silver Unlock Sure Why Not
-        NewFlagReqs:
-            - Impossible
-    -
         Location: Red
         AddFlagReqs:
             - All Badges
             - Oak Opens Mt Silver
         RemoveFlagReqs:
             - Became Champion
-
+    -
+        Location: Mt. Silver Is Open
+        RemoveFlagReqs:
+            - Oak Opens Mt Silver
     -
         Location: Victory Road Gate Mt Silver
         RemoveFlagReqs:
