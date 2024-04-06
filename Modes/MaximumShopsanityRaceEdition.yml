@@ -1,0 +1,63 @@
+AllowedLocations: null
+BadgeItemShuffle: null
+BannedLocations: null
+BasePatch: Patches/BaseModificationsSpeedchoice.json
+CoreProgress:
+- Mystery Egg
+- Surf
+- Fog Badge
+- Pass
+- S S Ticket
+- Squirtbottle
+DefaultModifiers:
+- Modifiers/Behavioural/ProgressiveRods.yml
+- Modifiers/More Checks/VanillaClair.yml
+- Modifiers/Behavioural/RemoveCutTreeInIlex.yml
+- Modifiers/More Checks/EnableTinTower.yml
+- Modifiers/More Checks/CardRandomization.yml
+- Modifiers/More Checks/HiddenItems.yml
+- Modifiers/More Checks/TimeEvents.yml
+- Modifiers/More Checks/BerryTrees.yml
+- Modifiers/More Checks/PointlessChecks.yml
+- Modifiers/More Checks/BugCatchingContest.yml
+- Modifiers/More Checks/PhoneCallTrainers.yml
+- Modifiers/More Checks/MonLockedChecks.yml
+- Modifiers/Improved Flow/SkipReturningToNewBark.yml
+- Modifiers/More Checks/OpenMtSilver.yml
+- Modifiers/Convenience/Strong Fights/NoEarlyBasement.yml
+- Modifiers/More Checks/ShuffleLeftovers.yml
+- Modifiers/Shopsanity/Shopsanity.yml
+- Modifiers/Upgrades/UpgradeMail.yml
+- Modifiers/Shopsanity/PreventShopItems.yml
+- Modifiers/Shopsanity/PriceRandomisation.yml
+- Modifiers/Shopsanity/BuenaItems.yml
+- Modifiers/Shopsanity/GameCorner.yml
+- Modifiers/Convenience/Pokedex/DexMonLockedChecks.yml
+- Modifiers/Convenience/Fly/RequireFlyForPhone.yml
+- Modifiers/More Checks/IncludeGSBall.yml
+- Modifiers/Development/SilverLeafDebugMode.yml
+- Modifiers/Improved Flow/StartWithRepel.yml
+- Modifiers/Improved Flow/StartWithBike.yml
+- Modifiers/Improved Flow/NerfHoOhChamber.yml
+- Modifiers/Upgrades/UpgradeApricorns.yml
+- Modifiers/Shopsanity/SafeXItems.yml
+- Modifiers/Shopsanity/CatchEmAllShops.yml
+- Modifiers/Shopsanity/SeverelyReduceShop.yml
+- Modifiers/Convenience/Extra Fights/NoVanillaBasement.yml
+- Modifiers/Shopsanity/5FItemsAlways.yml
+- Modifiers/Convenience/Strong Fights/NoEarlySabrina.yml
+- Modifiers/Convenience/Fly/ForceEarlyFlyTournament2023.yml
+- Modifiers/Convenience/Fly/RequireFlyForMons.yml
+Description: This is the everything bagel of the Crystal Item Rando with QoL to make it slightly more palatable.
+  Shops, pokemon, phone calls, hidden items, anything you name that is currently able to be randomized is included.
+  Mt. Silver can be accessed early, without 16 badges, but Red will not spawn until you talk to Oak with 16 badges. All seeds
+  will be beatable. Something to keep in mind is that Fly is 2023 Tournament logic, and won't be locked behind phone calls nor Pokemon.
+  Shops are 75% reroll for key items to make sure that it isn't just a shopping simulator.
+FlagsSet:
+- Kanto Mode
+Goal: Red
+ModeVariables: {}
+Name: Maximum Logic
+RegularWildLevelScalingDefault: false
+SpecialWildLevelScalingDefault: false
+TrainerLevelScalingDefault: false
