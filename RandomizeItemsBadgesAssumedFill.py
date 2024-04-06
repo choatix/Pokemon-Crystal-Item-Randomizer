@@ -113,6 +113,10 @@ class Requirement:
 	location : Location.Location
 	alwaysRequired : list
 	options: dict
+	permanent: bool
+
+	def __init__(self):
+		self.permanent = False
 
 	def __str__(self):
 		return self.location.Name + "," + str(self.alwaysRequired)
@@ -200,6 +204,7 @@ def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoil
 		spoiler = {}
 
 	if cache is not None and location in cache:
+		# Update with spoiler??
 		fromCache = cache[location]
 		#print("From cache:", location.Name, fromCache.alwaysRequired, fromCache.options)
 		return fromCache
@@ -295,6 +300,7 @@ def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoil
 
 				#print("add to stack:", loc.Name)
 				stack.append(loc)
+
 				newReqs.append(GetDefinitiveRequirements(fullList, loc,
 														 banned=banned, cache=cache, spoiler=spoiler,
 														 stack=stack, items=items, known=copy.copy(known),
@@ -379,8 +385,11 @@ def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoil
 
 		#r.alwaysRequired.extend(selfExtraReqs)
 
-		cache[location] = r
+		if selfExtraReqs == newerReqs:
+			r.permanent = True
 
+		print("cache", location.Name, r.alwaysRequired, r.options)
+		cache[location] = r
 
 	#print(location.Name, selfExtraReqs)
 	#print(location.Name, "Location reqs=", r.alwaysRequired)
@@ -867,6 +876,7 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 	previousCount = 0
 
 	shortcutCache = {}
+	baseCache = {}
 
 	while len(progressList) > 0 and maxIter > 0:
 
@@ -995,8 +1005,18 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 							placeable = False
 
 					if placeable:
-						reqs = GetDefinitiveRequirements(locList, loc, banned=banned, cache={},
+						useBaseCache = {}
+						reqs = GetDefinitiveRequirements(locList, loc, banned=banned, cache=useBaseCache,
 													 spoiler=counterSpoiler, items=fullProgress)
+
+						keysToRemove = []
+						for optionItem in baseCache.items():
+							optionKey = optionItem[0]
+							if not optionItem[1].permanent:
+								keysToRemove.append(optionKey)
+
+						for key in keysToRemove:
+							del baseCache[key]
 
 						print(loc.Name, reqs.alwaysRequired)
 

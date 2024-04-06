@@ -1,3 +1,4 @@
+import sys
 from collections import defaultdict
 
 import yaml
@@ -16,10 +17,10 @@ def testDefinitiveRequirements():
 
     assignList = \
         [
-             ("Red Scale Dropped", "Squirtbottle"),
-             ("Route 46 Picknicker Erin Calcium", "Pass"),
-            # ("National Park Parlyz Heal", "Pass"),
-            # ("Lighthouse Ether", "Rainbow Badge"),
+             ("Route 2 Nugget House", "Cascade Badge"),
+             ("Pewter City Gym Badge", "Boulder Badge"),
+            # ("Violet City Gym Badge", "Cascade Badge"),
+            # ("Falkner TM", "Boulder Badge"),
             # ("Underground Path Hidden X Special", "S S Ticket"),
             # ("Mahogany Town Gym Badge", "Waterfall"),
             # ("Mt Mortar Elixer", "Lost Item"),
@@ -99,9 +100,22 @@ def testDefinitiveRequirements():
         # e.g. Route 2 Nugget House / Silver Wing Old Man example
         # With Route 2 North
 
-        reqs = GetDefinitiveRequirements(locList, litem, cache={}, spoiler=spoiler,
+        reqs = GetDefinitiveRequirements(locList, litem, cache=fullCache, spoiler=spoiler,
                                          items=requiredItems, banItem=giveItem)
+
+
         print("reqs=", a[0], reqs.alwaysRequired)
+
+        keysToRemove = []
+        for optionItem in fullCache.items():
+            optionKey = optionItem[0]
+            if not optionItem[1].permanent:
+                keysToRemove.append(optionKey)
+
+        for key in keysToRemove:
+            del fullCache[key]
+
+        print([ (f[0].Name, f[1].options) for f in fullCache.items()])
 
         if giveItem is not None:
 
@@ -117,6 +131,8 @@ def testDefinitiveRequirements():
                 spoiler[giveItem] = reqs
 
     #print("spoiler=", spoiler)
+    sys.exit(0)
+    print("hello")
     final = "Radio Tower Rockets Part 1"
     #banItem = "Radio Card"
     #final = "Route 2 Nugget House"
