@@ -1,0 +1,6 @@
+Name: Severely Reduce Shops
+Description: Re-rolls progress items in shops to reduce odds further than default
+VariablesSet:
+    - RerollShopPercent: 75
+IncompatibleWithout:
+    - 'Shopsanity'
