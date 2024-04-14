@@ -62,7 +62,6 @@ Location:
             - Hive Badge
         ItemReqs:
             - Cut
-            - Machine Part
         FlagsSet:
         ReachableReqs:
         Code:

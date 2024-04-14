@@ -126,9 +126,18 @@ def UpdateWithFullSpoilerCache(reqsList, spoiler):
 		UpdateWithSpoilerCache(spoilerItem[1], reqsList, spoilerItem[0])
 
 
+
+
 #def UpdateSpoilerCache(cache, replaceMe, replaceMeWith):
 def UpdateWithSpoilerCache(changedLoc, reqsList, replaceMe):
 	#changed = cache[replaceMeWith]
+
+	#print("Update:", changedLoc.location.Name, reqsList, replaceMe)
+
+	# for req in changedLoc.alwaysRequired:
+	# 	if req == replaceMe:
+	# 		changedLoc.alwaysRequired.extend(replaceMe)
+	# 		changedLoc.alwaysRequired = list(set(changedLoc.alwaysRequired))
 
 	changed = changedLoc
 
@@ -167,7 +176,7 @@ def UpdateWithSpoilerCache(changedLoc, reqsList, replaceMe):
 			reqValue.alwaysRequired.append("Banned")
 
 		if replaceMe in reqValue.alwaysRequired:
-			reqValue.alwaysRequired.extend(changed.alwaysRequired)
+			reqValue.alwaysRequired.extend([ x for x in changed.alwaysRequired if x not in reqValue.alwaysRequired])
 
 		if reqValue.options is not None:
 			# Key match is one thing, but also needed in other required paths?
@@ -182,6 +191,80 @@ def UpdateWithSpoilerCache(changedLoc, reqsList, replaceMe):
 							#print("Add new forced requirement:", forcedreq, reqKey.Name)
 							reqValue.alwaysRequired.append(forcedreq)
 					reqValue.options[optionKey] = []
+					reqValue.alwaysRequired = list(set(reqValue.alwaysRequired))
+
+
+def CheckSpecialValidity(reqs, badgeSet, banned, spoiler, item):
+	placeable = True
+
+	badgeCount = [req for req in reqs.alwaysRequired if req in badgeSet]
+	badgeCountUniq = list(set(badgeCount))
+
+	if len(badgeCount) != len(badgeCountUniq):
+		print("Still issue with badge count")
+
+	if placeable and 'All Badges' in reqs.alwaysRequired and item in badgeSet:
+		placeable = False
+
+	if placeable and '8 Badges' in reqs.alwaysRequired and len(badgeCountUniq) > 8:
+		placeable = False
+
+	if placeable and 'Rocket Invasion Active' in reqs.alwaysRequired and len(badgeCountUniq) > 9:
+		placeable = False
+
+	seven_locked = []
+	eight_locked = []
+
+	# Logic also needs to know if badge is required for anything else
+	if 'Rocket Invasion Active' in reqs.alwaysRequired and item in badgeSet:
+		seven_locked.append(reqs.location.Name)
+
+	if '8 Badges' in reqs.alwaysRequired and item in badgeSet:
+		eight_locked.append(reqs.location.Name)
+
+	for s in spoiler.items():
+		spoilerItem = s[0]
+		spoilerReq = s[1]
+
+		if len(seven_locked) > 0 and 'Rocket Invasion Active' in spoilerReq.alwaysRequired and spoilerItem in badgeSet:
+			seven_locked.append(spoilerReq.location.Name)
+
+		if len(eight_locked) > 0 and '8 Badges' in spoilerReq.alwaysRequired and spoilerItem in badgeSet:
+			eight_locked.append(spoilerReq.location.Name)
+
+		if item in spoilerReq.alwaysRequired and 'All Badges' in reqs.alwaysRequired and spoilerItem in badgeSet:
+			placeable = False
+
+	if len(seven_locked) > len(badgeSet) - 7:
+		print("Seven locked:", seven_locked)
+		placeable = False
+
+
+	if len(eight_locked) > len(badgeSet) - 8:
+		placeable = False
+
+
+	for ban in banned:
+		if not placeable:
+			break
+		if ban in reqs.alwaysRequired:
+			placeable = False
+			break
+
+	return placeable
+
+
+def UpdateCacheOfSpoilerLocations(spoiler, cache, locList, requiredItems):
+	for x in spoiler.items():
+		xItem = x[0]
+		xLoc = x[1]
+
+		useCache = copy.copy(cache)
+
+		replacedReqs = GetDefinitiveRequirements(locList, xLoc.location, cache=useCache, spoiler=spoiler,
+												 items=requiredItems, banItem=xItem)
+
+		cache[xLoc.location.Name] = replacedReqs
 
 
 import time
@@ -206,6 +289,7 @@ def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoil
 	if cache is not None and location in cache:
 		# Update with spoiler??
 		fromCache = cache[location]
+		UpdateWithFullSpoilerCache([fromCache], spoiler)
 		#print("From cache:", location.Name, fromCache.alwaysRequired, fromCache.options)
 		return fromCache
 
@@ -387,8 +471,10 @@ def GetDefinitiveRequirements(fullList, location, banned=None, cache=None, spoil
 
 		if selfExtraReqs == newerReqs:
 			r.permanent = True
+		# else:
+		# 	print("not perm", location.Name, selfExtraReqs, newerReqs)
 
-		print("cache", location.Name, r.alwaysRequired, r.options)
+		#print("cache", location.Name, r.alwaysRequired, r.options)
 		cache[location] = r
 
 	#print(location.Name, selfExtraReqs)
@@ -1005,22 +1091,14 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 							placeable = False
 
 					if placeable:
-						useBaseCache = {}
+						# useBaseCache = baseCache
+						useBaseCache = copy.copy(baseCache)
 						reqs = GetDefinitiveRequirements(locList, loc, banned=banned, cache=useBaseCache,
 													 spoiler=counterSpoiler, items=fullProgress)
 
-						keysToRemove = []
-						for optionItem in baseCache.items():
-							optionKey = optionItem[0]
-							if not optionItem[1].permanent:
-								keysToRemove.append(optionKey)
+						baseCache[loc] = reqs
+						UpdateCacheOfSpoilerLocations(shortcutCache, baseCache, locList, requiredItems)
 
-						for key in keysToRemove:
-							del baseCache[key]
-
-						print(loc.Name, reqs.alwaysRequired)
-
-						shortcutCache[loc] = reqs
 
 					# Cache results to skip some future checks
 
@@ -1036,22 +1114,12 @@ def RandomizeItems(goalID,locationTree, progressItems, trashItems, badgeData, se
 
 					# Check for contradictions, these could be generated but...
 					if placeable:
-						badgeCount = [ req for req in reqs.alwaysRequired if req in badgeSet ]
-						if placeable and 'All Badges' in reqs.alwaysRequired and len(badgeCount) > 0:
-							placeable = False
-
-						if placeable and '8 Badges' in reqs.alwaysRequired and len(badgeCount) > 8:
-							placeable = False
-
-						if placeable and 'Rocket Invasion Active' in reqs.alwaysRequired and len(badgeCount) > 9:
-							placeable = False
-
-						for ban in banned:
-							if ban in reqs.alwaysRequired:
-								placeable = False
-								break
+						placeable = CheckSpecialValidity(reqs, badgeSet, banned, counterSpoiler, toAllocate)
+						if not placeable:
+							print("Unable to place (special):", toAllocate, "in", loc.Name)
 
 					if placeable:
+						shortcutCache[loc] = reqs
 						locList.remove(loc)
 						valid = True
 						print('Gave '+ toAllocate +' to '+ loc.Name)

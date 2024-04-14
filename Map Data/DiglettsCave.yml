@@ -1,14 +1,13 @@
 Location:
     -
-        Name: Diglett's Cave
+        Name: Diglett's Cave Entrance
         FileName: DiglettsCave.asm
         Type: Map
         HasPKMN: Yes
-        WildTableList: 
-            - DIGLETTS_CAVE
+        WildTableList:
         LocationReqs:
-            - Woke Snorlax
         FlagReqs:
+            - Warps
         ItemReqs:
         FlagsSet:
         ReachableReqs:
@@ -17,6 +16,40 @@ Location:
         AREALV: 32
         TrainerList:
         WarpReqs: Digletts Cave Main
+    -
+        Name: Diglett's Cave Entrance
+        FileName: DiglettsCave.asm
+        Type: Map
+        HasPKMN: Yes
+        WildTableList:
+        LocationReqs:
+            - Vermilion City
+        FlagReqs:
+            - Snorlax Woken
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        AREALV: 32
+        TrainerList:
+    -
+        Name: Diglett's Cave
+        FileName: DiglettsCave.asm
+        Type: Map
+        HasPKMN: Yes
+        WildTableList: 
+            - DIGLETTS_CAVE
+        LocationReqs:
+            - Diglett's Cave Entrance
+        FlagReqs:
+        ItemReqs:
+        FlagsSet:
+        ReachableReqs:
+        Code:
+        Text:
+        AREALV: 32
+        TrainerList:
         Sublocations:
             -
                 Name: Diglett's Cave Hidden Max Revive

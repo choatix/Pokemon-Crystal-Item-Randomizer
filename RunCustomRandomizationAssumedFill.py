@@ -52,6 +52,8 @@ def handleBadSpoiler(resultDict, flags, minSize=None, maxSize=None):
 	#elif len(prepared_commands) < maxSize and len(prepared_commands) > minSize:
 	#	print(prepared_commands)
 
+	return
+
 
 
 def removeWarpTrash(trashItems, criticalTrash, dontReplace, res_removed_items):
@@ -515,6 +517,7 @@ def randomizeRom(romPath, goal, seed, flags = [], patchList = [], banList = None
 			if goal not in resultDict["Reachable"]:
 				handleBadSpoiler(resultDict, flags, maxSize=10 if spoilerLoop else None)
 				print("bad run, retrying")
+				break
 			elif "ProgressList" in resultDict:
 				print("Final checks...")
 				completeResult = True

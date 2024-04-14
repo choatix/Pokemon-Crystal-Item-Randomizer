@@ -143,7 +143,6 @@ Location:
                 FlagReqs:
                     - Kanto Power Restored
                 ItemReqs:
-                    - Machine Part
                 FlagsSet:
                 ReachableReqs:
                 WarpReqs: Fan Club

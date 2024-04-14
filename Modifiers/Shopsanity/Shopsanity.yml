@@ -58,3 +58,11 @@ Changes:
         Location: Goldenrod Department Store 5F Rock Smash TM
         RemoveFlagReqs:
             - Impossible
+    -
+        Location: Ruins of Alph Water Chamber Access No Shopsanity
+        AddFlagReqs:
+            - Impossible
+    -
+        Location: Ruins of Alph Rope Chamber Access No Shopsanity
+        AddFlagReqs:
+            - Impossible
